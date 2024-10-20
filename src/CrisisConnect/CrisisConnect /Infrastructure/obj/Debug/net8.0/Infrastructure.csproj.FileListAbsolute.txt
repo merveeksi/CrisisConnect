@@ -9,3 +9,4 @@
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Infrastructure/obj/Debug/net8.0/refint/Infrastructure.dll
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Infrastructure/obj/Debug/net8.0/Infrastructure.pdb
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Infrastructure/obj/Debug/net8.0/ref/Infrastructure.dll
+/Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Infrastructure/obj/Debug/net8.0/Infrastructure.sourcelink.json

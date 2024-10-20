@@ -9,3 +9,4 @@
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Persistence/obj/Debug/net8.0/refint/Persistence.dll
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Persistence/obj/Debug/net8.0/Persistence.pdb
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Persistence/obj/Debug/net8.0/ref/Persistence.dll
+/Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Persistence/obj/Debug/net8.0/Persistence.sourcelink.json
