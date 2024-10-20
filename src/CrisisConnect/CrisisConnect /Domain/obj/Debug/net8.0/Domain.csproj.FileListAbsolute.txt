@@ -1,0 +1,4 @@
+/Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Domain/obj/Debug/net8.0/Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Domain/obj/Debug/net8.0/Domain.AssemblyInfoInputs.cache
+/Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Domain/obj/Debug/net8.0/Domain.AssemblyInfo.cs
+/Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Domain/obj/Debug/net8.0/Domain.csproj.CoreCompileInputs.cache
