@@ -16,14 +16,14 @@ public class Center:Entity<Guid> //yardım merkezi
     
     public List<Resource> Resources { get; set; } //yardım merkezindeki kaynaklar
     
-    public List<Logistics> Logistics { get; set; } //yardım merkezindeki lojistik bilgiler
+    public List<Logistic> Logistics { get; set; } //yardım merkezindeki lojistik bilgiler
 
     public Center()
     {
         
     }
 
-    public Center(Guid id, string name, string location, int capacity, int currentStaff, List<Volunteer> volunteers, List<Resource> resources, List<Logistics> logistics)
+    public Center(Guid id, string name, string location, int capacity, int currentStaff, List<Volunteer> volunteers, List<Resource> resources, List<Logistic> logistics)
     {
         Id = id;
         Name = name;

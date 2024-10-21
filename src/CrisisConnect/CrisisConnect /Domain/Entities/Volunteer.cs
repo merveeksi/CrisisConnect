@@ -16,14 +16,14 @@ public class Volunteer:Entity<Guid> //gönüllü
     
     public string? Email { get; set; } //gönüllünün e-posta adresi
     
-    public string PhoneNumber { get; set; } //gönüllünün telefon numarası
+    public decimal PhoneNumber { get; set; } //gönüllünün telefon numarası
     
     public Volunteer()
     {
         
     }
     
-    public Volunteer(Guid id, string firstName, string lastname, List<string> skills, bool availability, string location, string email, string phoneNumber)
+    public Volunteer(Guid id, string firstName, string lastname, List<string> skills, bool availability, string location, string email, decimal phoneNumber)
     {
         Id = id;
         FirstName = firstName;

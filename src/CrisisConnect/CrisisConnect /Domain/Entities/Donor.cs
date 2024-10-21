@@ -10,7 +10,7 @@ public class Donor:Entity<Guid> //bağışçı
     
     public string? Email { get; set; } //bağışçının e-posta adresi
     
-    public string PhoneNumber { get; set; } //bağışçının telefon numarası
+    public decimal PhoneNumber { get; set; } //bağışçının telefon numarası
     
     public string Location { get; set; } //bağışçının bulunduğu yer
     
@@ -21,7 +21,7 @@ public class Donor:Entity<Guid> //bağışçı
         
     }
     
-    public Donor(Guid id, string firstName, string lastName, string email, string phoneNumber, string location, List<Resource> donatedResources)
+    public Donor(Guid id, string firstName, string lastName, string email, decimal phoneNumber, string location, List<Resource> donatedResources)
     {
         Id = id;
         FirstName = firstName;

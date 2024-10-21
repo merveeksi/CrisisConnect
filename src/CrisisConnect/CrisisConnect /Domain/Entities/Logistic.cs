@@ -2,7 +2,7 @@ using Core.Persistence.Repositories;
 
 namespace Domain.Entities;
 
-public class Logistics:Entity<Guid> //lojistik
+public class Logistic:Entity<Guid> //lojistik
 {
     public Guid Resourceld { get; set; } //taşınan kaynak Id'si
 
@@ -12,12 +12,12 @@ public class Logistics:Entity<Guid> //lojistik
 
     public string CurrentStatus { get; set; } //taşınma durumu, örneğin: yolda, varış noktasında
     
-    public Logistics()
+    public Logistic()
     {
         
     }
     
-    public Logistics(Guid id, Guid resourceld, string destination, DateTime estimatedArrival, string currentStatus)
+    public Logistic(Guid id, Guid resourceld, string destination, DateTime estimatedArrival, string currentStatus)
     {
         Id = id;
         Resourceld = resourceld;
