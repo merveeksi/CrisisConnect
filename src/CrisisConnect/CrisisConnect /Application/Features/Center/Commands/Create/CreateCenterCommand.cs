@@ -1,3 +1,4 @@
+using Application.Services.Repositories;
 using MediatR;
 
 namespace Application.Features.Center.Commands.Create;
@@ -11,6 +12,13 @@ public class CreateCenterCommand:IRequest<CreatedCenterResponse>
 
 public class CreateCenterCommandHandler : IRequestHandler<CreateCenterCommand, CreatedCenterResponse>
 {
+    private readonly ICenterRepository _centerRepository;
+
+    public CreateCenterCommandHandler(ICenterRepository centerRepository)
+    {
+        _centerRepository = centerRepository;
+    }
+
     public Task<CreatedCenterResponse>? Handle(CreateCenterCommand request, CancellationToken cancellationToken)
     {
         CreatedCenterResponse createdCenterResponse = new CreatedCenterResponse();

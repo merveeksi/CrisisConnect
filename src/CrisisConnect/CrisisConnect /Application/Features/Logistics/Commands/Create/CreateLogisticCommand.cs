@@ -1,3 +1,6 @@
+using Application.Services.Repositories;
+using AutoMapper;
+using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Logistics.Commands.Create;
@@ -9,12 +12,25 @@ public class CreateLogisticCommand : IRequest<CreatedLogisticResponse>
 
     public class CreateCommandhandler : IRequestHandler<CreateLogisticCommand, CreatedLogisticResponse>
     {
-        public Task<CreatedLogisticResponse>? Handle(CreateLogisticCommand request, CancellationToken cancellationToken)
+        private readonly ILogisticRepository _logisticRepository;
+        private readonly IMapper _mapper;
+
+
+        public CreateCommandhandler(ILogisticRepository logisticRepository, IMapper mapper)
         {
-            CreatedLogisticResponse createdLogisticResponse = new CreatedLogisticResponse();
-            createdLogisticResponse.Destination = request.Destination;
-            createdLogisticResponse.Id = new Guid();
-            return Task.FromResult(createdLogisticResponse);
+            _logisticRepository = logisticRepository;
+            _mapper = mapper;
+        }
+
+        public async Task<CreatedLogisticResponse>? Handle(CreateLogisticCommand request, CancellationToken cancellationToken)
+        {
+            Logistic logistic = _mapper.Map<Logistic>(request);
+            logistic.Id = Guid.NewGuid();
+            
+            _logisticRepository.AddAsync(logistic);
+            
+            CreatedLogisticResponse createdLogisticResponse = _mapper.Map<CreatedLogisticResponse>(logistic);
+            return createdLogisticResponse;
         }
     }
 }

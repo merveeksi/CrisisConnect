@@ -1,3 +1,6 @@
+using Application.Services.Repositories;
+using AutoMapper;
+using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Volunteers.Commands.Create;
@@ -13,14 +16,23 @@ public class CreateVolunteerCommand : IRequest<CreatedVolunteerResponse>
     
     public class CreateVolunteerCommandHandler : IRequestHandler<CreateVolunteerCommand, CreatedVolunteerResponse>
     {
+        private readonly IVolunteerRepository  _volunteerRepository;
+        private readonly IMapper _mapper;
+        
+        public CreateVolunteerCommandHandler(IMapper mapper, IVolunteerRepository volunteerRepository)
+        {
+            _volunteerRepository = volunteerRepository;
+            _mapper = mapper;
+        }
+
         public Task<CreatedVolunteerResponse> Handle(CreateVolunteerCommand request, CancellationToken cancellationToken)
         {
-            CreatedVolunteerResponse createdVolunteerResponse = new CreatedVolunteerResponse();
-            createdVolunteerResponse.FirstName = request.FirstName;
-            createdVolunteerResponse.Lastname = request.Lastname;
-            createdVolunteerResponse.Skills = request.Skills;
-            createdVolunteerResponse.Location = request.Location;
-            createdVolunteerResponse.PhoneNumber = request.PhoneNumber;
+            Volunteer volunteer = _mapper.Map<Volunteer>(request);
+            volunteer.Id = Guid.NewGuid();
+            
+            _volunteerRepository.AddAsync(volunteer);
+            
+            CreatedVolunteerResponse createdVolunteerResponse = _mapper.Map<CreatedVolunteerResponse>(volunteer);
             return Task.FromResult(createdVolunteerResponse);
         }
     }

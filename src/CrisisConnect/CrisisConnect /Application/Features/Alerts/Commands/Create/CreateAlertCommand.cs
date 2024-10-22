@@ -1,3 +1,4 @@
+using Application.Services.Repositories;
 using MediatR;
 
 namespace Application.Features.Alerts.Commands.Create;
@@ -10,6 +11,13 @@ public class CreateAlertCommand:IRequest<CreatedAlertResponse>
 
 public class CreateAlertCommandHandler : IRequestHandler<CreateAlertCommand, CreatedAlertResponse>
 {
+    private readonly IAlertRepository _alertRepository;
+
+    public CreateAlertCommandHandler(IAlertRepository alertRepository)
+    {
+        _alertRepository = alertRepository;
+    }
+
     public Task<CreatedAlertResponse>? Handle(CreateAlertCommand request, CancellationToken cancellationToken)
     {
         CreatedAlertResponse createdAlertResponse = new CreatedAlertResponse();

@@ -1,3 +1,6 @@
+using Application.Services.Repositories;
+using AutoMapper;
+using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Disasters.Commands.Create;
@@ -11,12 +14,25 @@ public class CreateDisasterCommand:IRequest<CreatedDisasterResponse> // IRequest
     
     public class CreateDisasterCommandHandler : IRequestHandler<CreateDisasterCommand, CreatedDisasterResponse>
     {
-        public Task<CreatedDisasterResponse>? Handle(CreateDisasterCommand request, CancellationToken cancellationToken)
+        private readonly IDisasterRepository _disasterRepository;
+        private readonly IMapper _mapper;
+
+        public CreateDisasterCommandHandler(IMapper mapper, IDisasterRepository disasterRepository)
         {
-            CreatedDisasterResponse createdDisasterResponse = new CreatedDisasterResponse();
-            createdDisasterResponse.Name = request.Name;
-            createdDisasterResponse.Id = new Guid();
-            return Task.FromResult(createdDisasterResponse);
+            _disasterRepository = disasterRepository;
+            _mapper = mapper;
+        }
+
+
+        public async Task<CreatedDisasterResponse>? Handle(CreateDisasterCommand request, CancellationToken cancellationToken)
+        {
+            Disaster disaster = _mapper.Map<Disaster>(request);
+            disaster.Id = Guid.NewGuid();
+            
+            await _disasterRepository.AddAsync(disaster);
+            
+            CreatedDisasterResponse createdDisasterResponse = _mapper.Map<CreatedDisasterResponse>(disaster);
+            return createdDisasterResponse;
             
         }
     }

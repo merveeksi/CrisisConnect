@@ -1,3 +1,6 @@
+using Application.Services.Repositories;
+using AutoMapper;
+using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Requests.Commands.Create;
@@ -8,13 +11,25 @@ public class CreateRequestCommand : IRequest<CreatedRequestResponse>
 
     public class CreateRequestCommandHandler : IRequestHandler<CreateRequestCommand, CreatedRequestResponse>
     {
-        public Task<CreatedRequestResponse> Handle(CreateRequestCommand request, CancellationToken cancellationToken)
+        private readonly IRequestRepository _requestRepository;
+        private readonly IMapper _mapper;
+
+
+        public CreateRequestCommandHandler(IRequestRepository requestRepository, IMapper mapper)
         {
-            CreatedRequestResponse createdRequestResponse = new CreatedRequestResponse();
-            createdRequestResponse.Id = new Guid();
-            createdRequestResponse.DateRequested = DateTime.Now;
-            createdRequestResponse.PriorityLevel = request.PriorityLevel;
-            return Task.FromResult(createdRequestResponse);
+            _requestRepository = requestRepository;
+            _mapper = mapper;
+        }
+
+        public async Task<CreatedRequestResponse> Handle(CreateRequestCommand request, CancellationToken cancellationToken)
+        {
+            Request requestEntity = _mapper.Map<Request>(request);
+            requestEntity.Id = Guid.NewGuid();
+
+            await _requestRepository.AddAsync(requestEntity);
+
+            CreatedRequestResponse createdRequestResponse = _mapper.Map<CreatedRequestResponse>(requestEntity);
+            return createdRequestResponse;
         }
     }
 }
