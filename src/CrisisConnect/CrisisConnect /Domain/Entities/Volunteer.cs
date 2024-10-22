@@ -6,7 +6,7 @@ public class Volunteer:Entity<Guid> //gönüllü
 {
     public string FirstName { get; set; } //gönüllünün adı
     
-    public string Lastname { get; set; } //gönüllünün soyadı
+    public string LastName { get; set; } //gönüllünün soyadı
     
     public List<string> Skills { get; set; } //gönüllünün sahip olduğu yetenekler
     
@@ -16,18 +16,18 @@ public class Volunteer:Entity<Guid> //gönüllü
     
     public string? Email { get; set; } //gönüllünün e-posta adresi
     
-    public decimal PhoneNumber { get; set; } //gönüllünün telefon numarası
+    public string PhoneNumber { get; set; } //gönüllünün telefon numarası
     
     public Volunteer()
     {
         
     }
     
-    public Volunteer(Guid id, string firstName, string lastname, List<string> skills, bool availability, string location, string email, decimal phoneNumber)
+    public Volunteer(Guid id, string firstName, string lastname, List<string> skills, bool availability, string location, string email, string phoneNumber)
     {
         Id = id;
         FirstName = firstName;
-        Lastname = lastname;
+        LastName = lastname;
         Skills = skills;
         Availability = availability;
         Location = location;

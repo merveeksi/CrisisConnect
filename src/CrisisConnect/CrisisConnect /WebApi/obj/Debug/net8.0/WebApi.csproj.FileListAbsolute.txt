@@ -230,3 +230,7 @@
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /WebApi/bin/Debug/net8.0/runtimes/win/lib/net7.0/System.Drawing.Common.dll
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /WebApi/bin/Debug/net8.0/runtimes/win/lib/net7.0/System.Security.Cryptography.ProtectedData.dll
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /WebApi/bin/Debug/net8.0/runtimes/win/lib/net7.0/System.Windows.Extensions.dll
+/Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /WebApi/bin/Debug/net8.0/Domain.dll
+/Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /WebApi/bin/Debug/net8.0/Core.Persistence.dll
+/Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /WebApi/bin/Debug/net8.0/Domain.pdb
+/Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /WebApi/bin/Debug/net8.0/Core.Persistence.pdb
