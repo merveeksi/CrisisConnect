@@ -1,4 +1,6 @@
 using Application.Features.Disasters.Commands.Create;
+using Application.Features.Disasters.Commands.Delete;
+using Application.Features.Disasters.Commands.Update;
 using Application.Features.Disasters.Queries.GetById;
 using Application.Features.Disasters.Queries.GetList;
 using AutoMapper;
@@ -14,6 +16,12 @@ public class MappingProfiles : Profile
     {
         CreateMap<Disaster, CreateDisasterCommand>().ReverseMap();
         CreateMap<Disaster, CreatedDisasterResponse>().ReverseMap();
+        
+        CreateMap<Disaster, UpdateDisasterCommand>().ReverseMap();
+        CreateMap<Disaster, UpdatedDisasterResponse>().ReverseMap();
+
+        CreateMap<Disaster, DeleteDisasterCommand>().ReverseMap();
+        CreateMap<Disaster, DeletedDisasterResponse>().ReverseMap();
         
         CreateMap<Disaster, GetListDisasterListItemDto>().ReverseMap();    // Disaster sınıfını GetListDisasterListItemDto'ya ve tersine dönüştür
         CreateMap<Disaster, GetByIdDisasterResponse>().ReverseMap();       // Disaster sınıfını GetByIdDisasterResponse'a ve tersine dönüştür

@@ -1,4 +1,5 @@
 using Application.Features.Resources.Commands.Create;
+using Application.Features.Resources.Commands.Update;
 using Application.Features.Resources.Queries;
 using Application.Features.Resources.Queries.GetById;
 using Core.Application.Requests;
@@ -31,6 +32,13 @@ namespace WebApi.Controllers;
         {
             GetByIdResourceQuery getByIdResourceQuery = new() { Id = id };
             GetByIdResourceResponse response = await Mediator.Send(getByIdResourceQuery);
+            return Ok(response);
+        }
+        
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] UpdateResourceCommand updateResourceCommand)
+        {
+            UpdatedResourceResponse response = await Mediator.Send(updateResourceCommand);
             return Ok(response);
         }
     }

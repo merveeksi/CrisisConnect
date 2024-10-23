@@ -1,4 +1,6 @@
 using Application.Features.Logistics.Commands.Create;
+using Application.Features.Logistics.Commands.Delete;
+using Application.Features.Logistics.Commands.Update;
 using Application.Features.Logistics.Queries;
 using Application.Features.Logistics.Queries.GetById;
 using AutoMapper;
@@ -14,6 +16,12 @@ public class MappingProfiles : Profile
     {
         CreateMap<Logistic, CreateLogisticCommand>().ReverseMap();
         CreateMap<Logistic, CreatedLogisticResponse>().ReverseMap();
+
+        CreateMap<Logistic, UpdateLogisticCommand>().ReverseMap();
+        CreateMap<Logistic, UpdatedLogisticResponse>().ReverseMap();
+
+        CreateMap<Logistic, DeleteLogisticCommand>().ReverseMap();
+        CreateMap<Logistic, DeletedLogisticResponse>().ReverseMap();
         
         CreateMap<Logistic, GetListLogisticListItemDto>().ReverseMap();
         CreateMap<Logistic, GetByIdLogisticResponse>().ReverseMap();

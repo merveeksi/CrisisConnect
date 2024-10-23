@@ -1,4 +1,6 @@
 using Application.Features.Donors.Commands.Create;
+using Application.Features.Donors.Commands.Delete;
+using Application.Features.Donors.Commands.Update;
 using Application.Features.Donors.Queries;
 using Application.Features.Donors.Queries.GetById;
 using AutoMapper;
@@ -14,6 +16,12 @@ public class MappingProfiles : Profile
     {
         CreateMap<Donor, CreateDonorCommand>().ReverseMap();
         CreateMap<Donor, CreatedDonorResponse>().ReverseMap();
+
+        CreateMap<Donor, UpdateDonorCommand>().ReverseMap();
+        CreateMap<Donor, UpdatedDonorResponse>().ReverseMap();
+
+        CreateMap<Donor, DeleteDonorCommand>().ReverseMap();
+        CreateMap<Donor, DeletedDonorResponse>().ReverseMap();
         
         CreateMap<Donor, GetListDonorListItemDto>().ReverseMap();
         CreateMap<Donor, GetByIdDonorResponse>().ReverseMap();

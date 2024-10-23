@@ -1,4 +1,6 @@
 using Application.Features.Centers.Commands.Create;
+using Application.Features.Centers.Commands.Delete;
+using Application.Features.Centers.Commands.Update;
 using Application.Features.Centers.Queries;
 using Application.Features.Centers.Queries.GetById;
 using AutoMapper;
@@ -14,6 +16,12 @@ public class MappingProfiles : Profile
     {
         CreateMap<Center, CreateCenterCommand>().ReverseMap();
         CreateMap<Center, CreatedCenterResponse>().ReverseMap();
+
+        CreateMap<Center, UpdateCenterCommand>().ReverseMap();
+        CreateMap<Center, UpdatedCenterResponse>().ReverseMap();
+
+        CreateMap<Center, DeleteCenterCommand>().ReverseMap();
+        CreateMap<Center, DeletedCenterResponse>().ReverseMap();
         
         CreateMap<Center, GetListCenterListItemDto>().ReverseMap();
         CreateMap<Center, GetByIdCenterResponse>().ReverseMap();

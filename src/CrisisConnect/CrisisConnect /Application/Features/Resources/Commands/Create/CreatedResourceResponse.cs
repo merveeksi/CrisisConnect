@@ -11,4 +11,6 @@ public class CreatedResourceResponse
     public int Quantity { get; set; } 
     
     public string Location { get; set; }
+    
+    public DateTime CreateDate { get; set; }
 }

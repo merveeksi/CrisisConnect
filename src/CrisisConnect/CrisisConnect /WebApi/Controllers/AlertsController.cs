@@ -1,4 +1,5 @@
 using Application.Features.Alerts.Commands.Create;
+using Application.Features.Alerts.Commands.Update;
 using Application.Features.Alerts.Queries;
 using Application.Features.Alerts.Queries.GetById;
 using Core.Application.Requests;
@@ -34,6 +35,13 @@ namespace WebApi.Controllers;
         {
             GetByIdAlertQuery getByIdAlertQuery = new() { Id = id };
             GetByIdAlertResponse response = await Mediator.Send(getByIdAlertQuery);
+            return Ok(response);
+        }
+        
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] UpdateAlertCommand updateAlertCommand)
+        {
+            UpdatedAlertResponse response = await Mediator.Send(updateAlertCommand);
             return Ok(response);
         }
     }

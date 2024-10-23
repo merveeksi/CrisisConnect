@@ -1,4 +1,5 @@
 using Application.Features.Requests.Commands.Create;
+using Application.Features.Requests.Commands.Update;
 using Application.Features.Requests.Queries;
 using Application.Features.Requests.Queries.GetById;
 using Core.Application.Requests;
@@ -32,6 +33,13 @@ namespace WebApi.Controllers;
         {
             GetByIdRequestQuery getByIdRequestQuery = new() { Id = id };
             GetByIdRequestResponse response = await Mediator.Send(getByIdRequestQuery);
+            return Ok(response);
+        }
+        
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] UpdateRequestCommand updateRequestCommand)
+        {
+            UpdatedRequestResponse response = await Mediator.Send(updateRequestCommand);
             return Ok(response);
         }
     }

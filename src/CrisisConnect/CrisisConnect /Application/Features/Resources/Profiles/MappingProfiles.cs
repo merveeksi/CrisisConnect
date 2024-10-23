@@ -1,4 +1,6 @@
 using Application.Features.Resources.Commands.Create;
+using Application.Features.Resources.Commands.Delete;
+using Application.Features.Resources.Commands.Update;
 using Application.Features.Resources.Queries;
 using Application.Features.Resources.Queries.GetById;
 using AutoMapper;
@@ -14,6 +16,12 @@ public class MappingProfiles : Profile
     {
         CreateMap<Resource, CreateResourceCommand>().ReverseMap();
         CreateMap<Resource, CreatedResourceResponse>().ReverseMap();
+
+        CreateMap<Resource, UpdateResourceCommand>().ReverseMap();
+        CreateMap<Resource, UpdatedResourceResponse>().ReverseMap();
+
+        CreateMap<Resource, DeleteResourceCommand>().ReverseMap();
+        CreateMap<Resource, DeletedResourceResponse>().ReverseMap();
         
         CreateMap<Resource, GetListResourceListItemDto>().ReverseMap();
         CreateMap<Resource, GetByIdResourceResponse>().ReverseMap();

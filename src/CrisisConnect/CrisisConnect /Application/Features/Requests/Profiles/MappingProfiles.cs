@@ -1,4 +1,6 @@
 using Application.Features.Requests.Commands.Create;
+using Application.Features.Requests.Commands.Delete;
+using Application.Features.Requests.Commands.Update;
 using Application.Features.Requests.Queries;
 using Application.Features.Requests.Queries.GetById;
 using AutoMapper;
@@ -14,6 +16,12 @@ public class MappingProfiles : Profile
     {
         CreateMap<Request, CreateRequestCommand>().ReverseMap();
         CreateMap<Request, CreatedRequestResponse>().ReverseMap();
+
+        CreateMap<Request, UpdateRequestCommand>().ReverseMap();
+        CreateMap<Request, UpdatedRequestResponse>().ReverseMap();
+
+        CreateMap<Request, DeleteRequestCommand>().ReverseMap();
+        CreateMap<Request, DeletedRequestResponse>().ReverseMap();
         
         CreateMap<Request, GetListRequestListItemDto>().ReverseMap();
         CreateMap<Request, GetByIdRequestResponse>().ReverseMap();

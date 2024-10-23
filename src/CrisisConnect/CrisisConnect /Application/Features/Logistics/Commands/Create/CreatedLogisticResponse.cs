@@ -6,4 +6,5 @@ public class CreatedLogisticResponse
 
     public string Destination { get; set; }
     
+    public DateTime CreateDate { get; set; }
 }

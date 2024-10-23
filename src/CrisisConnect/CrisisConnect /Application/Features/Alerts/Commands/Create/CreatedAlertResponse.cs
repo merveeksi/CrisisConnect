@@ -9,4 +9,6 @@ public class CreatedAlertResponse
     public string Location { get; set; }
     
     public string AlertType { get; set; }
+    
+    public DateTime CreateDate { get; set; }
 }

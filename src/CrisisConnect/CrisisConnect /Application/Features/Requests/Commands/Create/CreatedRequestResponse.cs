@@ -7,4 +7,6 @@ public class CreatedRequestResponse
     public DateTime DateRequested { get; set; } 
 
     public string PriorityLevel { get; set; }
+    
+    public DateTime CreateDate { get; set; }
 }

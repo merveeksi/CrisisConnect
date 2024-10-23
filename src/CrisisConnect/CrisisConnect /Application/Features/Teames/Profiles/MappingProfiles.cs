@@ -1,4 +1,6 @@
 using Application.Features.Teames.Commands.Create;
+using Application.Features.Teames.Commands.Delete;
+using Application.Features.Teames.Commands.Update;
 using Application.Features.Teames.Queries;
 using Application.Features.Teames.Queries.GetById;
 using AutoMapper;
@@ -14,6 +16,12 @@ public class MappingProfiles : Profile
     {
         CreateMap<Team, CreateTeamCommand>().ReverseMap();
         CreateMap<Team, CreatedTeamResponse>().ReverseMap();
+
+        CreateMap<Team, UpdateTeamCommand>().ReverseMap();
+        CreateMap<Team, UpdatedTeamResponse>().ReverseMap();
+
+        CreateMap<Team, DeleteTeamCommand>().ReverseMap();
+        CreateMap<Team, DeletedTeamResponse>().ReverseMap();
         
         CreateMap<Team, GetListTeamListItemDto>().ReverseMap();
         CreateMap<Team, GetByIdTeamResponse>().ReverseMap();

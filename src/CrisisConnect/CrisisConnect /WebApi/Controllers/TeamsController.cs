@@ -1,4 +1,5 @@
 using Application.Features.Teames.Commands.Create;
+using Application.Features.Teames.Commands.Update;
 using Application.Features.Teames.Queries;
 using Application.Features.Teames.Queries.GetById;
 using Core.Application.Requests;
@@ -32,6 +33,13 @@ namespace WebApi.Controllers
         {
             GetByIdTeamQuery getByIdTeamQuery = new() { Id = id };
             GetByIdTeamResponse response = await Mediator.Send(getByIdTeamQuery);
+            return Ok(response);
+        }
+        
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] UpdateTeamCommand updateTeamCommand)
+        {
+            UpdatedTeamResponse response = await Mediator.Send(updateTeamCommand);
             return Ok(response);
         }
     }

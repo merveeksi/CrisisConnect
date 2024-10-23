@@ -1,4 +1,5 @@
 using Application.Features.Shelters.Commands.Create;
+using Application.Features.Shelters.Commands.Update;
 using Application.Features.Shelters.Queries;
 using Application.Features.Shelters.Queries.GetById;
 using Core.Application.Requests;
@@ -33,6 +34,13 @@ namespace WebApi.Controllers
         {
             GetByIdShelterQuery getByIdShelterQuery = new() { Id = id };
             GetByIdShelterResponse response = await Mediator.Send(getByIdShelterQuery);
+            return Ok(response);
+        }
+        
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] UpdateShelterCommand updateShelterCommand)
+        {
+            UpdatedShelterResponse response = await Mediator.Send(updateShelterCommand);
             return Ok(response);
         }
     }

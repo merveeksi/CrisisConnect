@@ -9,4 +9,6 @@ public class CreatedShelterResponse
     public string ContactInfo { get; set; } 
 
     public int Capacity { get; set; } 
+    
+    public DateTime CreateDate { get; set; }
 }

@@ -1,4 +1,5 @@
 using Application.Features.Logistics.Commands.Create;
+using Application.Features.Logistics.Commands.Update;
 using Application.Features.Logistics.Queries;
 using Application.Features.Logistics.Queries.GetById;
 using Core.Application.Requests;
@@ -32,6 +33,13 @@ namespace WebApi.Controllers;
         {
             GetByIdLogisticQuery getByIdLogisticQuery = new() { Id = id };
             GetByIdLogisticResponse response = await Mediator.Send(getByIdLogisticQuery);
+            return Ok(response);
+        }
+        
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] UpdateLogisticCommand updateLogisticCommand)
+        {
+            UpdatedLogisticResponse response = await Mediator.Send(updateLogisticCommand);
             return Ok(response);
         }
     }

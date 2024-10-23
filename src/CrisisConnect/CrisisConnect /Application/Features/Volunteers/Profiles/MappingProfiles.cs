@@ -1,4 +1,6 @@
 using Application.Features.Volunteers.Commands.Create;
+using Application.Features.Volunteers.Commands.Delete;
+using Application.Features.Volunteers.Commands.Update;
 using Application.Features.Volunteers.Queries;
 using Application.Features.Volunteers.Queries.GetById;
 using AutoMapper;
@@ -14,6 +16,12 @@ public class MappingProfiles : Profile
     {
         CreateMap<Volunteer, CreateVolunteerCommand>().ReverseMap();
         CreateMap<Volunteer, CreatedVolunteerResponse>().ReverseMap();
+
+        CreateMap<Volunteer, UpdateVolunteerCommand>().ReverseMap();
+        CreateMap<Volunteer, UpdatedVolunteerResponse>().ReverseMap();
+
+        CreateMap<Volunteer, DeleteVolunteerCommand>().ReverseMap();
+        CreateMap<Volunteer, DeletedVolunteerResponse>().ReverseMap();
         
         CreateMap<Volunteer, GetListVolunteerListItemDto>().ReverseMap();
         CreateMap<Volunteer, GetByIdVolunteerResponse>().ReverseMap();

@@ -11,4 +11,6 @@ public class CreatedVolunteerResponse
     public string Location { get; set; } 
     
     public decimal PhoneNumber { get; set; }
+    
+    public DateTime CreateDate { get; set; }
 }

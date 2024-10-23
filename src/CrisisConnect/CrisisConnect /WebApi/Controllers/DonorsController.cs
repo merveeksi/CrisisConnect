@@ -1,4 +1,5 @@
 using Application.Features.Donors.Commands.Create;
+using Application.Features.Donors.Commands.Update;
 using Application.Features.Donors.Queries;
 using Application.Features.Donors.Queries.GetById;
 using Core.Application.Requests;
@@ -32,6 +33,13 @@ namespace WebApi.Controllers;
         {
             GetByIdDonorQuery getByIdDonorQuery = new() { Id = id };
             GetByIdDonorResponse response = await Mediator.Send(getByIdDonorQuery);
+            return Ok(response);
+        }
+        
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] UpdateDonorCommand updateDonorCommand)
+        {
+            UpdatedDonorResponse response = await Mediator.Send(updateDonorCommand);
             return Ok(response);
         }
     }

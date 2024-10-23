@@ -1,4 +1,5 @@
 using Application.Features.Volunteers.Commands.Create;
+using Application.Features.Volunteers.Commands.Update;
 using Application.Features.Volunteers.Queries;
 using Application.Features.Volunteers.Queries.GetById;
 using Core.Application.Requests;
@@ -32,6 +33,13 @@ namespace WebApi.Controllers
         {
             GetByIdVolunteerQuery getByIdVolunteerQuery = new() { Id = id };
             GetByIdVolunteerResponse response = await Mediator.Send(getByIdVolunteerQuery);
+            return Ok(response);
+        }
+        
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] UpdateVolunteerCommand updateVolunteerCommand)
+        {
+            UpdatedVolunteerResponse response = await Mediator.Send(updateVolunteerCommand);
             return Ok(response);
         }
     }

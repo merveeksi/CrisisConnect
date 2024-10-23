@@ -7,4 +7,6 @@ public class CreatedTeamResponse
     public string Name { get; set; }
 
     public string Specialty { get; set; }
+    
+    public DateTime CreateDate { get; set; }
 }

@@ -1,4 +1,5 @@
 using Application.Features.Centers.Commands.Create;
+using Application.Features.Centers.Commands.Update;
 using Application.Features.Centers.Queries;
 using Application.Features.Centers.Queries.GetById;
 using Core.Application.Requests;
@@ -32,6 +33,13 @@ namespace WebApi.Controllers;
         {
             GetByIdCenterQuery getByIdCenterQuery = new() { Id = id };
             GetByIdCenterResponse response = await Mediator.Send(getByIdCenterQuery);
+            return Ok(response);
+        }
+        
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] UpdateCenterCommand updateCenterCommand)
+        {
+            UpdatedCenterResponse response = await Mediator.Send(updateCenterCommand);
             return Ok(response);
         }
     }

@@ -9,4 +9,6 @@ public class CreatedCenterResponse
     public string Location { get; set; }
     
     public int Capacity { get; set; }
+    
+    public DateTime CreateDate { get; set; }
 }

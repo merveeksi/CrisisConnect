@@ -7,4 +7,5 @@ public class CreatedDonorResponse
     public string LastName { get; set; }
     public string PhoneNumber { get; set; }
     
+    public DateTime CreateDate { get; set; }
 }

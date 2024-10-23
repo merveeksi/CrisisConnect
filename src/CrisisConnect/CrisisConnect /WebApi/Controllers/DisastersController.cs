@@ -1,4 +1,6 @@
 using Application.Features.Disasters.Commands.Create;
+using Application.Features.Disasters.Commands.Delete;
+using Application.Features.Disasters.Commands.Update;
 using Application.Features.Disasters.Queries.GetById;
 using Application.Features.Disasters.Queries.GetList;
 using Core.Application.Requests;
@@ -33,6 +35,21 @@ public class DisastersController : BaseController
     {
         GetByIdDisasterQuery getByIdDisasterQuery = new() { Id = id };
         GetByIdDisasterResponse response = await Mediator.Send(getByIdDisasterQuery);
+        return Ok(response);
+    }
+    
+    [HttpPut]
+    public async Task<IActionResult> Update([FromBody] UpdateDisasterCommand updateDisasterCommand)
+    {
+        UpdatedDisasterResponse response = await Mediator.Send(updateDisasterCommand);
+        return Ok(response);
+    }
+    
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete([FromRoute] Guid id)
+    {
+        DeletedDisasterResponse response = await Mediator.Send(new DeleteDisasterCommand { Id = id });
+        
         return Ok(response);
     }
 }
