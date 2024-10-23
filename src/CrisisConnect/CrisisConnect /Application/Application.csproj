@@ -10,61 +10,55 @@
       <Folder Include="Features\Alerts\Commands\Delete\" />
       <Folder Include="Features\Alerts\Commands\Update\" />
       <Folder Include="Features\Alerts\Constants\" />
-      <Folder Include="Features\Alerts\Queries\" />
       <Folder Include="Features\Alerts\Rules\" />
-      <Folder Include="Features\Center\Commands\Delete\" />
-      <Folder Include="Features\Center\Commands\Update\" />
-      <Folder Include="Features\Center\Constants\" />
-      <Folder Include="Features\Center\Queries\" />
-      <Folder Include="Features\Center\Rules\" />
+      <Folder Include="Features\Centers\Commands\Delete\" />
+      <Folder Include="Features\Centers\Commands\Update\" />
+      <Folder Include="Features\Centers\Constants\" />
+      <Folder Include="Features\Centers\Rules\" />
       <Folder Include="Features\Disasters\Commands\Delete\" />
       <Folder Include="Features\Disasters\Commands\Update\" />
       <Folder Include="Features\Disasters\Constants\" />
-      <Folder Include="Features\Disasters\Queries\" />
       <Folder Include="Features\Disasters\Rules\" />
       <Folder Include="Features\Donors\Commands\Delete\" />
       <Folder Include="Features\Donors\Commands\Update\" />
       <Folder Include="Features\Donors\Constants\" />
-      <Folder Include="Features\Donors\Queries\" />
       <Folder Include="Features\Donors\Rules\" />
       <Folder Include="Features\Logistics\Commands\Delete\" />
       <Folder Include="Features\Logistics\Commands\Update\" />
       <Folder Include="Features\Logistics\Constants\" />
-      <Folder Include="Features\Logistics\Queries\" />
       <Folder Include="Features\Logistics\Rules\" />
       <Folder Include="Features\Requests\Commands\Delete\" />
       <Folder Include="Features\Requests\Commands\Update\" />
       <Folder Include="Features\Requests\Constants\" />
-      <Folder Include="Features\Requests\Queries\" />
       <Folder Include="Features\Requests\Rules\" />
       <Folder Include="Features\Resources\Commands\Delete\" />
       <Folder Include="Features\Resources\Commands\Update\" />
       <Folder Include="Features\Resources\Constants\" />
-      <Folder Include="Features\Resources\Queries\" />
       <Folder Include="Features\Resources\Rules\" />
       <Folder Include="Features\Shelters\Commands\Delete\" />
       <Folder Include="Features\Shelters\Commands\Update\" />
       <Folder Include="Features\Shelters\Constants\" />
-      <Folder Include="Features\Shelters\Queries\" />
       <Folder Include="Features\Shelters\Rules\" />
       <Folder Include="Features\Teames\Commands\Delete\" />
       <Folder Include="Features\Teames\Commands\Update\" />
       <Folder Include="Features\Teames\Constants\" />
-      <Folder Include="Features\Teames\Queries\" />
       <Folder Include="Features\Teames\Rules\" />
       <Folder Include="Features\Volunteers\Commands\Delete\" />
       <Folder Include="Features\Volunteers\Commands\Update\" />
       <Folder Include="Features\Volunteers\Constants\" />
-      <Folder Include="Features\Volunteers\Queries\" />
       <Folder Include="Features\Volunteers\Rules\" />
     </ItemGroup>
 
     <ItemGroup>
       <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
       <PackageReference Include="MediatR" Version="12.4.1" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.10" />
     </ItemGroup>
 
     <ItemGroup>
+      <Reference Include="Core.Application">
+        <HintPath>..\..\..\corePackages\Core.Packages\Core.Application\bin\Debug\net8.0\Core.Application.dll</HintPath>
+      </Reference>
       <Reference Include="Core.Persistence">
         <HintPath>..\..\..\corePackages\Core.Packages\Core.Persistence\bin\Debug\net8.0\Core.Persistence.dll</HintPath>
       </Reference>

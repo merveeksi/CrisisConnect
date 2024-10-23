@@ -1,4 +1,8 @@
 using Application.Features.Logistics.Commands.Create;
+using Application.Features.Logistics.Queries;
+using Application.Features.Logistics.Queries.GetById;
+using Core.Application.Requests;
+using Core.Application.Responses;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,6 +16,22 @@ namespace WebApi.Controllers;
         public async Task<IActionResult> Add([FromBody] CreateLogisticCommand createLogisticCommand)
         {
             CreatedLogisticResponse response = await Mediator.Send(createLogisticCommand);
+            return Ok(response);
+        }
+        
+        [HttpGet]
+        public async Task<IActionResult> GetList([FromQuery] PageRequest pageRequest)
+        {
+            GetListLogisticQuery getListLogisticQuery = new() { PageRequest = pageRequest };
+            GetListResponse<GetListLogisticListItemDto> response = await Mediator.Send(getListLogisticQuery);
+            return Ok(response);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById([FromRoute] Guid id)
+        {
+            GetByIdLogisticQuery getByIdLogisticQuery = new() { Id = id };
+            GetByIdLogisticResponse response = await Mediator.Send(getByIdLogisticQuery);
             return Ok(response);
         }
     }
