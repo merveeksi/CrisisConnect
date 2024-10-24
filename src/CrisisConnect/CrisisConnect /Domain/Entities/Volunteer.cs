@@ -4,6 +4,9 @@ namespace Domain.Entities;
 
 public class Volunteer:Entity<Guid> //gönüllü
 {
+    public Guid DisasterId { get; set; }
+
+    public Guid TeamId { get; set; }
     public string FirstName { get; set; } //gönüllünün adı
     
     public string LastName { get; set; } //gönüllünün soyadı
@@ -18,20 +21,30 @@ public class Volunteer:Entity<Guid> //gönüllü
     
     public string PhoneNumber { get; set; } //gönüllünün telefon numarası
     
+    public string ImageUrl { get; set; }
+    
+    public virtual Disaster? Disaster { get; set; }
+    public virtual Team? Team { get; set; }
+    
+    public virtual ICollection<Request> Requests { get; set; }
+
     public Volunteer()
     {
-        
+        Requests = new HashSet<Request>();
     }
     
-    public Volunteer(Guid id, string firstName, string lastname, List<string> skills, bool availability, string location, string email, string phoneNumber)
+    public Volunteer(Guid id, Guid disasterId, Guid teamId, string firstName, string lastName, List<string> skills, bool availability, string location, string email, string phoneNumber, string imageUrl):this()
     {
         Id = id;
+        DisasterId = disasterId;
+        TeamId = teamId;
         FirstName = firstName;
-        LastName = lastname;
+        LastName = lastName;
         Skills = skills;
         Availability = availability;
         Location = location;
         Email = email;
         PhoneNumber = phoneNumber;
+        ImageUrl = imageUrl;
     }
 }

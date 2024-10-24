@@ -273,3 +273,5 @@
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /WebApi/obj/Debug/net8.0/WebApi.pdb
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /WebApi/obj/Debug/net8.0/WebApi.genruntimeconfig.cache
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /WebApi/obj/Debug/net8.0/ref/WebApi.dll
+/Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /WebApi/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Design.dll
+/Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /WebApi/bin/Debug/net8.0/System.Linq.Dynamic.Core.dll

@@ -21,7 +21,7 @@ public class Donor:Entity<Guid> //bağışçı
         
     }
     
-    public Donor(Guid id, string firstName, string lastName, string email, string phoneNumber, string location, List<Resource> donatedResources)
+    public Donor(Guid id, string firstName, string lastName, string email, string phoneNumber, string location, List<Resource> donatedResources):this()
     {
         Id = id;
         FirstName = firstName;

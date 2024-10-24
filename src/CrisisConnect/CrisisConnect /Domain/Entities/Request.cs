@@ -1,34 +1,50 @@
 using Core.Persistence.Repositories;
+using Domain.Enums;
 
 namespace Domain.Entities;
 
 public class Request:Entity<Guid> //yardım talebi
 {
-    public Guid DisasterId { get; set; } //yardım talebinin bağlı olduğu afetin Id'si
+    public Guid DisasterId { get; set; } //yardım talebinin bağlı olduğu afetin Id'si, HasForeignKey için
+
+    public Guid ResourceId { get; set; } //HasForeignKey için
+
+    public Guid VolunteerId { get; set; } //HasForeignKey için
 
     public List<Resource> RequestedResources { get; set; } //yardım talebinde bulunan kaynaklar
 
-    public string Status { get; set; } //yardım talebinin durumu, e.g. Pending, Completed, In Progress etc.
+    public RequestStatus Status { get; set; } //yardım talebinin durumu, e.g. Pending, Completed, In Progress etc.
 
     public string Location { get; set; } //yardım talebinin bulunduğu yer
     
     public DateTime DateRequested { get; set; } //yardım talebinin ne zaman yapıldığı
 
-    public string PriorityLevel { get; set; } //yardım talebinin öncelik seviyesi, e.g. High, Medium, Low.
+    public PriorityLevel Priority { get; set; } //yardım talebinin öncelik seviyesi, e.g. High, Medium, Low.
+
+    public virtual Disaster? Disaster { get; set; }
+    
+    public virtual Resource? Resource{ get; set; } //HasOne için
+    public virtual Volunteer? Volunteer { get; set; } //HasOne için
+    
+    public virtual ICollection<Resource> Resources { get; set; }
+    
     
     public Request()
     {
-        
+        Resources = new HashSet<Resource>();
+       
     }
     
-    public Request(Guid id, Guid disasterId, List<Resource> requestedResources, string status, string location, DateTime dateRequested, string priorityLevel)
+    public Request(Guid id, Guid disasterId, Guid resourceId, Guid volunteerId, List<Resource> requestedResources, RequestStatus status, string location, DateTime dateRequested, PriorityLevel priority):this()
     {
         Id = id;
         DisasterId = disasterId;
+        ResourceId = resourceId;
+        VolunteerId = volunteerId;
         RequestedResources = requestedResources;
         Status = status;
         Location = location;
         DateRequested = dateRequested;
-        PriorityLevel = priorityLevel;
+        Priority = priority;
     }
 }

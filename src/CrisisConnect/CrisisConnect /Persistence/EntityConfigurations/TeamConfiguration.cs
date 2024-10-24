@@ -17,6 +17,19 @@ public class TeamConfiguration: IEntityTypeConfiguration<Team>
         builder.Property(t => t.UpdatedDate).HasColumnName("UpdatedDate");
         builder.Property(t => t.DeletedDate).HasColumnName("DeletedDate");
         
+        // Team ile Volunteer arasında bire-çok ilişki
+        builder.HasMany(t => t.Volunteers)
+            .WithOne(v => v.Team)
+            .HasForeignKey(v => v.TeamId);
+
+        // Team'in Disaster ile ilişkisi
+        builder.HasOne(t => t.Disaster)
+            .WithMany(d => d.Teams)
+            .HasForeignKey(t => t.DisasterId);
+
+        // Unique index eklemek
+        builder.HasIndex(t => t.Name, "UK_Teams_Name").IsUnique();
+        
         builder.HasQueryFilter(t => !t.DeletedDate.HasValue); 
     }
 }

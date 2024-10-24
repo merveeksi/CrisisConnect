@@ -17,6 +17,19 @@ public class LogisticConfiguration: IEntityTypeConfiguration<Logistic>
         builder.Property(l => l.UpdatedDate).HasColumnName("UpdatedDate");
         builder.Property(l => l.DeletedDate).HasColumnName("DeletedDate");
         
+        // Logistics ile Resource arasında bire-bir ilişki
+        builder.HasOne(l => l.Resource)
+            .WithMany(r => r.Logistics)
+            .HasForeignKey(l => l.ResourceId);
+        
+        // Logistics ile Disaster arasında bire-bir ilişki
+        builder.HasOne(l => l.Disaster)
+            .WithMany(d => d.Logistics)
+            .HasForeignKey(l => l.DisasterId);
+        
+        // Logistics adının unique olması için index
+        builder.HasIndex(l => l.Destination, "UK_Logistics_Destination").IsUnique();
+    
         builder.HasQueryFilter(l => !l.DeletedDate.HasValue);
     }
 }

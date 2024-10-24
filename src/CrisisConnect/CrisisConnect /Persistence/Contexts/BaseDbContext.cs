@@ -23,7 +23,7 @@ public class BaseDbContext : DbContext
     public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)
     {
         Configuration = configuration;
-        Database.EnsureCreated();  //eritabanının oluştuğundan emin ol
+        Database.EnsureCreated();  //veritabanının oluştuğundan emin ol
     }
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)

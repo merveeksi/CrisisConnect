@@ -11,6 +11,8 @@ public class VolunteerConfiguration: IEntityTypeConfiguration<Volunteer>
         builder.ToTable("Volunteers").HasKey(v => v.Id);
         
         builder.Property(v => v.Id).HasColumnName("Id").IsRequired();
+        builder.Property(v => v.DisasterId).HasColumnName("DisasterId").IsRequired();
+        builder.Property(v => v.TeamId).HasColumnName("TeamId").IsRequired();
         builder.Property(v => v.FirstName).HasColumnName("FirstName").IsRequired();
         builder.Property(v => v.LastName).HasColumnName("LastName").IsRequired();
         builder.Property(v => v.PhoneNumber).HasColumnName("PhoneNumber").IsRequired();

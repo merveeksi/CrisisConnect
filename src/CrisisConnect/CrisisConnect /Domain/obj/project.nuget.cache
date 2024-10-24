@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "RCDtOfAPuQE=",
+  "dgSpecHash": "0CdLu5N6orI=",
   "success": true,
   "projectFilePath": "/Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Domain/Domain.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/pc/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512"
+  ],
   "logs": []
 }

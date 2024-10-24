@@ -18,6 +18,14 @@ public class ResourceConfiguration: IEntityTypeConfiguration<Resource>
         builder.Property(r => r.UpdatedDate).HasColumnName("UpdatedDate");
         builder.Property(r => r.DeletedDate).HasColumnName("DeletedDate");
 
+        // Resource ile Disaster arasında bire-bir ilişki
+        builder.HasOne(r => r.Disaster)
+            .WithMany(d => d.Resources)
+            .HasForeignKey(r => r.DisasterId);
+        
+        // Unique bir isim olması için index
+        builder.HasIndex(r => r.Name, "UK_Resources_Name").IsUnique();
+        
         builder.HasQueryFilter(r => !r.DeletedDate.HasValue);
     }
 

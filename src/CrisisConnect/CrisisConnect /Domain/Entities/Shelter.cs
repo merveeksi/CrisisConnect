@@ -13,13 +13,16 @@ public class Shelter:Entity<Guid> //barınak
     public string Status { get; set; } //barınağın durumu, örneğin: açık, kapalı
     
     public int CurrentOccupancy { get; set; } //barınağın şu anki doluluk oranı
+    public string ImageUrl { get; set; }
+
+    public virtual Disaster? Disaster { get; set; }
     
     public Shelter()
     {
         
     }
     
-    public Shelter(Guid id, string location, string contactInfo, int capacity, string status, int currentOccupancy)
+    public Shelter(Guid id, string location, string contactInfo, int capacity, string status, int currentOccupancy, string imageUrl):this()
     {
         Id = id;
         Location = location;
@@ -27,5 +30,6 @@ public class Shelter:Entity<Guid> //barınak
         Capacity = capacity;
         Status = status;
         CurrentOccupancy = currentOccupancy;
+        ImageUrl = imageUrl;
     }
 }
