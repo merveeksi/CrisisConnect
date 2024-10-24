@@ -1,4 +1,5 @@
 using Application.Features.Shelters.Commands.Create;
+using Application.Features.Shelters.Commands.Delete;
 using Application.Features.Shelters.Commands.Update;
 using Application.Features.Shelters.Queries;
 using Application.Features.Shelters.Queries.GetById;
@@ -41,6 +42,14 @@ namespace WebApi.Controllers
         public async Task<IActionResult> Update([FromBody] UpdateShelterCommand updateShelterCommand)
         {
             UpdatedShelterResponse response = await Mediator.Send(updateShelterCommand);
+            return Ok(response);
+        }
+        
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete([FromRoute] Guid id)
+        {
+            DeletedShelterResponse response = await Mediator.Send(new DeleteShelterCommand { Id = id });
+        
             return Ok(response);
         }
     }

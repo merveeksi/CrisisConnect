@@ -1,4 +1,5 @@
 using Application.Features.Resources.Commands.Create;
+using Application.Features.Resources.Commands.Delete;
 using Application.Features.Resources.Commands.Update;
 using Application.Features.Resources.Queries;
 using Application.Features.Resources.Queries.GetById;
@@ -39,6 +40,14 @@ namespace WebApi.Controllers;
         public async Task<IActionResult> Update([FromBody] UpdateResourceCommand updateResourceCommand)
         {
             UpdatedResourceResponse response = await Mediator.Send(updateResourceCommand);
+            return Ok(response);
+        }
+        
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete([FromRoute] Guid id)
+        {
+            DeletedResourceResponse response = await Mediator.Send(new DeleteResourceCommand { Id = id });
+        
             return Ok(response);
         }
     }

@@ -1,4 +1,5 @@
 using Application.Features.Logistics.Commands.Create;
+using Application.Features.Logistics.Commands.Delete;
 using Application.Features.Logistics.Commands.Update;
 using Application.Features.Logistics.Queries;
 using Application.Features.Logistics.Queries.GetById;
@@ -40,6 +41,14 @@ namespace WebApi.Controllers;
         public async Task<IActionResult> Update([FromBody] UpdateLogisticCommand updateLogisticCommand)
         {
             UpdatedLogisticResponse response = await Mediator.Send(updateLogisticCommand);
+            return Ok(response);
+        }
+        
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete([FromRoute] Guid id)
+        {
+            DeletedLogisticResponse response = await Mediator.Send(new DeleteLogisticCommand { Id = id });
+        
             return Ok(response);
         }
     }

@@ -1,4 +1,5 @@
 using Application.Features.Alerts.Commands.Create;
+using Application.Features.Alerts.Commands.Delete;
 using Application.Features.Alerts.Commands.Update;
 using Application.Features.Alerts.Queries;
 using Application.Features.Alerts.Queries.GetById;
@@ -42,6 +43,14 @@ namespace WebApi.Controllers;
         public async Task<IActionResult> Update([FromBody] UpdateAlertCommand updateAlertCommand)
         {
             UpdatedAlertResponse response = await Mediator.Send(updateAlertCommand);
+            return Ok(response);
+        }
+        
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete([FromRoute] Guid id)
+        {
+            DeletedAlertResponse response = await Mediator.Send(new DeleteAlertCommand { Id = id });
+        
             return Ok(response);
         }
     }

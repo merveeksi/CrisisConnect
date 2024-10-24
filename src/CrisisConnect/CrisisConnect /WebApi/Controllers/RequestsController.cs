@@ -1,4 +1,5 @@
 using Application.Features.Requests.Commands.Create;
+using Application.Features.Requests.Commands.Delete;
 using Application.Features.Requests.Commands.Update;
 using Application.Features.Requests.Queries;
 using Application.Features.Requests.Queries.GetById;
@@ -40,6 +41,14 @@ namespace WebApi.Controllers;
         public async Task<IActionResult> Update([FromBody] UpdateRequestCommand updateRequestCommand)
         {
             UpdatedRequestResponse response = await Mediator.Send(updateRequestCommand);
+            return Ok(response);
+        }
+        
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete([FromRoute] Guid id)
+        {
+            DeletedRequestResponse response = await Mediator.Send(new DeleteRequestCommand { Id = id });
+        
             return Ok(response);
         }
     }

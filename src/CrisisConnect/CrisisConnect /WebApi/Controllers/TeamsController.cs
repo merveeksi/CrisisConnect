@@ -1,4 +1,5 @@
 using Application.Features.Teames.Commands.Create;
+using Application.Features.Teames.Commands.Delete;
 using Application.Features.Teames.Commands.Update;
 using Application.Features.Teames.Queries;
 using Application.Features.Teames.Queries.GetById;
@@ -40,6 +41,14 @@ namespace WebApi.Controllers
         public async Task<IActionResult> Update([FromBody] UpdateTeamCommand updateTeamCommand)
         {
             UpdatedTeamResponse response = await Mediator.Send(updateTeamCommand);
+            return Ok(response);
+        }
+        
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete([FromRoute] Guid id)
+        {
+            DeletedTeamResponse response = await Mediator.Send(new DeleteTeamCommand { Id = id });
+        
             return Ok(response);
         }
     }
