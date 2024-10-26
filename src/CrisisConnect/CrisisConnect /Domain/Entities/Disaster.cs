@@ -14,8 +14,8 @@ public class Disaster:Entity<Guid> //afet
     public int Severity { get; set; } //şiddeti ve büyüklüğü
     public DateTime DateOccurred { get; set; } //ne zaman meydana geldi
     public int Casualties { get; set; } //yaralananlar, ölenler
-    public string Description { get; set; } //afetin kısa açıklaması
-    public List<Resource> ReliefEfforts { get; set; } //afete müdahale eden kaynaklar
+    public string? Description { get; set; } //afetin kısa açıklaması
+    public List<Resource>? ReliefEfforts { get; set; } //afete müdahale eden kaynaklar
     
     //Nesnel ilişkilendirmeleri
     public virtual Team? Team { get; set; }

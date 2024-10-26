@@ -5,6 +5,7 @@ using Core.Application.Responses;
 using Core.Persistence.Paging;
 using Domain.Entities;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Logistics.Queries;
 
@@ -26,6 +27,7 @@ public class GetListLogisticQuery : IRequest<GetListResponse<GetListLogisticList
         public async Task<GetListResponse<GetListLogisticListItemDto>> Handle(GetListLogisticQuery request, CancellationToken cancellationToken)
         {
             Paginate<Logistic> logistics =  await _logisticRepository.GetListAsync(
+                include: l=>l.Include(l=>l.Disaster).Include(l=>l.Resource),
                 index: request.PageRequest.PageIndex,
                 size: request.PageRequest.PageSize,
                 cancellationToken : cancellationToken,

@@ -5,6 +5,7 @@ using Core.Application.Responses;
 using Core.Persistence.Paging;
 using Domain.Entities;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Requests.Queries;
 
@@ -26,6 +27,7 @@ public class GetListRequestQuery :IRequest<GetListResponse<GetListRequestListIte
         public async Task<GetListResponse<GetListRequestListItemDto>> Handle(GetListRequestQuery request, CancellationToken cancellationToken)
         {
             Paginate<Request> requests =  await _requestRepository.GetListAsync(
+                include: r=>r.Include(r=>r.Disaster).Include(r=>r.Resource).Include(r=>r.Volunteer),
                 index: request.PageRequest.PageIndex,
                 size: request.PageRequest.PageSize,
                 cancellationToken : cancellationToken,

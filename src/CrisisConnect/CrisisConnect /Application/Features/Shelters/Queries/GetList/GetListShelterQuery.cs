@@ -5,6 +5,7 @@ using Core.Application.Responses;
 using Core.Persistence.Paging;
 using Domain.Entities;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Shelters.Queries;
 
@@ -26,6 +27,7 @@ public class GetListShelterQuery:IRequest<GetListResponse<GetListShelterListItem
         public async Task<GetListResponse<GetListShelterListItemDto>> Handle(GetListShelterQuery request, CancellationToken cancellationToken)
         {
             Paginate<Shelter> shelters =  await _shelterRepository.GetListAsync(
+                include: s=>s.Include(s=>s.Disaster),
                 index: request.PageRequest.PageIndex,
                 size: request.PageRequest.PageSize,
                 cancellationToken : cancellationToken,

@@ -31,6 +31,7 @@
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /WebApi/bin/Debug/net8.0/Microsoft.DotNet.Scaffolding.Shared.dll
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /WebApi/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.dll
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /WebApi/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll
+/Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /WebApi/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Design.dll
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /WebApi/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.InMemory.dll
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /WebApi/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Relational.dll
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /WebApi/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.SqlServer.dll
@@ -85,6 +86,7 @@
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /WebApi/bin/Debug/net8.0/System.Configuration.ConfigurationManager.dll
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /WebApi/bin/Debug/net8.0/System.Drawing.Common.dll
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /WebApi/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll
+/Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /WebApi/bin/Debug/net8.0/System.Linq.Dynamic.Core.dll
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /WebApi/bin/Debug/net8.0/System.Memory.Data.dll
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /WebApi/bin/Debug/net8.0/System.Reflection.MetadataLoadContext.dll
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /WebApi/bin/Debug/net8.0/System.Runtime.Caching.dll
@@ -273,5 +275,3 @@
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /WebApi/obj/Debug/net8.0/WebApi.pdb
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /WebApi/obj/Debug/net8.0/WebApi.genruntimeconfig.cache
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /WebApi/obj/Debug/net8.0/ref/WebApi.dll
-/Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /WebApi/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Design.dll
-/Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /WebApi/bin/Debug/net8.0/System.Linq.Dynamic.Core.dll

@@ -10,6 +10,12 @@ namespace Application.Features.Disasters.Commands.Create;
 public class CreateDisasterCommand:IRequest<CreatedDisasterResponse> // IRequest<TResponse>
 {
     public string Name { get; set; }
+    public string Type { get; set; }
+    public string Location { get; set; }
+    public int Severity { get; set; } 
+    public DateTime DateOccurred { get; set; }
+    public int Casualties { get; set; }
+    
     
     
     public class CreateDisasterCommandHandler : IRequestHandler<CreateDisasterCommand, CreatedDisasterResponse>

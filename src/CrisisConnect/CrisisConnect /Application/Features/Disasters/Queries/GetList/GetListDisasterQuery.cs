@@ -5,6 +5,7 @@ using Core.Application.Responses;
 using Core.Persistence.Paging;
 using Domain.Entities;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Disasters.Queries.GetList;
 
@@ -27,6 +28,7 @@ public class GetListDisasterQuery: IRequest<GetListResponse<GetListDisasterListI
         public async Task<GetListResponse<GetListDisasterListItemDto>> Handle(GetListDisasterQuery request, CancellationToken cancellationToken)
         {
             Paginate<Disaster> disasters =  await _disasterRepository.GetListAsync(
+                include: d=>d.Include(d=>d.Team).Include(d=>d.Resources).Include(d=>d.Alert),
                 index: request.PageRequest.PageIndex,
                 size: request.PageRequest.PageSize,
                 cancellationToken : cancellationToken,
