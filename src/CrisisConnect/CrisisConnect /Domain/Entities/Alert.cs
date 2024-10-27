@@ -17,7 +17,7 @@ public class Alert:Entity<Guid> //acil durum uyarısı
     
     public string AlertStatus { get; set; } //acil durumun durumu, örneğin: devam ediyor, sona erdi
 
-    public virtual Disaster? Disaster { get; set; }
+    public virtual IEnumerable<Disaster>? Disaster { get; set; }
     
     public Alert()
     {

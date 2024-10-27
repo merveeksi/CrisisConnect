@@ -3,9 +3,7 @@ using Core.Persistence.Repositories;
 namespace Domain.Entities;
 
 public class Volunteer:Entity<Guid> //gönüllü
-{
-    public Guid DisasterId { get; set; }
-
+{ 
     public Guid TeamId { get; set; }
     public string FirstName { get; set; } //gönüllünün adı
     
@@ -33,10 +31,9 @@ public class Volunteer:Entity<Guid> //gönüllü
         Requests = new HashSet<Request>();
     }
     
-    public Volunteer(Guid id, Guid disasterId, Guid teamId, string firstName, string lastName, List<string> skills, bool availability, string location, string email, string phoneNumber, string imageUrl):this()
+    public Volunteer(Guid id, Guid teamId, string firstName, string lastName, List<string> skills, bool availability, string location, string email, string phoneNumber, string imageUrl):this()
     {
         Id = id;
-        DisasterId = disasterId;
         TeamId = teamId;
         FirstName = firstName;
         LastName = lastName;

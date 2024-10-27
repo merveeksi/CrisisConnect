@@ -10,10 +10,14 @@ public class DonorConfiguration: IEntityTypeConfiguration<Donor>
     {
         builder.ToTable("Donors").HasKey(d => d.Id);
         
+        builder.HasIndex(d=>d.PhoneNumber, "UK_Donors_PhoneNumber").IsUnique();
+        
         builder.Property(d => d.Id).HasColumnName("Id").IsRequired();
         builder.Property(d => d.FirstName).HasColumnName("FirstName").IsRequired();
         builder.Property(d => d.LastName).HasColumnName("LastName").IsRequired();
         builder.Property(d => d.PhoneNumber).HasColumnName("PhoneNumber").IsRequired();
+        builder.Property(d => d.Email).HasColumnName("Email");
+        builder.Property(d => d.Location).HasColumnName("Location").IsRequired();
         builder.Property(d => d.CreatedDate).HasColumnName("CreatedDate").IsRequired();
         builder.Property(d => d.UpdatedDate).HasColumnName("UpdatedDate");
         builder.Property(d => d.DeletedDate).HasColumnName("DeletedDate");

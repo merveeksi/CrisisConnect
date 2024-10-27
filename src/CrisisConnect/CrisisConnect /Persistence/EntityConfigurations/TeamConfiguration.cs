@@ -10,9 +10,14 @@ public class TeamConfiguration: IEntityTypeConfiguration<Team>
     {
         builder.ToTable("Teams").HasKey(t => t.Id);
         
+        // Unique index eklemek
+        builder.HasIndex(t => t.Name, "UK_Teams_Name").IsUnique();
+        
         builder.Property(t => t.Id).HasColumnName("Id").IsRequired();
         builder.Property(t => t.Name).HasColumnName("Name").IsRequired();
         builder.Property(t => t.Specialty).HasColumnName("Specialty").IsRequired();
+        builder.Property(t => t.CurrentAssignment).HasColumnName("CurrentAssignment").IsRequired();
+        builder.Property(t => t.ImageUrl).HasColumnName("ImageUrl").IsRequired();
         builder.Property(t => t.CreatedDate).HasColumnName("CreatedDate").IsRequired();
         builder.Property(t => t.UpdatedDate).HasColumnName("UpdatedDate");
         builder.Property(t => t.DeletedDate).HasColumnName("DeletedDate");
@@ -24,11 +29,7 @@ public class TeamConfiguration: IEntityTypeConfiguration<Team>
 
         // Team'in Disaster ile ilişkisi
         builder.HasOne(t => t.Disaster)
-            .WithMany(d => d.Teams)
-            .HasForeignKey(t => t.DisasterId);
-
-        // Unique index eklemek
-        builder.HasIndex(t => t.Name, "UK_Teams_Name").IsUnique();
+            .WithMany(d => d.Teams);
         
         builder.HasQueryFilter(t => !t.DeletedDate.HasValue); 
     }

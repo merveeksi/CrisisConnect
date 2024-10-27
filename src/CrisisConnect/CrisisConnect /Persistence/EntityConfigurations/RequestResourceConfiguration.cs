@@ -12,13 +12,8 @@ public class RequestResourceConfiguration: IEntityTypeConfiguration<RequestResou
 
         builder.HasKey(rr => new { rr.RequestId, rr.ResourceId });
             
-        builder.Property(rr => rr.RequestId)
-            .HasColumnName("RequestId")
-            .IsRequired();
-        
-        builder.Property(rr => rr.ResourceId)
-            .HasColumnName("ResourceId")
-            .IsRequired();
+        builder.Property(rr => rr.RequestId).HasColumnName("RequestId").IsRequired();
+        builder.Property(rr => rr.ResourceId).HasColumnName("ResourceId").IsRequired();
 
         builder.HasOne(rr => rr.Request)
             .WithMany(r => r.RequestResources)

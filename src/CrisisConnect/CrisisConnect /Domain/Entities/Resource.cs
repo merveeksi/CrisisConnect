@@ -12,9 +12,6 @@ public class Resource:Entity<Guid> //kaynak
     public int Quantity { get; set; } //kaynağın miktarı
     
     public string Location { get; set; } //kaynağın bulunduğu yer
-    
-    public Guid DisasterId { get; set; } //kaynağın bağlı olduğu afetin Id'si
-    
     public virtual Disaster? Disaster { get; set; } //kaynağın bağlı olduğu afet
 
     public virtual ICollection<Resource> Resources { get; set; }
@@ -30,13 +27,12 @@ public class Resource:Entity<Guid> //kaynak
         RequestResources = new HashSet<RequestResource>();
     }
     
-    public Resource(Guid id, string name, ResourceType type, int quantity, string location, Guid disasterId):this()
+    public Resource(Guid id, string name, ResourceType type, int quantity, string location):this()
     {
         Id = id;
         Name = name;
         Type = type;
         Quantity = quantity;
         Location = location;
-        DisasterId = disasterId;
     }
 }

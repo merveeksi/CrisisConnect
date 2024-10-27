@@ -11,14 +11,15 @@ public class Center : Entity<Guid> //yardım merkezi
     public int Capacity { get; set; }
 
     public int CurrentStaff { get; set; } //yardım merkezindeki personel sayısı
+    
+    public string ImageUrl { get; set; }
 
     public List<Volunteer> Volunteers { get; set; } //yardım merkezindeki gönüllüler
 
     public List<Resource> Resources { get; set; } //yardım merkezindeki kaynaklar
 
     public List<Logistic> Logistics { get; set; } //yardım merkezindeki lojistik bilgiler
-
-    public string ImageUrl { get; set; }
+    
 
     public virtual Disaster? Disaster { get; set; }
     

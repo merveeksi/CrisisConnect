@@ -10,9 +10,16 @@ public class RequestConfiguration: IEntityTypeConfiguration<Request>
     {
         builder.ToTable("Requests").HasKey(r => r.Id);
         
+        // Request adının unique olması için index
+        builder.HasIndex(r => r.Location, "UK_Requests_Location").IsUnique();
+        
         builder.Property(r => r.Id).HasColumnName("Id").IsRequired();
+        builder.Property(r => r.ResourceId).HasColumnName("ResourceId").IsRequired();
+        builder.Property(r => r.VolunteerId).HasColumnName("VolunteerId").IsRequired();
         builder.Property(r=>r.Location).HasColumnName("Location").IsRequired();
         builder.Property(r => r.Status).HasColumnName("Status").IsRequired();
+        builder.Property(r => r.DateRequested).HasColumnName("DateRequested").IsRequired();
+        builder.Property(r => r.Priority).HasColumnName("Priority").IsRequired();
         builder.Property(r => r.CreatedDate).HasColumnName("CreatedDate").IsRequired();
         builder.Property(r => r.UpdatedDate).HasColumnName("UpdatedDate");
         builder.Property(r => r.DeletedDate).HasColumnName("DeletedDate");
@@ -29,11 +36,7 @@ public class RequestConfiguration: IEntityTypeConfiguration<Request>
 
         // Request'in Disaster ile ilişkisi
         builder.HasOne(r => r.Disaster)
-            .WithMany(d => d.Requests)
-            .HasForeignKey(r => r.DisasterId);
-
-        // Request adının unique olması için index
-        builder.HasIndex(r => r.Location, "UK_Requests_Description").IsUnique();
+            .WithMany(d => d.Requests);
     
         builder.HasQueryFilter(r => !r.DeletedDate.HasValue);
     }

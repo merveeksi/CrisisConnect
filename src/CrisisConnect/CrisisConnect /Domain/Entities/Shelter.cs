@@ -4,6 +4,7 @@ namespace Domain.Entities;
 
 public class Shelter:Entity<Guid> //barınak
 {
+    public string Name { get; set; }
     public string Location { get; set; }
 
     public string ContactInfo { get; set; } //barınağın iletişim bilgileri
@@ -22,9 +23,10 @@ public class Shelter:Entity<Guid> //barınak
         
     }
     
-    public Shelter(Guid id, string location, string contactInfo, int capacity, string status, int currentOccupancy, string imageUrl):this()
+    public Shelter(Guid id, string name, string location, string contactInfo, int capacity, string status, int currentOccupancy, string imageUrl):this()
     {
         Id = id;
+        Name = name;
         Location = location;
         ContactInfo = contactInfo;
         Capacity = capacity;

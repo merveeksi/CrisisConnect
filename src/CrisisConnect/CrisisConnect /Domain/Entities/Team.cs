@@ -4,7 +4,6 @@ namespace Domain.Entities;
 
 public class Team:Entity<Guid> //müdahale ekibi
 {
-    public Guid DisasterId { get; set; }
     public string Name { get; set; }
 
     public string Specialty { get; set; } //ekibin uzmanlık alanı
@@ -23,10 +22,9 @@ public class Team:Entity<Guid> //müdahale ekibi
         Volunteers = new HashSet<Volunteer>();
     }
     
-    public Team(Guid id, Guid disasterId, string name, string specialty, List<Volunteer> teamMembers, string currentAssignment, string imageUrl):this()
+    public Team(Guid id, string name, string specialty, List<Volunteer> teamMembers, string currentAssignment, string imageUrl):this()
     {
         Id = id;
-        DisasterId = disasterId;
         Name = name;
         Specialty = specialty;
         TeamMembers = teamMembers;

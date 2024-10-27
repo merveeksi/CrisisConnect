@@ -10,8 +10,13 @@ public class LogisticConfiguration: IEntityTypeConfiguration<Logistic>
     {
         builder.ToTable("Logistics").HasKey(l => l.Id);
         
+        // Logistics adının unique olması için index
+        builder.HasIndex(l => l.Name, "UK_Logistics_Name").IsUnique();
+        
         builder.Property(l => l.Id).HasColumnName("Id").IsRequired();
-        builder.Property(l => l.Destination).HasColumnName("Description").IsRequired();
+        builder.Property(l => l.ResourceId).HasColumnName("ResourceId").IsRequired();
+        builder.Property(l => l.Destination).HasColumnName("Destination").IsRequired();
+        builder.Property(l => l.EstimatedArrival).HasColumnName("EstimatedArrival").IsRequired();
         builder.Property(l => l.CurrentStatus).HasColumnName("CurrentStatus").IsRequired();
         builder.Property(l => l.CreatedDate).HasColumnName("CreatedDate").IsRequired();
         builder.Property(l => l.UpdatedDate).HasColumnName("UpdatedDate");
@@ -24,11 +29,8 @@ public class LogisticConfiguration: IEntityTypeConfiguration<Logistic>
         
         // Logistics ile Disaster arasında bire-bir ilişki
         builder.HasOne(l => l.Disaster)
-            .WithMany(d => d.Logistics)
-            .HasForeignKey(l => l.DisasterId);
+            .WithMany(d => d.Logistics);
         
-        // Logistics adının unique olması için index
-        builder.HasIndex(l => l.Destination, "UK_Logistics_Destination").IsUnique();
     
         builder.HasQueryFilter(l => !l.DeletedDate.HasValue);
     }

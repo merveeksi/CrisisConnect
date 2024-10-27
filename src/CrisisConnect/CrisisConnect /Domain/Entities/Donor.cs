@@ -8,9 +8,9 @@ public class Donor:Entity<Guid> //bağışçı
     
     public string LastName { get; set; } //bağışçının soyadı
     
-    public string? Email { get; set; } //bağışçının e-posta adresi
-    
     public string PhoneNumber { get; set; } //bağışçının telefon numarası
+    
+    public string? Email { get; set; } //bağışçının e-posta adresi
     
     public string Location { get; set; } //bağışçının bulunduğu yer
     

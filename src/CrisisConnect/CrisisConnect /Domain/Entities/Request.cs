@@ -5,7 +5,6 @@ namespace Domain.Entities;
 
 public class Request:Entity<Guid> //yardım talebi
 {
-    public Guid DisasterId { get; set; } //yardım talebinin bağlı olduğu afetin Id'si, HasForeignKey için
     public Guid ResourceId { get; set; } //HasForeignKey için
     public Guid VolunteerId { get; set; } //HasForeignKey için
     public RequestStatus Status { get; set; } //yardım talebinin durumu, e.g. Pending, Completed, In Progress etc.
@@ -26,10 +25,9 @@ public class Request:Entity<Guid> //yardım talebi
        
     }
     
-    public Request(Guid id, Guid disasterId, Guid resourceId, Guid volunteerId, RequestStatus status, string location, DateTime dateRequested, PriorityLevel priority):this()
+    public Request(Guid id, Guid resourceId, Guid volunteerId, RequestStatus status, string location, DateTime dateRequested, PriorityLevel priority):this()
     {
         Id = id;
-        DisasterId = disasterId;
         ResourceId = resourceId;
         VolunteerId = volunteerId;
         Status = status;
