@@ -3,8 +3,10 @@ using Application.Features.Disasters.Commands.Delete;
 using Application.Features.Disasters.Commands.Update;
 using Application.Features.Disasters.Queries.GetById;
 using Application.Features.Disasters.Queries.GetList;
+using Application.Features.Disasters.Queries.GetListByDynamic;
 using Core.Application.Requests;
 using Core.Application.Responses;
+using Core.Persistence.Dynamic;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers;
@@ -30,11 +32,11 @@ public class DisastersController : BaseController
         return Ok(response);
     }
     
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetById([FromRoute] Guid id)
+    [HttpPost("GetList/ByDynamic")]
+    public async Task<IActionResult> GetListByDynamic([FromQuery] PageRequest pageRequest, [FromBody] DynamicQuery? dynamicQuery=null)
     {
-        GetByIdDisasterQuery getByIdDisasterQuery = new() { Id = id };
-        GetByIdDisasterResponse response = await Mediator.Send(getByIdDisasterQuery);
+        GetListByDynamicDisasterQuery getListByDynamicDisasterQuery = new() { PageRequest = pageRequest, DynamicQuery = dynamicQuery };
+        GetListResponse<GetListByDynamicDisasterListItemDto> response = await Mediator.Send(getListByDynamicDisasterQuery);
         return Ok(response);
     }
     

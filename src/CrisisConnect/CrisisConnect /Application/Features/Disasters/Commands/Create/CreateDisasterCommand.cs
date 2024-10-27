@@ -9,7 +9,9 @@ namespace Application.Features.Disasters.Commands.Create;
 
 public class CreateDisasterCommand:IRequest<CreatedDisasterResponse> // IRequest<TResponse>
 {
-    public Guid? AlertId { get; set; } 
+    public Guid TeamId { get; set; }
+    public Guid AlertId { get; set; }
+    public Guid ResourceId { get; set; }
     public string Name { get; set; }
     public string Type { get; set; }
     public string Location { get; set; }

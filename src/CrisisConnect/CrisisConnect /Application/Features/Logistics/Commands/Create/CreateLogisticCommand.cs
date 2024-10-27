@@ -1,13 +1,18 @@
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
+using Domain.Enums;
 using MediatR;
 
 namespace Application.Features.Logistics.Commands.Create;
 
 public class CreateLogisticCommand : IRequest<CreatedLogisticResponse>
 {
+    public string Name { get; set; }
     public string Destination { get; set; } 
+    public DateTime EstimatedArrival { get; set; }
+    public TransportStatus CurrentStatus { get; set; }
+    
 
 
     public class CreateCommandhandler : IRequestHandler<CreateLogisticCommand, CreatedLogisticResponse>

@@ -1,13 +1,20 @@
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
+using Domain.Enums;
 using MediatR;
 
 namespace Application.Features.Requests.Commands.Create;
 
 public class CreateRequestCommand : IRequest<CreatedRequestResponse>
 {
-    public string PriorityLevel { get; set; }
+    public Guid ResourceId { get; set; }
+    public Guid VolunteerId { get; set; }
+    public PriorityLevel PriorityLevel { get; set; }
+    public RequestStatus Status { get; set; }
+    public string Location { get; set; }
+    public DateTime DateRequested { get; set; }
+    
 
     public class CreateRequestCommandHandler : IRequestHandler<CreateRequestCommand, CreatedRequestResponse>
     {

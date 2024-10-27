@@ -9,7 +9,8 @@ public class CreateTeamCommand : IRequest<CreatedTeamResponse>
 {
     public string Name { get; set; }
     public string Specialty { get; set; }
-    
+    public string CurrentAssignment { get; set; }
+    public string ImageUrl { get; set; }
     
     public class CreateTeamCommandHandler : IRequestHandler<CreateTeamCommand, CreatedTeamResponse>
     {

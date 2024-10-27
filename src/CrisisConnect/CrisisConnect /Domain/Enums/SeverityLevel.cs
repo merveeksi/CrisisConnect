@@ -1,6 +1,6 @@
 namespace Domain.Enums;
 
-public enum SevertyLevel
+public enum SeverityLevel 
 {
     Low=1,
     Medium=2,

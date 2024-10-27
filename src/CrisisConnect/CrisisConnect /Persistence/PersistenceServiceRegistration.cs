@@ -24,8 +24,6 @@ public static class PersistenceServiceRegistration
         services.AddScoped<IShelterRepository, ShelterRepository>();
         services.AddScoped<ITeamRepository, TeamRepository>();
         services.AddScoped<IVolunteerRepository, VolunteerRepository>();
-
-
         
         return services;
     }

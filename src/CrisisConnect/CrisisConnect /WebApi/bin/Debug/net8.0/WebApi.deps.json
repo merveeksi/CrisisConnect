@@ -14,8 +14,9 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "8.0.6",
           "Persistence": "1.0.0",
           "Swashbuckle.AspNetCore": "6.9.0",
-          "System.Linq.Dynamic.Core": "1.4.6",
-          "Core.Application": "1.0.0.0"
+          "System.Linq.Dynamic.Core": "1.4.7",
+          "Core.Application": "1.0.0.0",
+          "Core.Persistence": "1.0.0.0"
         },
         "runtime": {
           "WebApi.dll": {}
@@ -1890,11 +1891,11 @@
         }
       },
       "System.IO.Pipelines/7.0.0": {},
-      "System.Linq.Dynamic.Core/1.4.6": {
+      "System.Linq.Dynamic.Core/1.4.7": {
         "runtime": {
           "lib/net8.0/System.Linq.Dynamic.Core.dll": {
-            "assemblyVersion": "1.4.6.0",
-            "fileVersion": "1.4.6.0"
+            "assemblyVersion": "1.4.7.0",
+            "fileVersion": "1.4.7.0"
           }
         }
       },
@@ -3146,12 +3147,12 @@
       "path": "system.io.pipelines/7.0.0",
       "hashPath": "system.io.pipelines.7.0.0.nupkg.sha512"
     },
-    "System.Linq.Dynamic.Core/1.4.6": {
+    "System.Linq.Dynamic.Core/1.4.7": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-GZJ996kvIKH0nnKysDWy+le7k0Hoq1iSY7S5sNq6AF1bXPQGidaXjiOJNX4VCUuVWpbe28Ygb6mDSwgY+UhHLA==",
-      "path": "system.linq.dynamic.core/1.4.6",
-      "hashPath": "system.linq.dynamic.core.1.4.6.nupkg.sha512"
+      "sha512": "sha512-1/Fdd7S0nQ5ym/x2Mz1zLTzDWS0nkYOe6S7mBcHUoRK/dKvdg31O3LQJ0PHdmU4mOx5DVC0gfofFRZo7UuMWQA==",
+      "path": "system.linq.dynamic.core/1.4.7",
+      "hashPath": "system.linq.dynamic.core.1.4.7.nupkg.sha512"
     },
     "System.Memory/4.5.4": {
       "type": "package",
