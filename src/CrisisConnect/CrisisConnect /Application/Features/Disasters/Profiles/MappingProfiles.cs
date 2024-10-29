@@ -42,5 +42,6 @@ public class MappingProfiles : Profile
         CreateMap<Disaster, GetListDisasterListItemDto>().ReverseMap();    // Disaster sınıfını GetListDisasterListItemDto'ya ve tersine dönüştür
         CreateMap<Disaster, GetByIdDisasterResponse>().ReverseMap();       // Disaster sınıfını GetByIdDisasterResponse'a ve tersine dönüştür
         CreateMap<Paginate<Disaster>, GetListResponse<GetListDisasterListItemDto>>().ReverseMap();
+        CreateMap<Paginate<Disaster>, GetListResponse<GetListByDynamicDisasterListItemDto>>().ReverseMap();
     }
 }
