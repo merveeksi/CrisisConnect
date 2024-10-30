@@ -2,9 +2,10 @@ using Application.Features.Donors.Commands.Create;
 using Application.Features.Donors.Commands.Delete;
 using Application.Features.Donors.Commands.Update;
 using Application.Features.Donors.Queries;
-using Application.Features.Donors.Queries.GetById;
+using Application.Features.Donors.Queries.GetListByDynamic;
 using Core.Application.Requests;
 using Core.Application.Responses;
+using Core.Persistence.Dynamic;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,13 +15,6 @@ namespace WebApi.Controllers;
     [ApiController]
     public class DonorsController : BaseController
     {
-        [HttpPost]
-        public async Task<IActionResult> Add([FromBody] CreateDonorCommand createDonorCommand)
-        {
-            CreatedDonorResponse response = await Mediator.Send(createDonorCommand);
-            return Ok(response);
-        }
-        
         [HttpGet]
         public async Task<IActionResult> GetList([FromQuery] PageRequest pageRequest)
         {
@@ -28,12 +22,12 @@ namespace WebApi.Controllers;
             GetListResponse<GetListDonorListItemDto> response = await Mediator.Send(getListDonorQuery);
             return Ok(response);
         }
-
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetById([FromRoute] Guid id)
+        
+        [HttpPost("GetList/ByDynamic")]
+        public async Task<IActionResult> GetListByDynamic([FromQuery] PageRequest pageRequest, [FromBody] DynamicQuery? dynamicQuery=null)
         {
-            GetByIdDonorQuery getByIdDonorQuery = new() { Id = id };
-            GetByIdDonorResponse response = await Mediator.Send(getByIdDonorQuery);
+            GetListByDynamicDonorQuery getListByDynamicDonorQuery = new() { PageRequest = pageRequest, DynamicQuery = dynamicQuery };
+            GetListResponse<GetListByDynamicDonorListItemDto> response = await Mediator.Send(getListByDynamicDonorQuery);
             return Ok(response);
         }
         

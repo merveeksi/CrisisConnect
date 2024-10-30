@@ -1,7 +1,6 @@
 using Application.Features.Disasters.Commands.Create;
 using Application.Features.Disasters.Commands.Delete;
 using Application.Features.Disasters.Commands.Update;
-using Application.Features.Disasters.Queries.GetById;
 using Application.Features.Disasters.Queries.GetList;
 using Application.Features.Disasters.Queries.GetListByDynamic;
 using AutoMapper;
@@ -28,19 +27,19 @@ public class MappingProfiles : Profile
         
         CreateMap<Disaster, GetListDisasterListItemDto>()
             .ForMember(destinationMember: c => c.AlertName, memberOptions: opt => opt.MapFrom(c => c.Alert.Name))
-            .ForMember(destinationMember: c => c.ResourceName, memberOptions: opt => opt.MapFrom(c => c.Resources.FirstOrDefault().Name))
+            .ForMember(destinationMember: c => c.ResourceName, memberOptions: opt => opt.MapFrom(c => c.Resource.Name))
             .ForMember(destinationMember: c => c.TeamName, memberOptions: opt => opt.MapFrom(c => c.Team.Name))
             .ReverseMap();
         
         //dynamic
         CreateMap<Disaster, GetListByDynamicDisasterListItemDto>()
             .ForMember(destinationMember: c => c.AlertName, memberOptions: opt => opt.MapFrom(c => c.Alert.Name))
-            .ForMember(destinationMember: c => c.ResourceName, memberOptions: opt => opt.MapFrom(c => c.Resources.FirstOrDefault().Name))
+            .ForMember(destinationMember: c => c.ResourceName, memberOptions: opt => opt.MapFrom(c => c.Resource.Name))
             .ForMember(destinationMember: c => c.TeamName, memberOptions: opt => opt.MapFrom(c => c.Team.Name))
+            
             .ReverseMap();
         
         CreateMap<Disaster, GetListDisasterListItemDto>().ReverseMap();    // Disaster sınıfını GetListDisasterListItemDto'ya ve tersine dönüştür
-        CreateMap<Disaster, GetByIdDisasterResponse>().ReverseMap();       // Disaster sınıfını GetByIdDisasterResponse'a ve tersine dönüştür
         CreateMap<Paginate<Disaster>, GetListResponse<GetListDisasterListItemDto>>().ReverseMap();
         CreateMap<Paginate<Disaster>, GetListResponse<GetListByDynamicDisasterListItemDto>>().ReverseMap();
     }

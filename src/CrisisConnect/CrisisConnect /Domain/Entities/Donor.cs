@@ -15,6 +15,11 @@ public class Donor:Entity<Guid> //bağışçı
     public string Location { get; set; } //bağışçının bulunduğu yer
     
     public List<Resource> DonatedResources { get; set; } //bağışçının bağışladığı kaynaklar
+    
+    //Birebir ilişkiler
+    public virtual Alert? Alert { get; set; }
+    public virtual Disaster? Disaster { get; set; }
+    public virtual Team? Team { get; set; }
 
     public Donor()
     {

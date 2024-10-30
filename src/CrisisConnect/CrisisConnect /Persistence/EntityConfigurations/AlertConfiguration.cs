@@ -11,6 +11,7 @@ public class AlertConfiguration: IEntityTypeConfiguration<Alert>
         builder.ToTable("Alerts").HasKey(a => a.Id); 
         
         builder.Property(a => a.Id).HasColumnName("Id").IsRequired();
+        builder.Property(a => a.Name).HasColumnName("Name").IsRequired();
         builder.Property(a => a.Message).HasColumnName("Message").IsRequired();
         builder.Property(a => a.Severity).HasColumnName("Severity").IsRequired();
         builder.Property(a=>a.Location).HasColumnName("Location").IsRequired();

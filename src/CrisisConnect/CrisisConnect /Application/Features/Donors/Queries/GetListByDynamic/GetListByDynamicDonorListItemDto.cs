@@ -1,6 +1,6 @@
-namespace Application.Features.Donors.Queries;
+namespace Application.Features.Donors.Queries.GetListByDynamic;
 
-public class GetListDonorListItemDto
+public class GetListByDynamicDonorListItemDto
 {
     public Guid Id { get; set; }
     

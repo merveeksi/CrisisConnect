@@ -1,7 +1,6 @@
 using Application.Features.Disasters.Commands.Create;
 using Application.Features.Disasters.Commands.Delete;
 using Application.Features.Disasters.Commands.Update;
-using Application.Features.Disasters.Queries.GetById;
 using Application.Features.Disasters.Queries.GetList;
 using Application.Features.Disasters.Queries.GetListByDynamic;
 using Core.Application.Requests;

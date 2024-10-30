@@ -20,6 +20,8 @@ public class Disaster:Entity<Guid> //afet
     //Nesnel ilişkilendirmeleri
     public virtual Team? Team { get; set; }
     public virtual Alert? Alert { get; set; }
+    public virtual Resource? Resource { get; set; }
+    
     
     //ICollection kullanarak ilişkileri (one-to-many veya many-to-one) modelleyebilirim
     public virtual ICollection<Resource> Resources { get; set; }

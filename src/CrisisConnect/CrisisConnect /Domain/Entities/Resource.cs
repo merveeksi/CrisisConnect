@@ -5,6 +5,7 @@ namespace Domain.Entities;
 
 public class Resource:Entity<Guid> //kaynak
 {
+    public Guid DisasterId { get; set; }
     public string Name { get; set; } //kaynağın adı
     
     public ResourceType Type { get; set; } //kaynağın türü
@@ -27,9 +28,10 @@ public class Resource:Entity<Guid> //kaynak
         RequestResources = new HashSet<RequestResource>();
     }
     
-    public Resource(Guid id, string name, ResourceType type, int quantity, string location):this()
+    public Resource(Guid id, Guid disasterId, string name, ResourceType type, int quantity, string location):this()
     {
         Id = id;
+        DisasterId = disasterId;
         Name = name;
         Type = type;
         Quantity = quantity;

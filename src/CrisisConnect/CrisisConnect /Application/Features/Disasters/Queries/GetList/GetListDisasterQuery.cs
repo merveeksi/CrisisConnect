@@ -28,7 +28,7 @@ public class GetListDisasterQuery: IRequest<GetListResponse<GetListDisasterListI
         public async Task<GetListResponse<GetListDisasterListItemDto>> Handle(GetListDisasterQuery request, CancellationToken cancellationToken)
         {
             Paginate<Disaster> disasters =  await _disasterRepository.GetListAsync(
-                include: d=>d.Include(d=>d.Team).Include(d=>d.Resources).Include(d=>d.Alert),
+                include: d=>d.Include(d=>d.Team).Include(d=>d.Resource).Include(d=>d.Alert),
                 index: request.PageRequest.PageIndex,
                 size: request.PageRequest.PageSize,
                 cancellationToken : cancellationToken,
