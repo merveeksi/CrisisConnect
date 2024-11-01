@@ -27,7 +27,6 @@ public class GetListResourceQuery:IRequest<GetListResponse<GetListResourceListIt
         public async Task<GetListResponse<GetListResourceListItemDto>> Handle(GetListResourceQuery request, CancellationToken cancellationToken)
         {
             Paginate<Resource> resources = await _resourceRepository.GetListAsync(
-                include: r => r.Include(r => r.Disaster).Include(r => r.Requests).Include(r => r.Logistics),
                 index: request.PageRequest.PageIndex,
                 size: request.PageRequest.PageSize,
                 cancellationToken: cancellationToken,

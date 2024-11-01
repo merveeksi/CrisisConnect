@@ -1,8 +1,8 @@
+using Application.Features.Disasters.Queries.GetListByDynamic;
 using Application.Features.Teames.Commands.Create;
 using Application.Features.Teames.Commands.Delete;
 using Application.Features.Teames.Commands.Update;
 using Application.Features.Teames.Queries;
-using Application.Features.Teames.Queries.GetById;
 using AutoMapper;
 using Core.Application.Responses;
 using Core.Persistence.Paging;
@@ -24,7 +24,8 @@ public class MappingProfiles : Profile
         CreateMap<Team, DeletedTeamResponse>().ReverseMap();
         
         CreateMap<Team, GetListTeamListItemDto>().ReverseMap();
-        CreateMap<Team, GetByIdTeamResponse>().ReverseMap();
         CreateMap<Paginate<Team>, GetListResponse<GetListTeamListItemDto>>().ReverseMap();
+        CreateMap<Paginate<Team>, GetListResponse<GetListByDynamicTeamListItemDto>>().ReverseMap();
+        
     }
 }

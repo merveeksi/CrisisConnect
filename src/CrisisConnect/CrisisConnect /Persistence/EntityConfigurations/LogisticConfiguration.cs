@@ -22,15 +22,6 @@ public class LogisticConfiguration: IEntityTypeConfiguration<Logistic>
         builder.Property(l => l.UpdatedDate).HasColumnName("UpdatedDate");
         builder.Property(l => l.DeletedDate).HasColumnName("DeletedDate");
         
-        // Logistics ile Resource arasında bire-bir ilişki
-        builder.HasOne(l => l.Resource)
-            .WithMany(r => r.Logistics)
-            .HasForeignKey(l => l.ResourceId);
-        
-        // Logistics ile Disaster arasında bire-bir ilişki
-        builder.HasOne(l => l.Disaster)
-            .WithMany(d => d.Logistics);
-        
     
         builder.HasQueryFilter(l => !l.DeletedDate.HasValue);
     }

@@ -20,10 +20,6 @@ public class ResourceConfiguration: IEntityTypeConfiguration<Resource>
         builder.Property(r => r.CreatedDate).HasColumnName("CreatedDate").IsRequired();
         builder.Property(r => r.UpdatedDate).HasColumnName("UpdatedDate");
         builder.Property(r => r.DeletedDate).HasColumnName("DeletedDate");
-
-        // Resource ile Disaster arasında bire-bir ilişki
-        builder.HasOne(r => r.Disaster)
-            .WithMany(d => d.Resources);
         
         builder.HasQueryFilter(r => !r.DeletedDate.HasValue);
     }

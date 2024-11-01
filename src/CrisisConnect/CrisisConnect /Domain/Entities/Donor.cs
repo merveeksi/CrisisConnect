@@ -4,6 +4,7 @@ namespace Domain.Entities;
 
 public class Donor:Entity<Guid> //bağışçı
 {
+    public string Name { get; set; }
     public string FirstName { get; set; } //bağışçının adı
     
     public string LastName { get; set; } //bağışçının soyadı
@@ -15,11 +16,6 @@ public class Donor:Entity<Guid> //bağışçı
     public string Location { get; set; } //bağışçının bulunduğu yer
     
     public List<Resource> DonatedResources { get; set; } //bağışçının bağışladığı kaynaklar
-    
-    //Birebir ilişkiler
-    public virtual Alert? Alert { get; set; }
-    public virtual Disaster? Disaster { get; set; }
-    public virtual Team? Team { get; set; }
 
     public Donor()
     {

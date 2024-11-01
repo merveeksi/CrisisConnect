@@ -2,7 +2,7 @@ using Application.Features.Requests.Commands.Create;
 using Application.Features.Requests.Commands.Delete;
 using Application.Features.Requests.Commands.Update;
 using Application.Features.Requests.Queries;
-using Application.Features.Requests.Queries.GetById;
+using Application.Features.Requests.Queries.GetListByDynamic;
 using AutoMapper;
 using Core.Application.Responses;
 using Core.Persistence.Paging;
@@ -23,8 +23,15 @@ public class MappingProfiles : Profile
         CreateMap<Request, DeleteRequestCommand>().ReverseMap();
         CreateMap<Request, DeletedRequestResponse>().ReverseMap();
         
-        CreateMap<Request, GetListRequestListItemDto>().ReverseMap();
-        CreateMap<Request, GetByIdRequestResponse>().ReverseMap();
-        CreateMap<Paginate<Domain.Entities.Request>, GetListResponse<GetListRequestListItemDto>>().ReverseMap();
+        CreateMap<Request, GetListRequestListItemDto>()
+            .ForMember(destinationMember: c => c.ShelterName, memberOptions: opt => opt.MapFrom(c => c.Shelter.Name))
+            .ReverseMap();
+        
+        //dynamic
+        CreateMap<Request, GetListByDynamicRequestListItemDto>()
+            .ForMember(destinationMember: c => c.ShelterName, memberOptions: opt => opt.MapFrom(c => c.Shelter.Name))
+            .ReverseMap();
+        CreateMap<Paginate<Request>, GetListResponse<GetListRequestListItemDto>>().ReverseMap();
+        CreateMap<Paginate<Request>, GetListResponse<GetListByDynamicRequestListItemDto>>().ReverseMap();
     }
 }

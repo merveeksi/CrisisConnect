@@ -1,8 +1,8 @@
+using Application.Features.Disasters.Queries.GetListByDynamic;
 using Application.Features.Shelters.Commands.Create;
 using Application.Features.Shelters.Commands.Delete;
 using Application.Features.Shelters.Commands.Update;
 using Application.Features.Shelters.Queries;
-using Application.Features.Shelters.Queries.GetById;
 using AutoMapper;
 using Core.Application.Responses;
 using Core.Persistence.Paging;
@@ -24,7 +24,7 @@ public class MappingProfiles : Profile
         CreateMap<Shelter, DeletedShelterResponse>().ReverseMap();
         
         CreateMap<Shelter, GetListShelterListItemDto>().ReverseMap();
-        CreateMap<Shelter, GetByIdShelterResponse>().ReverseMap();
-        CreateMap<Paginate<Domain.Entities.Shelter>, GetListResponse<GetListShelterListItemDto>>().ReverseMap();
+        CreateMap<Paginate<Shelter>, GetListResponse<GetListShelterListItemDto>>().ReverseMap();
+        CreateMap<Paginate<Shelter>, GetListResponse<GetListByDynamicShelterListItemDto>>().ReverseMap();
     }
 }

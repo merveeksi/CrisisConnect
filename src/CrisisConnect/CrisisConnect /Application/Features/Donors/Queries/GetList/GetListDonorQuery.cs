@@ -28,10 +28,6 @@ public class GetListDonorQuery :IRequest<GetListResponse<GetListDonorListItemDto
             CancellationToken cancellationToken)
         {
             Paginate<Donor> donors = await _donorRepository.GetListAsync(
-                //Entity'deki birerbir ilişkierin include edilmesi
-                include: d=>d.Include(d=>d.Disaster)
-                    .Include(d=>d.Alert)
-                    .Include(d=>d.Team),
                 index: request.PageRequest.PageIndex,
                 size: request.PageRequest.PageSize
             );

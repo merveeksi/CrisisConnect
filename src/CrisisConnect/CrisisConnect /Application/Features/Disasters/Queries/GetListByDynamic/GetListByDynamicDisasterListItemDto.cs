@@ -5,9 +5,7 @@ namespace Application.Features.Disasters.Queries.GetListByDynamic;
 public class GetListByDynamicDisasterListItemDto
 {
     public Guid Id { get; set; }
-    public string TeamName { get; set; }
-    public string ResourceName { get; set; }
-    public string AlertName { get; set; }
+    public string CenterName { get; set; }
     
     public string DisasterType { get; set; }
     public string Location { get; set; }

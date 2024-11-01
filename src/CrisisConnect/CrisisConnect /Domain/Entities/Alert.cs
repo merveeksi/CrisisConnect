@@ -17,15 +17,15 @@ public class Alert:Entity<Guid> //acil durum uyarısı
     public string AlertType { get; set; } //acil durum tipi, örneğin: yangın, deprem
     
     public string AlertStatus { get; set; } //acil durumun durumu, örneğin: devam ediyor, sona erdi
-
-    public virtual IEnumerable<Disaster>? Disaster { get; set; }
+    
     
     public Alert()
     {
         
     }
     
-    public Alert(Guid id, string name, string message, SeverityLevel severity, DateTime datelssued, string location, string alertType, string alertStatus):this()
+    public Alert(Guid id, string name, string message, SeverityLevel severity, 
+        DateTime datelssued, string location, string alertType, string alertStatus):this()
     {
         Id = id;
         Name = name;

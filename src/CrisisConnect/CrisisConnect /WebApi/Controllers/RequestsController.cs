@@ -2,9 +2,10 @@ using Application.Features.Requests.Commands.Create;
 using Application.Features.Requests.Commands.Delete;
 using Application.Features.Requests.Commands.Update;
 using Application.Features.Requests.Queries;
-using Application.Features.Requests.Queries.GetById;
+using Application.Features.Requests.Queries.GetListByDynamic;
 using Core.Application.Requests;
 using Core.Application.Responses;
+using Core.Persistence.Dynamic;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,6 +21,13 @@ namespace WebApi.Controllers;
             CreatedRequestResponse response = await Mediator.Send(createRequestCommand);
             return Ok(response);
         }
+        [HttpPost("GetList/ByDynamic")]
+        public async Task<IActionResult> GetListByDynamic([FromQuery] PageRequest pageRequest, [FromBody] DynamicQuery? dynamicQuery=null)
+        {
+            GetListByDynamicRequestQuery getListByDynamicRequestQuery = new() { PageRequest = pageRequest, DynamicQuery = dynamicQuery };
+            GetListResponse<GetListByDynamicRequestListItemDto> response = await Mediator.Send(getListByDynamicRequestQuery);
+            return Ok(response);
+        }
         
         [HttpGet]
         public async Task<IActionResult> GetList([FromQuery] PageRequest pageRequest)
@@ -28,14 +36,7 @@ namespace WebApi.Controllers;
             GetListResponse<GetListRequestListItemDto> response = await Mediator.Send(getListRequestQuery);
             return Ok();
         }
-
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetById([FromRoute] Guid id)
-        {
-            GetByIdRequestQuery getByIdRequestQuery = new() { Id = id };
-            GetByIdRequestResponse response = await Mediator.Send(getByIdRequestQuery);
-            return Ok(response);
-        }
+        
         
         [HttpPut]
         public async Task<IActionResult> Update([FromBody] UpdateRequestCommand updateRequestCommand)

@@ -20,7 +20,7 @@ public class Center : Entity<Guid> //yardım merkezi
 
     public List<Logistic> Logistics { get; set; } //yardım merkezindeki lojistik bilgiler
     
-
+    // Primary relationships
     public virtual Disaster? Disaster { get; set; }
     
     public Center()
@@ -28,7 +28,8 @@ public class Center : Entity<Guid> //yardım merkezi
         
     }
     
-    public Center(Guid id, string name, string location, int capacity, int currentStaff, List<Volunteer> volunteers, List<Resource> resources, List<Logistic> logistics, string imageUrl):this()
+    public Center(Guid id, string name, string location, int capacity, int currentStaff, 
+        List<Volunteer> volunteers, List<Resource> resources, List<Logistic> logistics, string imageUrl):this()
     {
         Id = id;
         Name = name;

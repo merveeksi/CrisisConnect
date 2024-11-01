@@ -9,12 +9,12 @@ public class DeleteShelterCommand: IRequest<DeletedShelterResponse>
 {
     public Guid Id { get; set; }
     
-    public class UpdateShelterCommandHandler : IRequestHandler<DeleteShelterCommand, DeletedShelterResponse>
+    public class DeleteShelterCommandHandler : IRequestHandler<DeleteShelterCommand, DeletedShelterResponse>
     {
         private readonly IShelterRepository _shelterRepository;
         private readonly IMapper _mapper;
 
-        public UpdateShelterCommandHandler(IShelterRepository shelterRepository, IMapper mapper)
+        public DeleteShelterCommandHandler(IShelterRepository shelterRepository, IMapper mapper)
         {
             _shelterRepository = shelterRepository;
             _mapper = mapper;

@@ -22,6 +22,7 @@ public class DonorConfiguration: IEntityTypeConfiguration<Donor>
         builder.Property(d => d.UpdatedDate).HasColumnName("UpdatedDate");
         builder.Property(d => d.DeletedDate).HasColumnName("DeletedDate");
         
+        
         builder.HasQueryFilter(d => !d.DeletedDate.HasValue);
     }
 }

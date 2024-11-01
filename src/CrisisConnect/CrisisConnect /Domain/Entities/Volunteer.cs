@@ -21,8 +21,11 @@ public class Volunteer:Entity<Guid> //gönüllü
     
     public string ImageUrl { get; set; }
     
-    public virtual Disaster? Disaster { get; set; }
+    // Navigation Properties
+    public virtual Shelter? Shelter { get; set; }
     public virtual Team? Team { get; set; }
+    
+    
     
     public virtual ICollection<Request> Requests { get; set; }
 
@@ -31,7 +34,8 @@ public class Volunteer:Entity<Guid> //gönüllü
         Requests = new HashSet<Request>();
     }
     
-    public Volunteer(Guid id, Guid teamId, string firstName, string lastName, List<string> skills, bool availability, string location, string email, string phoneNumber, string imageUrl):this()
+    public Volunteer(Guid id, Guid teamId, string firstName, string lastName, List<string> skills, 
+        bool availability, string location, string email, string phoneNumber, string imageUrl):this()
     {
         Id = id;
         TeamId = teamId;

@@ -29,7 +29,7 @@ public class GetListByDynamicDisasterQuery: IRequest<GetListResponse<GetListByDy
         {
             Paginate<Disaster> disasters = await _disasterRepository.GetListByDynamicAsync(
                 request.DynamicQuery,
-                include: d => d.Include(d => d.Team).Include(d => d.Resources).Include(d => d.Alert),
+                include: d => d.Include(d => d.Center),
                 index: request.PageRequest.PageIndex,
                 size: request.PageRequest.PageSize
             );

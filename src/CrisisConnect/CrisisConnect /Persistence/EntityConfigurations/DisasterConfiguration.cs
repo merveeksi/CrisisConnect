@@ -10,34 +10,47 @@ public class DisasterConfiguration:IEntityTypeConfiguration<Disaster>
     {
         builder.ToTable("Disasters").HasKey(d => d.Id);
         
-        builder.Property(d=>d.Id).HasColumnName("Id").IsRequired();   //isRequired = zorunlu
-        builder.Property(d=>d.TeamId).HasColumnName("TeamId").IsRequired();
-        builder.Property(d=>d.AlertId).HasColumnName("AlertId").IsRequired();
-        builder.Property(d=>d.ResourceId).HasColumnName("ResourceId").IsRequired();
-        builder.Property(d=>d.Name).HasColumnName("Name").IsRequired();
-        builder.Property(d=>d.Type).HasColumnName("Type").IsRequired();
-        builder.Property(d=>d.Location).HasColumnName("Location").IsRequired();
-        builder.Property(d=>d.Severity).HasColumnName("Severity").IsRequired();
-        builder.Property(d=>d.DateOccurred).HasColumnName("DateOccurred").IsRequired();
-        builder.Property(d=>d.Casualties).HasColumnName("Casualties").IsRequired();
-        builder.Property(d=>d.Description).HasColumnName("Description").IsRequired();
-        builder.Property(d=>d.CreatedDate).HasColumnName("CreatedDate").IsRequired();
-        builder.Property(d => d.UpdatedDate).HasColumnName("UpdatedDate");
-        builder.Property(d=>d.DeletedDate).HasColumnName("DeletedDate");
+        // Primary Key
+        builder.Property(d => d.Id).HasColumnName("Id").IsRequired();
 
-        // Disaster ile Alert arasında bir ilişki
-        builder.HasOne(d => d.Alert)
-            .WithMany(a => a.Disaster)
-            .HasForeignKey(d => d.AlertId)
-            .IsRequired(false); 
+        // Properties
+        builder.Property(d => d.Name).HasColumnName("Name").IsRequired().HasMaxLength(100); // Limiting length to avoid excessive data storage
+        builder.Property(d => d.Type).HasColumnName("Type").IsRequired();
+        builder.Property(d => d.Status).HasColumnName("Status").IsRequired();
+
+        // Location Information
+        builder.Property(d => d.City).HasColumnName("City").IsRequired().HasMaxLength(50);
+        builder.Property(d => d.District).HasColumnName("District").HasMaxLength(50);
+        builder.Property(d => d.Latitude).HasColumnName("Latitude").HasPrecision(9, 6); // For latitude and longitude precision
+        builder.Property(d => d.Longitude).HasColumnName("Longitude").HasPrecision(9, 6);
+
+        // Timing Information
+        builder.Property(d => d.DateOccurred).HasColumnName("DateOccurred").IsRequired();
+        builder.Property(d => d.DateResolved).HasColumnName("DateResolved");
+
+        // Impact Assessment
+        builder.Property(d => d.Magnitude).HasColumnName("Magnitude").IsRequired();
+        builder.Property(d => d.Severity).HasColumnName("Severity").IsRequired();
+        builder.Property(d => d.EstimatedAffectedPopulation).HasColumnName("EstimatedAffectedPopulation");
+        builder.Property(d => d.InjuredCount).HasColumnName("InjuredCount");
+        builder.Property(d => d.ConfirmedCasualties).HasColumnName("ConfirmedCasualties");
+
+        // Additional Details
+        builder.Property(d => d.Description).HasColumnName("Description").HasMaxLength(500); // Limit for description length
+        builder.Property(d => d.IsActive).HasColumnName("IsActive").IsRequired();
+        builder.Property(d => d.EmergencyContactInfo).HasColumnName("EmergencyContactInfo").HasMaxLength(100);
+
+        // Audit fields
+        builder.Property(d => d.CreatedAt).HasColumnName("CreatedAt").IsRequired();
+        builder.Property(d => d.LastUpdatedAt).HasColumnName("LastUpdatedAt");
         
-        // Disaster ile birden fazla Resource ilişkisi
-        builder.HasMany(d => d.Resources)
-            .WithOne(r => r.Disaster);
-
-        // Disaster ile birden fazla Volunteer ilişkisi
-        builder.HasMany(d => d.Volunteers)
-            .WithOne(v => v.Disaster);
+        
+        //Disaster ile bire bir Center ilişkisi (Her afetin karışıklığı önlemek için tek bir net komuta merkezine ihtiyacı vardır)
+        builder.HasOne(d => d.Center)
+            .WithOne(c => c.Disaster)
+            .HasForeignKey<Disaster>(d => d.Id)
+            .IsRequired(false);
+        
         
         builder.HasQueryFilter(d => !d.DeletedDate.HasValue); //soft delete, silinmiş olanları getirmemek için
     }

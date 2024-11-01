@@ -5,6 +5,7 @@ using Core.Application.Responses;
 using Core.Persistence.Paging;
 using Domain.Entities;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Teames.Queries;
 
@@ -26,6 +27,7 @@ public class GetListTeamQuery : IRequest<GetListResponse<GetListTeamListItemDto>
         public async Task<GetListResponse<GetListTeamListItemDto>> Handle(GetListTeamQuery request, CancellationToken cancellationToken)
         {
             Paginate<Team> teams = await _teamRepository.GetListAsync(
+                include: s=>s.Include(s=>s.Volunteer),
                 index: request.PageRequest.PageIndex,
                 size: request.PageRequest.PageSize,
                 cancellationToken: cancellationToken,

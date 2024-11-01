@@ -23,21 +23,6 @@ public class MappingProfiles : Profile
         CreateMap<Disaster, DeleteDisasterCommand>().ReverseMap();
         CreateMap<Disaster, DeletedDisasterResponse>().ReverseMap();
         
-        //Bu modelin amacı alert, resource, team tablolarındaki name alanlarını disaster tablosundaki ilgili alanlara maplemek, include işlemi yapmak, join
-        
-        CreateMap<Disaster, GetListDisasterListItemDto>()
-            .ForMember(destinationMember: c => c.AlertName, memberOptions: opt => opt.MapFrom(c => c.Alert.Name))
-            .ForMember(destinationMember: c => c.ResourceName, memberOptions: opt => opt.MapFrom(c => c.Resource.Name))
-            .ForMember(destinationMember: c => c.TeamName, memberOptions: opt => opt.MapFrom(c => c.Team.Name))
-            .ReverseMap();
-        
-        //dynamic
-        CreateMap<Disaster, GetListByDynamicDisasterListItemDto>()
-            .ForMember(destinationMember: c => c.AlertName, memberOptions: opt => opt.MapFrom(c => c.Alert.Name))
-            .ForMember(destinationMember: c => c.ResourceName, memberOptions: opt => opt.MapFrom(c => c.Resource.Name))
-            .ForMember(destinationMember: c => c.TeamName, memberOptions: opt => opt.MapFrom(c => c.Team.Name))
-            
-            .ReverseMap();
         
         CreateMap<Disaster, GetListDisasterListItemDto>().ReverseMap();    // Disaster sınıfını GetListDisasterListItemDto'ya ve tersine dönüştür
         CreateMap<Paginate<Disaster>, GetListResponse<GetListDisasterListItemDto>>().ReverseMap();
