@@ -4,22 +4,26 @@ namespace Domain.Entities;
 
 public class Volunteer:Entity<Guid> //gönüllü
 { 
+    // Assignment
     public Guid TeamId { get; set; }
-    public string FirstName { get; set; } //gönüllünün adı
+    public Guid ShelterId { get; set; }
+    // Basic Information
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string Email { get; set; }
+    public string PhoneNumber { get; set; }
+    public string Location { get; set; }
     
-    public string LastName { get; set; } //gönüllünün soyadı
+    // Skills and Status
+    public string Skills { get; set; } // Comma separated skills
+    public bool IsAvailable { get; set; }
     
-    public List<string> Skills { get; set; } //gönüllünün sahip olduğu yetenekler
-    
-    public bool Availability { get; set; } //gönüllünün müsaitlik durumu
-    
-    public string Location { get; set; } //gönüllünün bulunduğu yer
-    
-    public string? Email { get; set; } //gönüllünün e-posta adresi
-    
-    public string PhoneNumber { get; set; } //gönüllünün telefon numarası
-    
+    // Resources
     public string ImageUrl { get; set; }
+    
+    // Audit
+    public DateTime CreatedAt { get; set; }
+    public DateTime UpdatedAt { get; set; }
     
     // Navigation Properties
     public virtual Shelter? Shelter { get; set; }
@@ -30,19 +34,22 @@ public class Volunteer:Entity<Guid> //gönüllü
     {
         Requests = new HashSet<Request>();
     }
-    
-    public Volunteer(Guid id, Guid teamId, string firstName, string lastName, List<string> skills, 
-        bool availability, string location, string email, string phoneNumber, string imageUrl):this()
+
+    public Volunteer(Guid id, Guid teamId, Guid shelterId, string firstName, string lastName, string email, string phoneNumber, 
+        string location, string skills, bool isAvailable, string imageUrl, DateTime createdAt, DateTime updatedAt):this()
     {
         Id = id;
         TeamId = teamId;
+        ShelterId = shelterId;
         FirstName = firstName;
         LastName = lastName;
-        Skills = skills;
-        Availability = availability;
-        Location = location;
         Email = email;
         PhoneNumber = phoneNumber;
+        Location = location;
+        Skills = skills;
+        IsAvailable = isAvailable;
         ImageUrl = imageUrl;
+        CreatedAt = createdAt;
+        UpdatedAt = updatedAt;
     }
 }

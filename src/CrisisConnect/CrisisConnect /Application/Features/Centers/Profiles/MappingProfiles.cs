@@ -1,8 +1,8 @@
 using Application.Features.Centers.Commands.Create;
 using Application.Features.Centers.Commands.Delete;
 using Application.Features.Centers.Commands.Update;
-using Application.Features.Centers.Queries;
-using Application.Features.Centers.Queries.GetById;
+using Application.Features.Centers.Queries.GetList;
+using Application.Features.Centers.Queries.GetListByDynamic;
 using AutoMapper;
 using Core.Application.Responses;
 using Core.Persistence.Paging;
@@ -24,7 +24,7 @@ public class MappingProfiles : Profile
         CreateMap<Center, DeletedCenterResponse>().ReverseMap();
         
         CreateMap<Center, GetListCenterListItemDto>().ReverseMap();
-        CreateMap<Center, GetByIdCenterResponse>().ReverseMap();
         CreateMap<Paginate<Center>, GetListResponse<GetListCenterListItemDto>>().ReverseMap();
+        CreateMap<Paginate<Disaster>, GetListResponse<GetListByDynamicCenterListItemDto>>().ReverseMap();
     }
 }

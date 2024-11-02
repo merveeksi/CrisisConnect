@@ -1,4 +1,4 @@
-namespace Application.Features.Alerts.Queries;
+namespace Application.Features.Alerts.Queries.GetList;
 
 public class GetListAlertListItemDto
 {

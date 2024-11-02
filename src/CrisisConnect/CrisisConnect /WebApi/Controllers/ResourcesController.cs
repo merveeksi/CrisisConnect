@@ -3,6 +3,7 @@ using Application.Features.Resources.Commands.Delete;
 using Application.Features.Resources.Commands.Update;
 using Application.Features.Resources.Queries;
 using Application.Features.Resources.Queries.GetById;
+using Application.Features.Resources.Queries.GetList;
 using Core.Application.Requests;
 using Core.Application.Responses;
 using Microsoft.AspNetCore.Mvc;

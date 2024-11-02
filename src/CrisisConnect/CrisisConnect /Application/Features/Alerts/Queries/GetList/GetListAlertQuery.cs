@@ -7,7 +7,7 @@ using Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace Application.Features.Alerts.Queries;
+namespace Application.Features.Alerts.Queries.GetList;
 
 public class GetListAlertQuery :IRequest<GetListResponse<GetListAlertListItemDto>>
 {

@@ -1,9 +1,8 @@
-using Application.Features.Centers.Queries.GetById;
 using Application.Features.Donors.Commands.Create;
 using Application.Features.Donors.Commands.Delete;
 using Application.Features.Donors.Commands.Update;
-using Application.Features.Donors.Queries;
 using Application.Features.Donors.Queries.GetById;
+using Application.Features.Donors.Queries.GetList;
 using Core.Application.Requests;
 using Core.Application.Responses;
 using Microsoft.AspNetCore.Mvc;

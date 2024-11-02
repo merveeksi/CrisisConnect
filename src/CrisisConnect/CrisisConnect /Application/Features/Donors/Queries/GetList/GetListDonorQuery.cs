@@ -7,7 +7,7 @@ using Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace Application.Features.Donors.Queries;
+namespace Application.Features.Donors.Queries.GetList;
 
 public class GetListDonorQuery :IRequest<GetListResponse<GetListDonorListItemDto>>
 {
@@ -28,6 +28,7 @@ public class GetListDonorQuery :IRequest<GetListResponse<GetListDonorListItemDto
             CancellationToken cancellationToken)
         {
             Paginate<Donor> donors = await _donorRepository.GetListAsync(
+                include: d => d.Include(d => d.Resources),
                 index: request.PageRequest.PageIndex,
                 size: request.PageRequest.PageSize
             );

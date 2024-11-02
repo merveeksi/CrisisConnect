@@ -1,4 +1,4 @@
-namespace Application.Features.Logistics.Queries;
+namespace Application.Features.Logistics.Queries.GetList;
 
 public class GetListLogisticListItemDto
 {

@@ -1,6 +1,6 @@
-namespace Application.Features.Centers.Queries.GetById;
+namespace Application.Features.Alerts.Queries.GetById;
 
-public class GetByIdCenterResponse
+public class GetByIdAlertResponse
 {
     public Guid Id { get; set; }
     

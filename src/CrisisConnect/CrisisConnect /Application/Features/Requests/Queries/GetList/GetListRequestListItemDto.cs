@@ -1,4 +1,4 @@
-namespace Application.Features.Requests.Queries;
+namespace Application.Features.Requests.Queries.GetList;
 
 public class GetListRequestListItemDto
 {

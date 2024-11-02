@@ -12,14 +12,31 @@ public class ResourceConfiguration: IEntityTypeConfiguration<Resource>
         
         builder.HasIndex(r => r.Location, "UK_Resources_Location").IsUnique();
 
-        builder.Property(r => r.Id).HasColumnName("Id").IsRequired();
-        builder.Property(r => r.Name).HasColumnName("Name").IsRequired();
-        builder.Property(r => r.Type).HasColumnName("Type").IsRequired(); 
-        builder.Property(r => r.Quantity).HasColumnName("Quantity").IsRequired(); 
-        builder.Property(r => r.Location).HasColumnName("Location").IsRequired();
-        builder.Property(r => r.CreatedDate).HasColumnName("CreatedDate").IsRequired();
-        builder.Property(r => r.UpdatedDate).HasColumnName("UpdatedDate");
-        builder.Property(r => r.DeletedDate).HasColumnName("DeletedDate");
+        // Basic Information
+        builder.Property(r => r.Name).IsRequired().HasMaxLength(100);
+        builder.Property(r => r.Type).IsRequired().HasConversion<string>();
+        builder.Property(r => r.Quantity).IsRequired().HasDefaultValue(0);
+        builder.Property(r => r.Location).IsRequired().HasMaxLength(200);
+
+        // Additional Details
+        builder.Property(r => r.Description).HasMaxLength(500);
+        builder.Property(r => r.Unit).IsRequired().HasMaxLength(20);
+        builder.Property(r => r.MinimumQuantity).IsRequired().HasDefaultValue(0);
+
+        // Status
+        builder.Property(r => r.IsAvailable).IsRequired().HasDefaultValue(true);
+        builder.Property(r => r.ExpiryDate).IsRequired(false);
+
+        // Tracking
+        builder.Property(r => r.CreatedAt).IsRequired().HasDefaultValueSql("GETDATE()");
+        builder.Property(r => r.UpdatedAt).IsRequired().HasDefaultValueSql("GETDATE()");
+
+        // Indexes
+        builder.HasIndex(r => r.Name);
+        builder.HasIndex(r => r.Type);
+        builder.HasIndex(r => r.Location);
+        builder.HasIndex(r => r.IsAvailable);
+        builder.HasIndex(r => r.ExpiryDate);
         
         builder.HasQueryFilter(r => !r.DeletedDate.HasValue);
     }

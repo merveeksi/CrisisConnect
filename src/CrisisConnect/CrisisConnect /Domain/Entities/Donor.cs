@@ -4,32 +4,25 @@ namespace Domain.Entities;
 
 public class Donor:Entity<Guid> //bağışçı
 {
-    public string Name { get; set; }
-    public string FirstName { get; set; } //bağışçının adı
-    
-    public string LastName { get; set; } //bağışçının soyadı
-    
+    public string FullName { get; set; }
     public string PhoneNumber { get; set; } //bağışçının telefon numarası
-    
     public string? Email { get; set; } //bağışçının e-posta adresi
-    
     public string Location { get; set; } //bağışçının bulunduğu yer
     
-    public List<Resource> DonatedResources { get; set; } //bağışçının bağışladığı kaynaklar
+    // Navigation Properties
+    public virtual ICollection<Resource> Resources { get; set; }
+    
 
     public Donor()
     {
-        
+        Resources = new HashSet<Resource>();
     }
-    
-    public Donor(Guid id, string firstName, string lastName, string email, string phoneNumber, string location, List<Resource> donatedResources):this()
+
+    public Donor(Guid id, string fullName, string phoneNumber, string location)
     {
         Id = id;
-        FirstName = firstName;
-        LastName = lastName;
-        Email = email;
+        FullName = fullName;
         PhoneNumber = phoneNumber;
         Location = location;
-        DonatedResources = donatedResources;
     }
 }

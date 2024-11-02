@@ -7,7 +7,7 @@ using Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace Application.Features.Requests.Queries;
+namespace Application.Features.Requests.Queries.GetList;
 
 public class GetListRequestQuery :IRequest<GetListResponse<GetListRequestListItemDto>>
 {
@@ -27,7 +27,8 @@ public class GetListRequestQuery :IRequest<GetListResponse<GetListRequestListIte
         public async Task<GetListResponse<GetListRequestListItemDto>> Handle(GetListRequestQuery request, CancellationToken cancellationToken)
         {
             Paginate<Request> requests =  await _requestRepository.GetListAsync(
-                include: r=>r.Include(r=>r.Shelter),
+                include: r => r.Include(r => r.Shelter).Include(r=>r.Resources)
+                    .Include(r=>r.Teams),
                 index: request.PageRequest.PageIndex,
                 size: request.PageRequest.PageSize,
                 cancellationToken : cancellationToken,

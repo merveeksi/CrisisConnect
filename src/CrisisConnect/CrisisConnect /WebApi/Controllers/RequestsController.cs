@@ -2,6 +2,7 @@ using Application.Features.Requests.Commands.Create;
 using Application.Features.Requests.Commands.Delete;
 using Application.Features.Requests.Commands.Update;
 using Application.Features.Requests.Queries;
+using Application.Features.Requests.Queries.GetList;
 using Application.Features.Requests.Queries.GetListByDynamic;
 using Core.Application.Requests;
 using Core.Application.Responses;

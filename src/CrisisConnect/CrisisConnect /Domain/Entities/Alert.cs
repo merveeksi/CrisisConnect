@@ -5,18 +5,28 @@ namespace Domain.Entities;
 
 public class Alert:Entity<Guid> //acil durum uyarısı
 {
-    public string Name { get; set; }
-    public string Message { get; set; }
-
-    public SeverityLevel Severity { get; set; } //acil durumun ciddiyeti, örneğin: hafif, orta, ciddi
-
-    public DateTime Datelssued { get; set; } //acil durum uyarısının verildiği zaman
-
-    public string Location { get; set; } //acil durumun meydana geldiği yer
+    public Guid DisasterId { get; set; }
+    public string Name { get; set; } //title gibi kullan
     
-    public string AlertType { get; set; } //acil durum tipi, örneğin: yangın, deprem
+    // Core alert information
+    public string Description { get; set; }
+    public AlertType Type { get; set; }
+    public SeverityLevel Severity { get; set; }
     
-    public string AlertStatus { get; set; } //acil durumun durumu, örneğin: devam ediyor, sona erdi
+    // Temporal information
+    public DateTime IssuedAt { get; set; }
+    public DateTime? ResolvedAt { get; set; }
+    
+    // Geographical information
+    public GeoLocation Location { get; set; }
+    
+    // Status tracking
+    public AlertStatus Status { get; set; }
+    public string Instructions { get; set; }
+    
+    // Audit information
+    public Guid IssuedBy { get; set; }
+    public DateTime LastUpdatedAt { get; set; }
     
     
     // Navigation Properties
@@ -25,17 +35,31 @@ public class Alert:Entity<Guid> //acil durum uyarısı
     public Alert()
     {
     }
-    
-    public Alert(Guid id, string name, string message, SeverityLevel severity, 
-        DateTime datelssued, string location, string alertType, string alertStatus):this()
+
+    public Alert(Guid id, Guid disasterId, string name, string description, AlertType type, SeverityLevel severity, DateTime issuedAt, DateTime? resolvedAt, GeoLocation location, AlertStatus status, string instructions, Guid issuedBy, DateTime lastUpdatedAt):this()
     {
         Id = id;
+        DisasterId = disasterId;
         Name = name;
-        Message = message;
+        Description = description;
+        Type = type;
         Severity = severity;
-        Datelssued = datelssued;
+        IssuedAt = issuedAt;
+        ResolvedAt = resolvedAt;
         Location = location;
-        AlertType = alertType;
-        AlertStatus = alertStatus;
+        Status = status;
+        Instructions = instructions;
+        IssuedBy = issuedBy;
+        LastUpdatedAt = lastUpdatedAt;
+    }
+    
+    public class GeoLocation
+    {
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
+        public string Address { get; set; }
+        public string City { get; set; }
+        public string Region { get; set; }
+        public string Country { get; set; }
     }
 }

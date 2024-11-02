@@ -1,6 +1,4 @@
-using Domain.Enums;
-
-namespace Application.Features.Disasters.Queries.GetListByDynamic;
+namespace Application.Features.Teames.Queries.GetListByDynamic;
 
 public class GetListByDynamicTeamListItemDto
 {

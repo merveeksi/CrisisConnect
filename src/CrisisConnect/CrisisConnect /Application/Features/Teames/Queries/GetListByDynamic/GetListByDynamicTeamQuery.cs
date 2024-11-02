@@ -1,4 +1,3 @@
-using Application.Features.Disasters.Queries.GetListByDynamic;
 using Application.Services.Repositories;
 using AutoMapper;
 using Core.Application.Requests;
@@ -9,7 +8,7 @@ using Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace Application.Features.Teams.Queries.GetListByDynamic;
+namespace Application.Features.Teames.Queries.GetListByDynamic;
 
 public class GetListByDynamicTeamQuery: IRequest<GetListResponse<GetListByDynamicTeamListItemDto>>
 {
@@ -30,7 +29,8 @@ public class GetListByDynamicTeamQuery: IRequest<GetListResponse<GetListByDynami
         {
             Paginate<Team> teams = await _teamRepository.GetListByDynamicAsync(
                 request.DynamicQuery,
-                include: t => t.Include(t => t.Volunteer).Include(t=>t.Center),
+                include: t => t.Include(t => t.Volunteer).Include(t=>t.Center)
+                   .Include(t=>t.Requests),
                 index: request.PageRequest.PageIndex,
                 size: request.PageRequest.PageSize
             );

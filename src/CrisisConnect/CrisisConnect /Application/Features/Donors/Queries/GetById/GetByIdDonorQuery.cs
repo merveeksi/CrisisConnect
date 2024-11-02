@@ -1,4 +1,3 @@
-using Application.Features.Centers.Queries.GetById;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;

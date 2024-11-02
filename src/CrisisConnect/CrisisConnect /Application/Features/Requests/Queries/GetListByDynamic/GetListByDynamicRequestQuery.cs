@@ -29,7 +29,8 @@ public class GetListByDynamicRequestQuery: IRequest<GetListResponse<GetListByDyn
         {
             Paginate<Request> requests = await _requestRepository.GetListByDynamicAsync(
                 request.DynamicQuery,
-                include: r => r.Include(r => r.Shelter),
+                include: r => r.Include(r => r.Shelter).Include(r=>r.Resources)
+                    .Include(r=>r.Teams),
                 index: request.PageRequest.PageIndex,
                 size: request.PageRequest.PageSize
             );

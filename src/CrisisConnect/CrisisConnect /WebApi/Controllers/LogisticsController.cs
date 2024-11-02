@@ -3,6 +3,7 @@ using Application.Features.Logistics.Commands.Delete;
 using Application.Features.Logistics.Commands.Update;
 using Application.Features.Logistics.Queries;
 using Application.Features.Logistics.Queries.GetById;
+using Application.Features.Logistics.Queries.GetList;
 using Core.Application.Requests;
 using Core.Application.Responses;
 using Microsoft.AspNetCore.Http;

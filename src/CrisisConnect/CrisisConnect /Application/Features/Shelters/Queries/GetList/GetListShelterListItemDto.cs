@@ -1,4 +1,4 @@
-namespace Application.Features.Shelters.Queries;
+namespace Application.Features.Shelters.Queries.GetList;
 
 public class GetListShelterListItemDto
 {

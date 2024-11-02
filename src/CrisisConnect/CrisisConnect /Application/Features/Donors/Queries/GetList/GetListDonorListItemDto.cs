@@ -1,4 +1,4 @@
-namespace Application.Features.Donors.Queries;
+namespace Application.Features.Donors.Queries.GetList;
 
 public class GetListDonorListItemDto
 {

@@ -1,4 +1,4 @@
-namespace Application.Features.Volunteers.Queries;
+namespace Application.Features.Volunteers.Queries.GetList;
 
 public class GetListVolunteerListItemDto
 {

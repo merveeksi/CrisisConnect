@@ -1,4 +1,4 @@
-namespace Application.Features.Centers.Queries;
+namespace Application.Features.Centers.Queries.GetList;
 
 public class GetListCenterListItemDto
 {

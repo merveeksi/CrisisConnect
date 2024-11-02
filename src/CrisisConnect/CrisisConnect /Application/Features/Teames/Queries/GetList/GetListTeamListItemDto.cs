@@ -1,4 +1,4 @@
-namespace Application.Features.Teames.Queries;
+namespace Application.Features.Teames.Queries.GetList;
 
 public class GetListTeamListItemDto
 {

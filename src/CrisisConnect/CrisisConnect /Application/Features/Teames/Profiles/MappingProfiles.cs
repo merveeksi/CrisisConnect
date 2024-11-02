@@ -1,8 +1,9 @@
-using Application.Features.Disasters.Queries.GetListByDynamic;
 using Application.Features.Teames.Commands.Create;
 using Application.Features.Teames.Commands.Delete;
 using Application.Features.Teames.Commands.Update;
 using Application.Features.Teames.Queries;
+using Application.Features.Teames.Queries.GetList;
+using Application.Features.Teames.Queries.GetListByDynamic;
 using AutoMapper;
 using Core.Application.Responses;
 using Core.Persistence.Paging;

@@ -7,7 +7,7 @@ using Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace Application.Features.Volunteers.Queries;
+namespace Application.Features.Volunteers.Queries.GetList;
 
 public class GetListVolunteerQuery : IRequest<GetListResponse<GetListVolunteerListItemDto>>
 {
@@ -27,6 +27,8 @@ public class GetListVolunteerQuery : IRequest<GetListResponse<GetListVolunteerLi
         public async Task<GetListResponse<GetListVolunteerListItemDto>> Handle(GetListVolunteerQuery request, CancellationToken cancellationToken)
         {
             Paginate<Volunteer> volunteers = await _volunteerRepository.GetListAsync(
+                include: v => v.Include(v => v.Shelter).Include(v=>v.Team)
+                    .Include(v=>v.Requests),
                 index: request.PageRequest.PageIndex,
                 size: request.PageRequest.PageSize,
                 cancellationToken: cancellationToken,

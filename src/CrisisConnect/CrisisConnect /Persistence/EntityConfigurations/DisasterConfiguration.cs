@@ -12,6 +12,7 @@ public class DisasterConfiguration:IEntityTypeConfiguration<Disaster>
         
         // Primary Key
         builder.Property(d => d.Id).HasColumnName("Id").IsRequired();
+        builder.Property(a => a.CenterId).IsRequired(false);
 
         // Properties
         builder.Property(d => d.Name).HasColumnName("Name").IsRequired().HasMaxLength(100); // Limiting length to avoid excessive data storage

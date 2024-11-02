@@ -6,6 +6,8 @@ namespace Domain.Entities;
 public class Shelter:Entity<Guid> //barınak
 {
     public Guid VolunteerId { get; set; }
+    public Guid DisasterId { get; set; }
+    public Guid RequestId { get; set; }
     
     // Basic Information
     public string Name { get; set; }
@@ -36,21 +38,23 @@ public class Shelter:Entity<Guid> //barınak
     // Navigation Properties
     public virtual Request? Request { get; set; }
     public virtual Disaster? Disaster { get; set; }
-    public virtual Volunteer? Volunteer { get; set; } // Yönetici, başkan
-    public virtual ICollection<Volunteer> Volunteers { get; set; } // Gönüllüler
+    public virtual Volunteer? Volunteer { get; set; }
+    public virtual ICollection<Resource> Resources { get; set; }
     
     
     public Shelter()
     {
-        Volunteers = new HashSet<Volunteer>();
+        Resources = new HashSet<Resource>();
     }
 
-    public Shelter(Guid id, Guid volunteerId, string name, ShelterStatus status, string city, string district, string address, 
+    public Shelter(Guid id, Guid volunteerId, Guid disasterId, Guid requestId, string name, ShelterStatus status, string city, string district, string address, 
         double? latitude, double? longitude, int totalCapacity, int currentOccupancy, bool hasAccessibility, string phoneNumber, 
         string emergencyPhone, bool hasMedicalSupport, bool hasKitchen, DateTime openedAt, DateTime? closedAt):this()
     {
         Id = id;
         VolunteerId = volunteerId;
+        DisasterId = disasterId;
+        RequestId = requestId;
         Name = name;
         Status = status;
         City = city;

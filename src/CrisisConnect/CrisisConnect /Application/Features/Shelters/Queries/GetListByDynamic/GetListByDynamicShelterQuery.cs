@@ -1,4 +1,3 @@
-using Application.Features.Disasters.Queries.GetListByDynamic;
 using Application.Services.Repositories;
 using AutoMapper;
 using Core.Application.Requests;
@@ -30,7 +29,8 @@ public class GetListByDynamicShelterQuery: IRequest<GetListResponse<GetListByDyn
         {
             Paginate<Shelter> shelters = await _shelterRepository.GetListByDynamicAsync(
                 request.DynamicQuery,
-                include: d => d.Include(d => d.Volunteer).Include(d => d.Volunteers).Include(s => s.Disaster),
+                include: s => s.Include(s => s.Volunteer).Include(s => s.Disaster)
+                    .Include(s=>s.Request).Include(s=>s.Resources),
                 index: request.PageRequest.PageIndex,
                 size: request.PageRequest.PageSize
             );

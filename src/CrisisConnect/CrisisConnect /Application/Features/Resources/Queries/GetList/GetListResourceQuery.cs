@@ -7,7 +7,7 @@ using Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace Application.Features.Resources.Queries;
+namespace Application.Features.Resources.Queries.GetList;
 
 public class GetListResourceQuery:IRequest<GetListResponse<GetListResourceListItemDto>>
 {
@@ -27,6 +27,8 @@ public class GetListResourceQuery:IRequest<GetListResponse<GetListResourceListIt
         public async Task<GetListResponse<GetListResourceListItemDto>> Handle(GetListResourceQuery request, CancellationToken cancellationToken)
         {
             Paginate<Resource> resources = await _resourceRepository.GetListAsync(
+                include: r => r.Include(r => r.Centers).Include(r=>r.Requests)
+                    .Include(r=>r.Shelters).Include(r=>r.Donors),
                 index: request.PageRequest.PageIndex,
                 size: request.PageRequest.PageSize,
                 cancellationToken: cancellationToken,

@@ -3,6 +3,8 @@ using Application.Features.Shelters.Commands.Create;
 using Application.Features.Shelters.Commands.Delete;
 using Application.Features.Shelters.Commands.Update;
 using Application.Features.Shelters.Queries;
+using Application.Features.Shelters.Queries.GetList;
+using Application.Features.Shelters.Queries.GetListByDynamic;
 using AutoMapper;
 using Core.Application.Responses;
 using Core.Persistence.Paging;

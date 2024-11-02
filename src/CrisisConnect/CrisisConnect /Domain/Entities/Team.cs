@@ -6,6 +6,7 @@ namespace Domain.Entities;
 public class Team:Entity<Guid> //müdahale ekibi
 {
     public Guid VolunteerId { get; set; }
+    public Guid CenterId { get; set; }
     
     // Basic Information
     public string Name { get; set; }
@@ -29,21 +30,21 @@ public class Team:Entity<Guid> //müdahale ekibi
     
     
     // Navigation property
-    public virtual Volunteer? Volunteer { get; set; }
     public virtual Center? Center { get; set; }
-    
-    
+    public virtual Volunteer? Volunteer { get; set; }
+    public virtual ICollection<Request> Requests { get; set; }
     
     public Team()
     {
-        
+        Requests = new HashSet<Request>();
     }
 
-    public Team(Guid id, Guid volunteerId, string name, TeamSpecialty specialty, TeamStatus status, int maxCapacity, 
+    public Team(Guid id, Guid volunteerId, Guid centerId, string name, TeamSpecialty specialty, TeamStatus status, int maxCapacity, 
         int currentMemberCount, bool isActive, string currentMission, DateTime? missionStartTime, DateTime? expectedEndTime, 
         string currentLocation, double? latitude, double? longitude) : this()
     {
         VolunteerId = volunteerId;
+        CenterId = centerId;
         Name = name;
         Specialty = specialty;
         Status = status;

@@ -9,6 +9,7 @@ public class RequestConfiguration: IEntityTypeConfiguration<Request>
     public void Configure(EntityTypeBuilder<Request> builder)
     {
         builder.ToTable("Requests").HasKey(r => r.Id);
+        builder.Property(a => a.ShelterId).IsRequired(false);
         
         
         // Primary Key

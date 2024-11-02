@@ -9,6 +9,8 @@ public class TeamConfiguration: IEntityTypeConfiguration<Team>
     public void Configure(EntityTypeBuilder<Team> builder)
     {
         builder.ToTable("Teams").HasKey(t => t.Id);
+        builder.Property(a => a.CenterId).IsRequired(false);
+        builder.Property(a => a.VolunteerId).IsRequired(false);
         
         // Primary Key
         builder.Property(t => t.Id).HasColumnName("Id").IsRequired();

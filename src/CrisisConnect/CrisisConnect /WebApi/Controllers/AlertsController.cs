@@ -1,11 +1,10 @@
 using Application.Features.Alerts.Commands.Create;
 using Application.Features.Alerts.Commands.Delete;
 using Application.Features.Alerts.Commands.Update;
-using Application.Features.Alerts.Queries;
-using Application.Features.Alerts.Queries.GetListByDynamic;
+using Application.Features.Alerts.Queries.GetById;
+using Application.Features.Alerts.Queries.GetList;
 using Core.Application.Requests;
 using Core.Application.Responses;
-using Core.Persistence.Dynamic;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers;
@@ -22,11 +21,11 @@ namespace WebApi.Controllers;
             return Ok(response);
         }
         
-        [HttpPost("GetList/ByDynamic")]
-        public async Task<IActionResult> GetListByDynamic([FromQuery] PageRequest pageRequest, [FromBody] DynamicQuery? dynamicQuery=null)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById([FromRoute] Guid id)
         {
-            GetListByDynamicAlertQuery getListByDynamicAlertQuery = new() { PageRequest = pageRequest, DynamicQuery = dynamicQuery };
-            GetListResponse<GetListByDynamicAlertListItemDto> response = await Mediator.Send(getListByDynamicAlertQuery);
+            GetByIdAlertQuery getByIdCenterQuery = new() { Id = id };
+            GetByIdAlertResponse response = await Mediator.Send(getByIdCenterQuery);
             return Ok(response);
         }
         

@@ -1,6 +1,6 @@
 using Domain.Enums;
 
-namespace Application.Features.Disasters.Queries.GetListByDynamic;
+namespace Application.Features.Shelters.Queries.GetListByDynamic;
 
 public class GetListByDynamicShelterListItemDto
 {

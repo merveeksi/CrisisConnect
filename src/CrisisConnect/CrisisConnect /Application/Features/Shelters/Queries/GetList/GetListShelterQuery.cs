@@ -7,7 +7,7 @@ using Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace Application.Features.Shelters.Queries;
+namespace Application.Features.Shelters.Queries.GetList;
 
 public class GetListShelterQuery:IRequest<GetListResponse<GetListShelterListItemDto>>
 {
@@ -27,7 +27,8 @@ public class GetListShelterQuery:IRequest<GetListResponse<GetListShelterListItem
         public async Task<GetListResponse<GetListShelterListItemDto>> Handle(GetListShelterQuery request, CancellationToken cancellationToken)
         {
             Paginate<Shelter> shelters =  await _shelterRepository.GetListAsync(
-                include: s=>s.Include(s=>s.Volunteer).Include(s=>s.Volunteers).Include(s => s.Disaster),
+                include: s => s.Include(s => s.Volunteer).Include(s => s.Disaster)
+                    .Include(s=>s.Request).Include(s=>s.Resources),
                 index: request.PageRequest.PageIndex,
                 size: request.PageRequest.PageSize,
                 cancellationToken : cancellationToken,

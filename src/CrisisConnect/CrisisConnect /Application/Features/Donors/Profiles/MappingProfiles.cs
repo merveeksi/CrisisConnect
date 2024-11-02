@@ -1,9 +1,8 @@
-using Application.Features.Centers.Queries;
-using Application.Features.Centers.Queries.GetById;
 using Application.Features.Donors.Commands.Create;
 using Application.Features.Donors.Commands.Delete;
 using Application.Features.Donors.Commands.Update;
-using Application.Features.Donors.Queries;
+using Application.Features.Donors.Queries.GetById;
+using Application.Features.Donors.Queries.GetList;
 using AutoMapper;
 using Core.Application.Responses;
 using Core.Persistence.Paging;
@@ -24,8 +23,8 @@ public class MappingProfiles : Profile
         CreateMap<Donor, DeleteDonorCommand>().ReverseMap();
         CreateMap<Donor, DeletedDonorResponse>().ReverseMap();
        
-        CreateMap<Paginate<Donor>, GetListResponse<GetListDonorListItemDto>>().ReverseMap();
         CreateMap<Center, GetByIdDonorResponse>().ReverseMap();
+        CreateMap<Paginate<Donor>, GetListResponse<GetListDonorListItemDto>>().ReverseMap();
         CreateMap<Paginate<Donor>, GetListResponse<GetListDonorListItemDto>>().ReverseMap();
     }
 }

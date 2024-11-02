@@ -51,10 +51,14 @@ public class Request:Entity<Guid> //yardım talebi
     
     //Navigation Properties
     public virtual Shelter? Shelter { get; set; }
+    public virtual ICollection<Resource> Resources { get; set; }
+    public virtual ICollection<Team> Teams { get; set; }
     
     
     public Request()
     {
+        Resources = new HashSet<Resource>();
+        Teams = new HashSet<Team>();
     }
 
     public Request(Guid id, Guid shelterId, string title, string description, RequestType type, RequestStatus status, PriorityLevel priority, 

@@ -3,6 +3,7 @@ using Application.Features.Shelters.Commands.Create;
 using Application.Features.Shelters.Commands.Delete;
 using Application.Features.Shelters.Commands.Update;
 using Application.Features.Shelters.Queries;
+using Application.Features.Shelters.Queries.GetList;
 using Application.Features.Shelters.Queries.GetListByDynamic;
 using Core.Application.Requests;
 using Core.Application.Responses;

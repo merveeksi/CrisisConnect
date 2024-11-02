@@ -12,6 +12,9 @@ public class ShelterConfiguration: IEntityTypeConfiguration<Shelter>
         
         // Primary Key
         builder.Property(s => s.Id).HasColumnName("Id").IsRequired();
+        builder.Property(a => a.RequestId).IsRequired(false);
+        builder.Property(a => a.DisasterId).IsRequired(false);
+        builder.Property(a => a.VolunteerId).IsRequired(false);
 
         // Basic Information
         builder.Property(s => s.Name).HasColumnName("Name").IsRequired().HasMaxLength(100);

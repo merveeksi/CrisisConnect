@@ -5,9 +5,8 @@ using Core.Application.Responses;
 using Core.Persistence.Paging;
 using Domain.Entities;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
-namespace Application.Features.Logistics.Queries;
+namespace Application.Features.Logistics.Queries.GetList;
 
 public class GetListLogisticQuery : IRequest<GetListResponse<GetListLogisticListItemDto>>
 {

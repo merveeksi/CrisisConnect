@@ -1,4 +1,4 @@
-namespace Application.Features.Centers.Queries.GetById;
+namespace Application.Features.Donors.Queries.GetById;
 
 public class GetByIdDonorResponse
 {

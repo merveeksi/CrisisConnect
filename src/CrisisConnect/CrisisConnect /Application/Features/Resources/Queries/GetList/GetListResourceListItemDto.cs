@@ -1,4 +1,4 @@
-namespace Application.Features.Resources.Queries;
+namespace Application.Features.Resources.Queries.GetList;
 
 public class GetListResourceListItemDto
 {

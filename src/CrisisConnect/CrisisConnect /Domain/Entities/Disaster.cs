@@ -44,7 +44,6 @@ public class Disaster:Entity<Guid> //afet
     
     //Nesnel ilişkilendirmeleri, bire bir (one-to-many), navigation properties, include edilecekler
     public virtual Center? Center { get; set; }
-   
     public virtual ICollection<Shelter> Shelters { get; set; }
     public virtual ICollection<Alert> Alerts { get; set; }
     
