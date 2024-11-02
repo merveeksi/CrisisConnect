@@ -30,13 +30,13 @@ public class Team:Entity<Guid> //müdahale ekibi
     
     // Navigation property
     public virtual Volunteer? Volunteer { get; set; }
+    public virtual Center? Center { get; set; }
     
-    public virtual ICollection<Volunteer> Volunteers { get; set; }
     
     
     public Team()
     {
-        Volunteers = new HashSet<Volunteer>();
+        
     }
 
     public Team(Guid id, Guid volunteerId, string name, TeamSpecialty specialty, TeamStatus status, int maxCapacity, 

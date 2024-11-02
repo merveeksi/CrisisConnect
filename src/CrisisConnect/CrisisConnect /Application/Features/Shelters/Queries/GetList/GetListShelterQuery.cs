@@ -27,7 +27,7 @@ public class GetListShelterQuery:IRequest<GetListResponse<GetListShelterListItem
         public async Task<GetListResponse<GetListShelterListItemDto>> Handle(GetListShelterQuery request, CancellationToken cancellationToken)
         {
             Paginate<Shelter> shelters =  await _shelterRepository.GetListAsync(
-                include: s=>s.Include(s=>s.Volunteer),
+                include: s=>s.Include(s=>s.Volunteer).Include(s=>s.Volunteers).Include(s => s.Disaster),
                 index: request.PageRequest.PageIndex,
                 size: request.PageRequest.PageSize,
                 cancellationToken : cancellationToken,

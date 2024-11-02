@@ -42,8 +42,12 @@ public class ShelterConfiguration: IEntityTypeConfiguration<Shelter>
         // Shelter ile Volunteer arasında 1-1 ilişki
         builder.HasOne(s => s.Volunteer)
             .WithOne(v => v.Shelter)
-            .HasForeignKey<Shelter>(s => s.Id)
-            .OnDelete(DeleteBehavior.NoAction);
+            .HasForeignKey<Shelter>(s => s.Id);
+        
+        // Shelter ile Disaster arasında Bire Çok ilişki
+        builder.HasOne(s => s.Disaster)
+            .WithMany(d => d.Shelters);
+        
         builder.HasQueryFilter(s => !s.DeletedDate.HasValue);
     }
 }

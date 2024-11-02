@@ -30,7 +30,7 @@ public class GetListByDynamicTeamQuery: IRequest<GetListResponse<GetListByDynami
         {
             Paginate<Team> teams = await _teamRepository.GetListByDynamicAsync(
                 request.DynamicQuery,
-                include: d => d.Include(d => d.Volunteer),
+                include: t => t.Include(t => t.Volunteer).Include(t=>t.Center),
                 index: request.PageRequest.PageIndex,
                 size: request.PageRequest.PageSize
             );

@@ -11,18 +11,11 @@ public class Resource:Entity<Guid> //kaynak
     public int Quantity { get; set; } //kaynağın miktarı
     
     public string Location { get; set; } //kaynağın bulunduğu yer
-
-    public virtual ICollection<Resource> Resources { get; set; }
-    public virtual ICollection<Request> Requests { get; set; }
-    public virtual ICollection<Logistic> Logistics { get; set; }
-    public virtual ICollection<RequestResource> RequestResources { get; set; }
+    
+   
     
     public Resource()
     {
-        Resources = new HashSet<Resource>();
-        Requests = new HashSet<Request>();
-        Logistics = new HashSet<Logistic>();
-        RequestResources = new HashSet<RequestResource>();
     }
     
     public Resource(Guid id, string name, ResourceType type, int quantity, string location):this()

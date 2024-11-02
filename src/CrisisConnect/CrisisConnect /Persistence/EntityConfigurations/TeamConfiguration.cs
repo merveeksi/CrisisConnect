@@ -39,6 +39,10 @@ public class TeamConfiguration: IEntityTypeConfiguration<Team>
             .WithOne(v => v.Team)
             .HasForeignKey<Team>(t => t.Id);
         
+        // Team ile Center arasında Bire Çok ilişki
+        builder.HasOne(t => t.Center)
+            .WithMany(c => c.Teams);
+        
         
         builder.HasQueryFilter(t => !t.DeletedDate.HasValue); 
     }

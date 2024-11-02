@@ -22,10 +22,11 @@ public class Center : Entity<Guid> //yardım merkezi
     
     // Primary relationships
     public virtual Disaster? Disaster { get; set; }
+    public ICollection<Team> Teams { get; set; }
     
     public Center()
     {
-        
+        Teams = new HashSet<Team>(); 
     }
     
     public Center(Guid id, string name, string location, int capacity, int currentStaff, 

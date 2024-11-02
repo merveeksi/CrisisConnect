@@ -5,6 +5,7 @@ using Core.Application.Responses;
 using Core.Persistence.Paging;
 using Domain.Entities;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Alerts.Queries;
 
@@ -26,6 +27,7 @@ public class GetListAlertQuery :IRequest<GetListResponse<GetListAlertListItemDto
         public async Task<GetListResponse<GetListAlertListItemDto>> Handle(GetListAlertQuery request, CancellationToken cancellationToken)
         {
             Paginate<Alert> alerts = await _alertRepository.GetListAsync(
+                include: a => a.Include(a => a.Disaster),
                 index: request.PageRequest.PageIndex,
                 size: request.PageRequest.PageSize,
                 cancellationToken: cancellationToken,

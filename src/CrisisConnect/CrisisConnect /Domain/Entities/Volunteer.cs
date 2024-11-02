@@ -24,9 +24,6 @@ public class Volunteer:Entity<Guid> //gönüllü
     // Navigation Properties
     public virtual Shelter? Shelter { get; set; }
     public virtual Team? Team { get; set; }
-    
-    
-    
     public virtual ICollection<Request> Requests { get; set; }
 
     public Volunteer()

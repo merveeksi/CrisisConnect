@@ -44,25 +44,15 @@ public class Disaster:Entity<Guid> //afet
     
     //Nesnel ilişkilendirmeleri, bire bir (one-to-many), navigation properties, include edilecekler
     public virtual Center? Center { get; set; }
-    
-    
-    
-                            //Çoklu ilişkileri düzenle//
-    
-    //ICollection kullanarak ilişkileri (one-to-many veya many-to-one) modelleyebilirim
-    public virtual ICollection<Volunteer> Volunteers { get; set; } 
-    public virtual ICollection<Request> Requests { get; set; } 
+   
     public virtual ICollection<Shelter> Shelters { get; set; }
-    public virtual ICollection<Logistic> Logistics { get; set; } //withMany için
+    public virtual ICollection<Alert> Alerts { get; set; }
     
     
     public Disaster()
     { 
-        Volunteers = new HashSet<Volunteer>(); 
-        Requests = new HashSet<Request>(); 
         Shelters = new HashSet<Shelter>();
-        Logistics = new HashSet<Logistic>();
-        
+        Alerts = new HashSet<Alert>();
     }
 
     public Disaster(Guid Id, Guid CenterId, string Name, DisasterType Type, DisasterStatus Status, 

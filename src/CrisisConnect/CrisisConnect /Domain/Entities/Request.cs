@@ -52,23 +52,16 @@ public class Request:Entity<Guid> //yardım talebi
     //Navigation Properties
     public virtual Shelter? Shelter { get; set; }
     
-    public virtual ICollection<Resource> Resources { get; set; }
-    public virtual ICollection<RequestResource> RequestResources { get; set; }
-    
     
     public Request()
     {
-        Resources = new HashSet<Resource>();
-        RequestResources = new HashSet<RequestResource>();
-       
     }
 
     public Request(Guid id, Guid shelterId, string title, string description, RequestType type, RequestStatus status, PriorityLevel priority, 
         string city, string district, string detailedAddress, double? latitude, double? longitude, int requiredQuantity, int? fulfilledQuantity, 
         string specialRequirements, bool requiresSpecialTransport, int numberOfPeopleAffected, DateTime dateRequested, DateTime? dateNeededBy, 
         DateTime? dateAssigned, DateTime? dateFulfilled, string requestorName, string contactPhone, string alternateContactPhone, bool isUrgent, 
-        string cancellationReason, string notes, DateTime createdAt, DateTime? lastUpdatedAt, Shelter? shelter, ICollection<Resource> resources, 
-        ICollection<RequestResource> requestResources):this()
+        string cancellationReason, string notes, DateTime createdAt, DateTime? lastUpdatedAt, Shelter? shelter):this()
     {
         Id = id;
         ShelterId = shelterId;
@@ -100,7 +93,5 @@ public class Request:Entity<Guid> //yardım talebi
         CreatedAt = createdAt;
         LastUpdatedAt = lastUpdatedAt;
         Shelter = shelter;
-        Resources = resources;
-        RequestResources = requestResources;
     }
 }

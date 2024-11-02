@@ -30,7 +30,7 @@ public class GetListByDynamicShelterQuery: IRequest<GetListResponse<GetListByDyn
         {
             Paginate<Shelter> shelters = await _shelterRepository.GetListByDynamicAsync(
                 request.DynamicQuery,
-                include: d => d.Include(d => d.Volunteer),
+                include: d => d.Include(d => d.Volunteer).Include(d => d.Volunteers).Include(s => s.Disaster),
                 index: request.PageRequest.PageIndex,
                 size: request.PageRequest.PageSize
             );

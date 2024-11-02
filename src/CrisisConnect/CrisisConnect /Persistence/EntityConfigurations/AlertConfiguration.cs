@@ -22,6 +22,10 @@ public class AlertConfiguration: IEntityTypeConfiguration<Alert>
         builder.Property(a => a.UpdatedDate).HasColumnName("UpdatedDate");
         builder.Property(a => a.DeletedDate).HasColumnName("DeletedDate");
         
+        // Alert ile Disaster arasında Bire Çok ilişki
+        builder.HasOne(a => a.Disaster)
+            .WithMany(d => d.Alerts);
+        
         builder.HasQueryFilter(a => !a.DeletedDate.HasValue);
     }
 }

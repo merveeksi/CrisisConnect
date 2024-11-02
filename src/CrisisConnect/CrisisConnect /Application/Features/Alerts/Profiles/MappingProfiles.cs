@@ -2,8 +2,7 @@ using Application.Features.Alerts.Commands.Create;
 using Application.Features.Alerts.Commands.Delete;
 using Application.Features.Alerts.Commands.Update;
 using Application.Features.Alerts.Queries;
-using Application.Features.Alerts.Queries.GetById;
-using Application.Features.Disasters.Commands.Update;
+using Application.Features.Alerts.Queries.GetListByDynamic;
 using AutoMapper;
 using Core.Application.Responses;
 using Core.Persistence.Paging;
@@ -39,7 +38,7 @@ public class MappingProfiles : Profile
         //     .ReverseMap();
         
         CreateMap<Alert, GetListAlertListItemDto>().ReverseMap();
-        CreateMap<Alert, GetByIdAlertResponse>().ReverseMap();
         CreateMap<Paginate<Alert>, GetListResponse<GetListAlertListItemDto>>().ReverseMap();
+        CreateMap<Paginate<Alert>, GetListResponse<GetListByDynamicAlertListItemDto>>().ReverseMap();
     }
 }

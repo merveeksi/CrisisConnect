@@ -35,14 +35,19 @@ public class Shelter:Entity<Guid> //barınak
 
     // Navigation Properties
     public virtual Request? Request { get; set; }
-    public virtual Volunteer? Volunteer { get; set; }
+    public virtual Disaster? Disaster { get; set; }
+    public virtual Volunteer? Volunteer { get; set; } // Yönetici, başkan
+    public virtual ICollection<Volunteer> Volunteers { get; set; } // Gönüllüler
+    
     
     public Shelter()
     {
-        
+        Volunteers = new HashSet<Volunteer>();
     }
 
-    public Shelter(Guid id, Guid volunteerId, string name, ShelterStatus status, string city, string district, string address, double? latitude, double? longitude, int totalCapacity, int currentOccupancy, bool hasAccessibility, string phoneNumber, string emergencyPhone, bool hasMedicalSupport, bool hasKitchen, DateTime openedAt, DateTime? closedAt):this()
+    public Shelter(Guid id, Guid volunteerId, string name, ShelterStatus status, string city, string district, string address, 
+        double? latitude, double? longitude, int totalCapacity, int currentOccupancy, bool hasAccessibility, string phoneNumber, 
+        string emergencyPhone, bool hasMedicalSupport, bool hasKitchen, DateTime openedAt, DateTime? closedAt):this()
     {
         Id = id;
         VolunteerId = volunteerId;

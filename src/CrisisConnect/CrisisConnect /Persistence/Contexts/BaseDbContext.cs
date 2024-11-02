@@ -19,7 +19,6 @@ public class BaseDbContext : DbContext
     public DbSet<Shelter> Shelters { get; set; }
     public DbSet<Team> Teams { get; set; }
     public DbSet<Volunteer> Volunteers { get; set; }
-    public DbSet<RequestResource> RequestResources { get; set; }
     
     public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)
     {

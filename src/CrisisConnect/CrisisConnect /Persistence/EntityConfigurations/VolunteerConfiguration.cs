@@ -27,6 +27,10 @@ public class VolunteerConfiguration: IEntityTypeConfiguration<Volunteer>
         builder.Property(v => v.UpdatedDate).HasColumnName("UpdatedDate");
         builder.Property(v => v.DeletedDate).HasColumnName("DeletedDate");
         
+        // Volunteer ile Shelter Arasında Bire Çok ilişki
+        builder.HasOne(v => v.Shelter)
+            .WithMany(s => s.Volunteers);
+        
         builder.HasQueryFilter(v => !v.DeletedDate.HasValue); // Soft delete
     }
 }
