@@ -5,8 +5,8 @@ namespace Domain.Entities;
 
 public class Team:Entity<Guid> //müdahale ekibi
 {
-    public Guid VolunteerId { get; set; }
-    public Guid CenterId { get; set; }
+    public Guid? VolunteerId { get; set; }
+    public Guid? CenterId { get; set; }
     
     // Basic Information
     public string Name { get; set; }

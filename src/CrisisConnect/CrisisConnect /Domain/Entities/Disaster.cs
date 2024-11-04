@@ -7,7 +7,7 @@ namespace Domain.Entities;
 public class Disaster:Entity<Guid> //afet
 {
     // Primary relationships
-    public Guid CenterId { get; set; }
+    public Guid? CenterId { get; set; }
     
     // Basic Information
     public string Name { get; set; }
@@ -21,8 +21,8 @@ public class Disaster:Entity<Guid> //afet
     public double? Longitude { get; set; }
     
     // Timing Information
-    public DateTime DateOccurred { get; set; }
-    public DateTime? DateResolved { get; set; }
+    public DateTime DateOccurred { get; set; } 
+    public DateTime? DateResolved { get; set; } 
     
     // Impact Assessment
     public int Magnitude { get; set; }

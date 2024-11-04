@@ -9,28 +9,21 @@
     <ItemGroup>
       <Folder Include="Features\Alerts\Constants\" />
       <Folder Include="Features\Alerts\Rules\" />
-      <Folder Include="Features\Centers\Constants\" />
-      <Folder Include="Features\Centers\Rules\" />
       <Folder Include="Features\Disasters\Constants\" />
       <Folder Include="Features\Disasters\Rules\" />
       <Folder Include="Features\Donors\Constants\" />
       <Folder Include="Features\Donors\Rules\" />
       <Folder Include="Features\Logistics\Constants\" />
       <Folder Include="Features\Logistics\Rules\" />
-      <Folder Include="Features\Requests\Constants\" />
-      <Folder Include="Features\Requests\Rules\" />
-      <Folder Include="Features\Resources\Constants\" />
-      <Folder Include="Features\Resources\Rules\" />
       <Folder Include="Features\Shelters\Constants\" />
       <Folder Include="Features\Shelters\Rules\" />
       <Folder Include="Features\Teames\Constants\" />
       <Folder Include="Features\Teames\Rules\" />
-      <Folder Include="Features\Volunteers\Constants\" />
-      <Folder Include="Features\Volunteers\Rules\" />
     </ItemGroup>
 
     <ItemGroup>
       <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+      <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.10.0" />
       <PackageReference Include="MediatR" Version="12.4.1" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.10" />
     </ItemGroup>
@@ -38,6 +31,9 @@
     <ItemGroup>
       <Reference Include="Core.Application">
         <HintPath>..\..\..\corePackages\Core.Packages\Core.Application\bin\Debug\net8.0\Core.Application.dll</HintPath>
+      </Reference>
+      <Reference Include="Core.CrossCuttingConcerns">
+        <HintPath>..\..\..\corePackages\Core.Packages\Core.CrossCuttingConcerns\bin\Debug\net8.0\Core.CrossCuttingConcerns.dll</HintPath>
       </Reference>
       <Reference Include="Core.Persistence">
         <HintPath>..\..\..\corePackages\Core.Packages\Core.Persistence\bin\Debug\net8.0\Core.Persistence.dll</HintPath>

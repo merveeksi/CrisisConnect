@@ -1,5 +1,6 @@
-using System.Security.AccessControl;
 using Core.Persistence.Repositories;
+using Domain.Enums;
+using ResourceType = System.Security.AccessControl.ResourceType;
 
 namespace Domain.Entities;
 
@@ -18,11 +19,22 @@ public class Resource:Entity<Guid> //kaynak
     
     // Status
     public bool IsAvailable { get; set; }
-    public DateTime ExpiryDate { get; set; }
+    public DateTime? ExpiryDate { get; set; }
     
     // Tracking
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
+    
+    // Other
+    public bool IsActive { get; set; }
+    public ResourceStatus Status { get; set; }
+    public bool HasTransferRestriction { get; set; }
+    public bool IsPerishable { get; set; }
+    public DateTime? ExpirationDate { get; set; }
+    public bool RequiresColdChain { get; set; }
+    public int AvailableQuantity { get; set; }
+    public bool IsReserved { get; set; }
+    public int MinimumStockLevel { get; set; }
     
     // Navigation Properties
     public virtual ICollection<Center> Centers { get; set; }
@@ -37,13 +49,28 @@ public class Resource:Entity<Guid> //kaynak
         Shelters = new HashSet<Shelter>();
         Donors = new HashSet<Donor>();
     }
-    
-    public Resource(Guid id, string name, ResourceType type, int quantity, string location):this()
+
+    public Resource(Guid id, string name, ResourceType type, int quantity, string location, string description, string unit, 
+        int minimumQuantity, bool isAvailable, DateTime expiryDate, DateTime createdAt, DateTime updatedAt, bool isActive, 
+        ResourceStatus status, bool hasTransferRestriction, bool isPerishable, DateTime expirationDate, bool requiresColdChain):this()
     {
         Id = id;
         Name = name;
         Type = type;
         Quantity = quantity;
         Location = location;
+        Description = description;
+        Unit = unit;
+        MinimumQuantity = minimumQuantity;
+        IsAvailable = isAvailable;
+        ExpiryDate = expiryDate;
+        CreatedAt = createdAt;
+        UpdatedAt = updatedAt;
+        IsActive = isActive;
+        Status = status;
+        HasTransferRestriction = hasTransferRestriction;
+        IsPerishable = isPerishable;
+        ExpirationDate = expirationDate;
+        RequiresColdChain = requiresColdChain;
     }
 }

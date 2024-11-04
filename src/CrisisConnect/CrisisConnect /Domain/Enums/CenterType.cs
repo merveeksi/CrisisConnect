@@ -9,5 +9,6 @@ public enum CenterType
     ChildCare,
     Psychological,
     Rehabilitation,
-    MultiPurpose
+    MultiPurpose,
+    MainCenter
 }

@@ -5,7 +5,7 @@ namespace Domain.Entities;
 
 public class Alert:Entity<Guid> //acil durum uyarısı
 {
-    public Guid DisasterId { get; set; }
+    public Guid? DisasterId { get; set; }
     public string Name { get; set; } //title gibi kullan
     
     // Core alert information

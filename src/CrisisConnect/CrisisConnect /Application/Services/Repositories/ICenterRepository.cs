@@ -5,5 +5,5 @@ namespace Application.Services.Repositories;
 
 public interface ICenterRepository:IAsyncRepository<Center, Guid>, IRepository<Center, Guid>
 {
-    
+    Task<List<Center>> GetAllAsync();
 }

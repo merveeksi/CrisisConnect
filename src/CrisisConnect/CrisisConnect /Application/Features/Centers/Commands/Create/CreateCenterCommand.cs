@@ -1,5 +1,8 @@
 using Application.Features.Centers.Commands.Create;
+using Application.Features.Centers.Rules;
 using Application.Services.Repositories;
+using AutoMapper;
+using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Centers.Commands.Create;
@@ -14,19 +17,27 @@ public class CreateCenterCommand:IRequest<CreatedCenterResponse>
 public class CreateCenterCommandHandler : IRequestHandler<CreateCenterCommand, CreatedCenterResponse>
 {
     private readonly ICenterRepository _centerRepository;
+    private readonly IMapper _mapper;
+    private readonly CenterBusinessRules _centerBusinessRules;
+    
 
-    public CreateCenterCommandHandler(ICenterRepository centerRepository)
+    public CreateCenterCommandHandler(ICenterRepository centerRepository, IMapper mapper, CenterBusinessRules centerBusinessRules)
     {
         _centerRepository = centerRepository;
+        _mapper = mapper;
+        _centerBusinessRules = centerBusinessRules;
     }
 
-    public Task<CreatedCenterResponse>? Handle(CreateCenterCommand request, CancellationToken cancellationToken)
+    public async Task<CreatedCenterResponse>? Handle(CreateCenterCommand request, CancellationToken cancellationToken)
     {
-        CreatedCenterResponse createdCenterResponse = new CreatedCenterResponse();
-        createdCenterResponse.Name = request.Name;
-        createdCenterResponse.Location = request.Location;
-        createdCenterResponse.Capacity = request.Capacity;
-        createdCenterResponse.Id = new Guid();
-        return Task.FromResult(createdCenterResponse);
+        await _centerBusinessRules.CenterNameCannotBeDuplicatedWhenInserted(request.Name);
+        
+        Center center = _mapper.Map<Center>(request);
+        center.Id = Guid.NewGuid();
+
+        await _centerRepository.AddAsync(center);
+        
+        CreatedCenterResponse createdCenterResponse = _mapper.Map<CreatedCenterResponse>(center);
+        return createdCenterResponse;
     }
 }

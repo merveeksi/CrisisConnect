@@ -4,6 +4,7 @@ public enum ResourceType
 {
     Food=1,
     Water,
+    Blanket,
     Medicine,
     Clothing,
     Shelter,

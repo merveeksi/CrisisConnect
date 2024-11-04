@@ -5,9 +5,9 @@ namespace Domain.Entities;
 
 public class Shelter:Entity<Guid> //barınak
 {
-    public Guid VolunteerId { get; set; }
-    public Guid DisasterId { get; set; }
-    public Guid RequestId { get; set; }
+    public Guid? VolunteerId { get; set; }
+    public Guid? DisasterId { get; set; }
+    public Guid? RequestId { get; set; }
     
     // Basic Information
     public string Name { get; set; }

@@ -5,7 +5,7 @@ namespace Domain.Entities;
 
 public class Request:Entity<Guid> //yardım talebi
 {
-    public Guid ShelterId { get; set; } 
+    public Guid? ShelterId { get; set; } 
   
     // Basic Request Information
     public string Name { get; set; }

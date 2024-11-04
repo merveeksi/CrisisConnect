@@ -5,8 +5,8 @@ namespace Domain.Entities;
 public class Volunteer:Entity<Guid> //gönüllü
 { 
     // Assignment
-    public Guid TeamId { get; set; }
-    public Guid ShelterId { get; set; }
+    public Guid? TeamId { get; set; }
+    public Guid? ShelterId { get; set; }
     // Basic Information
     public string FirstName { get; set; }
     public string LastName { get; set; }
@@ -24,6 +24,10 @@ public class Volunteer:Entity<Guid> //gönüllü
     // Audit
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
+    
+    // Other
+    public string? IdentityNumber { get; set; }
+    public string? Qualifications { get; set; } // Comma separated qualifications
     
     // Navigation Properties
     public virtual Shelter? Shelter { get; set; }

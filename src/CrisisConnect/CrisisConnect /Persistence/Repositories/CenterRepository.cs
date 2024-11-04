@@ -10,4 +10,9 @@ public class CenterRepository:EfRepositoryBase<Center, Guid, BaseDbContext>, ICe
     public CenterRepository(BaseDbContext context) : base(context)
     {
     }
+
+    public Task<List<Center>> GetAllAsync()
+    {
+        throw new NotImplementedException();
+    }
 }
