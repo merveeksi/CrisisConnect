@@ -20,31 +20,13 @@ public class AlertConfiguration: IEntityTypeConfiguration<Alert>
         builder.Property(a => a.Description).IsRequired().HasMaxLength(2000);
         builder.Property(a => a.Type).IsRequired().HasConversion<string>();
         builder.Property(a => a.Severity).IsRequired().HasConversion<string>();
-
-        // Temporal information
-        builder.Property(a => a.IssuedAt).IsRequired().HasDefaultValueSql("GETDATE()");
-        builder.Property(a => a.ResolvedAt).IsRequired(false);
-
-        // Location information (owned entity)
-        builder.OwnsOne(a => a.Location, location =>
-        {
-            location.Property(l => l.Latitude).HasPrecision(9, 6);
-            location.Property(l => l.Longitude).HasPrecision(9, 6);
-            location.Property(l => l.Address).HasMaxLength(500);
-            location.Property(l => l.City).HasMaxLength(100);
-            location.Property(l => l.Region).HasMaxLength(100);
-            location.Property(l => l.Country).HasMaxLength(100);
-        });
+        
+        // Address
+        builder.Property(d => d.Address).HasColumnName("Address").IsRequired().HasMaxLength(100);
 
         // Status and Instructions
         builder.Property(a => a.Status).IsRequired().HasConversion<string>();
-
         builder.Property(a => a.Instructions).HasMaxLength(2000);
-
-        // Audit information
-        builder.Property(a => a.IssuedBy).IsRequired();
-
-        builder.Property(a => a.LastUpdatedAt).IsRequired().HasDefaultValueSql("GETDATE()");
         
         // Indexes
         builder.HasIndex(a => a.DisasterId);
@@ -52,7 +34,6 @@ public class AlertConfiguration: IEntityTypeConfiguration<Alert>
         builder.HasIndex(a => a.Type);
         builder.HasIndex(a => a.Status);
         builder.HasIndex(a => a.Severity);
-        builder.HasIndex(a => a.IssuedAt);
 
         // Alert ile Disaster arasında Bire Çok ilişki
         builder.HasOne(a => a.Disaster)

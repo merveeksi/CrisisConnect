@@ -14,3 +14,5 @@
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/corePackages/Core.Packages/Core.Application/obj/Debug/net8.0/refint/Core.Application.dll
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/corePackages/Core.Packages/Core.Application/obj/Debug/net8.0/Core.Application.pdb
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/corePackages/Core.Packages/Core.Application/obj/Debug/net8.0/ref/Core.Application.dll
+/Users/pc/Desktop/DogalAfetKaynakYardim/src/corePackages/Core.Packages/Core.Application/bin/Debug/net8.0/Core.CrossCuttingConcerns.dll
+/Users/pc/Desktop/DogalAfetKaynakYardim/src/corePackages/Core.Packages/Core.Application/bin/Debug/net8.0/Core.CrossCuttingConcerns.pdb

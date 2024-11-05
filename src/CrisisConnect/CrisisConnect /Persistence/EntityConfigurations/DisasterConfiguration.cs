@@ -12,35 +12,23 @@ public class DisasterConfiguration:IEntityTypeConfiguration<Disaster>
         
         // Primary Key
         builder.Property(d => d.Id).HasColumnName("Id").IsRequired();
-        builder.Property(a => a.CenterId).IsRequired(false);
+        builder.Property(d => d.CenterId).IsRequired(false);
 
         // Properties
         builder.Property(d => d.Name).HasColumnName("Name").IsRequired().HasMaxLength(100); // Limiting length to avoid excessive data storage
         builder.Property(d => d.Type).HasColumnName("Type").IsRequired();
+        builder.Property(d=>d.IsActive).HasColumnName("IsActive").IsRequired();
         builder.Property(d => d.Status).HasColumnName("Status").IsRequired();
 
         // Location Information
-        builder.Property(d => d.City).HasColumnName("City").IsRequired().HasMaxLength(50);
-        builder.Property(d => d.District).HasColumnName("District").HasMaxLength(50);
-        builder.Property(d => d.Latitude).HasColumnName("Latitude").HasPrecision(9, 6); // For latitude and longitude precision
-        builder.Property(d => d.Longitude).HasColumnName("Longitude").HasPrecision(9, 6);
+        builder.Property(d => d.Address).HasColumnName("Address").IsRequired().HasMaxLength(100);
+        builder.Property(d => d.EmergencyContactInfo).HasColumnName("EmergencyContactInfo").HasMaxLength(100);
+        builder.Property(d=>d.ImpactAssessment).HasColumnName("ImpactAssessment").IsRequired();
 
         // Timing Information
         builder.Property(d => d.DateOccurred).HasColumnName("DateOccurred").IsRequired();
         builder.Property(d => d.DateResolved).HasColumnName("DateResolved");
-
-        // Impact Assessment
-        builder.Property(d => d.Magnitude).HasColumnName("Magnitude").IsRequired();
-        builder.Property(d => d.Severity).HasColumnName("Severity").IsRequired();
-        builder.Property(d => d.EstimatedAffectedPopulation).HasColumnName("EstimatedAffectedPopulation");
-        builder.Property(d => d.InjuredCount).HasColumnName("InjuredCount");
-        builder.Property(d => d.ConfirmedCasualties).HasColumnName("ConfirmedCasualties");
-
-        // Additional Details
-        builder.Property(d => d.Description).HasColumnName("Description").HasMaxLength(500); // Limit for description length
-        builder.Property(d => d.IsActive).HasColumnName("IsActive").IsRequired();
-        builder.Property(d => d.EmergencyContactInfo).HasColumnName("EmergencyContactInfo").HasMaxLength(100);
-
+        
         // Audit fields
         builder.Property(d => d.CreatedAt).HasColumnName("CreatedAt").IsRequired();
         builder.Property(d => d.LastUpdatedAt).HasColumnName("LastUpdatedAt");

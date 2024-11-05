@@ -1,22 +1,30 @@
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Transaction;
 using Domain.Entities;
+using Domain.Enums;
+using Domain.ValueObjects;
 using MediatR;
 
 namespace Application.Features.Disasters.Commands.Create;
 
 //Alacağım bilgi
 
-public class CreateDisasterCommand:IRequest<CreatedDisasterResponse> // IRequest<TResponse>
+public class CreateDisasterCommand:IRequest<CreatedDisasterResponse>, ITransactionalRequest // IRequest<TResponse>
 {
     public string Name { get; set; }
-    public string Type { get; set; }
-    public string Location { get; set; }
-    public int Severity { get; set; } 
-    public DateTime DateOccurred { get; set; }
-    public int Casualties { get; set; }
-    public string Description { get; set; }
+    public DisasterType Type { get; set; }
+    public bool IsActive { get; set; }
+    public DisasterStatus Status { get; set; }
+    public Address Address { get; set; }
+    public string EmergencyContactInfo { get; set; }
+    public ImpactAssessment ImpactAssessment { get; set; }
     
+    public DateTime DateOccurred { get; set; }
+    public DateTime? DateResolved { get; set; } 
+
+    public DateTime CreatedAt { get; set; }
+    public DateTime? LastUpdatedAt { get; set; }
     
     
     public class CreateDisasterCommandHandler : IRequestHandler<CreateDisasterCommand, CreatedDisasterResponse>

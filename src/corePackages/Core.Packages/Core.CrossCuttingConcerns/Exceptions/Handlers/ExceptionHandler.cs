@@ -1,4 +1,3 @@
-using System.ComponentModel.DataAnnotations;
 using Core.CrossCuttingConcerns.Exceptions.Types;
 
 namespace Core.CrossCuttingConcerns.Exceptions.Handlers;

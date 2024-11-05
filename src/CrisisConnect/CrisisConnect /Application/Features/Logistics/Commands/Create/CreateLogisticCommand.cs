@@ -8,10 +8,12 @@ namespace Application.Features.Logistics.Commands.Create;
 
 public class CreateLogisticCommand : IRequest<CreatedLogisticResponse>
 {
-    public string Name { get; set; }
-    public string Destination { get; set; } 
-    public DateTime EstimatedArrival { get; set; }
-    public TransportStatus CurrentStatus { get; set; }
+    
+    public string VehicleType { get; set; }
+    public int Capacity { get; set; }
+    public string StartLocation { get; set; }
+    public string EndLocation { get; set; }
+    public DateTime EstimatedArrivalTime { get; set; }
     
 
 
@@ -32,7 +34,7 @@ public class CreateLogisticCommand : IRequest<CreatedLogisticResponse>
             Logistic logistic = _mapper.Map<Logistic>(request);
             logistic.Id = Guid.NewGuid();
             
-            _logisticRepository.AddAsync(logistic);
+            await _logisticRepository.AddAsync(logistic);
             
             CreatedLogisticResponse createdLogisticResponse = _mapper.Map<CreatedLogisticResponse>(logistic);
             return createdLogisticResponse;

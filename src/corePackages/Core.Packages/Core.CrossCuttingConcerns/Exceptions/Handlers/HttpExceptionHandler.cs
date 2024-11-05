@@ -1,9 +1,9 @@
-using System.ComponentModel.DataAnnotations;
 using Core.CrossCuttingConcerns.Exceptions.Extensions;
 using Core.CrossCuttingConcerns.Exceptions.HttpProblemDetails;
 using Core.CrossCuttingConcerns.Exceptions.Types;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ValidationProblemDetails = Core.CrossCuttingConcerns.Exceptions.HttpProblemDetails.ValidationProblemDetails;
 
 namespace Core.CrossCuttingConcerns.Exceptions.Handlers;
 
@@ -33,9 +33,8 @@ public class HttpExceptionHandler : ExceptionHandler
     // Middleware'de ValidationException oluştuğunda çalışacak metot
     protected override Task HandleException(ValidationException validationException)
     {
-        // Response.StatusCode = StatusCodes.Status400BadRequest;
-        // string details = new ValidationProblemDetails(validationException.Errors).AsJson();
-        // return Response.WriteAsync(details);
-        return Task.CompletedTask;
+        Response.StatusCode = StatusCodes.Status400BadRequest;
+        string details = new ValidationProblemDetails(validationException.Errors).AsJson();
+        return Response.WriteAsync(details);
     }
 }

@@ -1,31 +1,37 @@
 using Application.Services.Repositories;
+using AutoMapper;
+using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Donors.Commands.Create;
 
 public class CreateDonorCommand:IRequest<CreatedDonorResponse>
 {
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
+    public string FullName { get; set; }
+    public string Email { get; set; }
     public string PhoneNumber { get; set; }
+    public string Location { get; set; }
 }
 
 public class CreateDonorCommandHadler : IRequestHandler<CreateDonorCommand, CreatedDonorResponse>
 {
     private readonly IDonorRepository _donorRepository;
+    private readonly IMapper _mapper;
 
-    public CreateDonorCommandHadler(IDonorRepository donorRepository)
+    public CreateDonorCommandHadler(IDonorRepository donorRepository, IMapper mapper)
     {
         _donorRepository = donorRepository;
+        _mapper = mapper;
     }
 
-    public Task<CreatedDonorResponse>? Handle(CreateDonorCommand request, CancellationToken cancellationToken)
+    public async Task<CreatedDonorResponse>? Handle(CreateDonorCommand request, CancellationToken cancellationToken)
     {
-        CreatedDonorResponse createdDonorResponse = new CreatedDonorResponse();
-        createdDonorResponse.FirstName = request.FirstName;
-        createdDonorResponse.LastName = request.LastName;
-        createdDonorResponse.PhoneNumber = request.PhoneNumber;
-        createdDonorResponse.Id = new Guid();
-        return Task.FromResult(createdDonorResponse);
+        Donor donor = _mapper.Map<Donor>(request);
+        donor.Id = Guid.NewGuid();
+        
+        await _donorRepository.AddAsync(donor);
+        
+        CreatedDonorResponse createdDonorResponse = _mapper.Map<CreatedDonorResponse>(donor);
+        return createdDonorResponse;
     }
 }
