@@ -1,13 +1,19 @@
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Caching;
+using Core.Application.Pipelines.Logging;
+using Core.Application.Pipelines.Transaction;
 using Domain.Entities;
 using Domain.Enums;
 using MediatR;
 
 namespace Application.Features.Logistics.Commands.Create;
 
-public class CreateLogisticCommand : IRequest<CreatedLogisticResponse>
+public class CreateLogisticCommand : IRequest<CreatedLogisticResponse>,  ITransactionalRequest, ICacheRemoverRequest, ILoggableRequest
 {
+    public string? CacheKey => "";
+    public bool BypassCache => false;
+    public string? CacheGroupKey => "GetLogistics";
     
     public string VehicleType { get; set; }
     public int Capacity { get; set; }

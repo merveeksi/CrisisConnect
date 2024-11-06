@@ -1,12 +1,16 @@
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Caching;
 using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Volunteers.Commands.Delete;
 
-public class DeleteVolunteerCommand: IRequest<DeletedVolunteerResponse>
+public class DeleteVolunteerCommand: IRequest<DeletedVolunteerResponse>, ICacheRemoverRequest
 {
+    public string? CacheKey => "";
+    public bool BypassCache => false;
+    public string? CacheGroupKey => "GetVolunteers";
     public Guid Id { get; set; }
     
     public class UpdateVolunteerCommandHandler : IRequestHandler<DeleteVolunteerCommand, DeletedVolunteerResponse>

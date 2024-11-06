@@ -1,5 +1,7 @@
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Caching;
+using Core.Application.Pipelines.Logging;
 using Core.Application.Requests;
 using Core.Application.Responses;
 using Core.Persistence.Paging;
@@ -9,9 +11,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Resources.Queries.GetList;
 
-public class GetListResourceQuery:IRequest<GetListResponse<GetListResourceListItemDto>>
+public class GetListResourceQuery:IRequest<GetListResponse<GetListResourceListItemDto>>, ICachableRequest, ILoggableRequest
 {
     public PageRequest PageRequest { get; set; }
+    
+    public string CacheKey => $"GetListResourceQuery({PageRequest.PageIndex}_{PageRequest.PageSize})";
+    public bool BypassCache { get; }
+    public string? CacheGroupKey => "GetResources";
+    public TimeSpan? SlidingExpiration { get; }
     
     public class GetListResourceQueryHandler : IRequestHandler<GetListResourceQuery, GetListResponse<GetListResourceListItemDto>>
     {

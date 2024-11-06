@@ -1,12 +1,16 @@
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Caching;
 using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Shelters.Commands.Update;
 
-public class UpdateShelterCommand : IRequest<UpdatedShelterResponse>
+public class UpdateShelterCommand : IRequest<UpdatedShelterResponse>, ICacheRemoverRequest
 {
+    public string? CacheKey => "";
+    public bool BypassCache => false;
+    public string? CacheGroupKey => "GetShelters";
     public Guid Id { get; set; }
     
     public string Name { get; set; }

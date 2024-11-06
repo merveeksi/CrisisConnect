@@ -1,12 +1,17 @@
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Caching;
 using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Teames.Commands.Delete;
 
-public class DeleteTeamCommand: IRequest<DeletedTeamResponse>
+public class DeleteTeamCommand: IRequest<DeletedTeamResponse>, ICacheRemoverRequest
 {
+    public string? CacheKey => "";
+    public bool BypassCache => false;
+    public string? CacheGroupKey => "GetTeams";
+
     public Guid Id { get; set; }
     
     public class UpdateTeamCommandHandler : IRequestHandler<DeleteTeamCommand, DeletedTeamResponse>

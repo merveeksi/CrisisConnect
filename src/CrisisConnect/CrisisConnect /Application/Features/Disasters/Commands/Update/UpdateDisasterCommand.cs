@@ -1,12 +1,16 @@
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Caching;
 using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Disasters.Commands.Update;
 
-public class UpdateDisasterCommand : IRequest<UpdatedDisasterResponse>
+public class UpdateDisasterCommand : IRequest<UpdatedDisasterResponse>, ICacheRemoverRequest
 {
+    public string? CacheKey => "";
+    public bool BypassCache => false;
+    public string? CacheGroupKey => "GetDisasters";
     public Guid Id { get; set; }
     
     public string Name { get; set; }

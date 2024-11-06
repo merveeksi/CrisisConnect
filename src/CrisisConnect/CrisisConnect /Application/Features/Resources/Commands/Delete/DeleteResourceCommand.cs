@@ -1,12 +1,17 @@
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Caching;
 using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Resources.Commands.Delete;
 
-public class DeleteResourceCommand: IRequest<DeletedResourceResponse>
+public class DeleteResourceCommand: IRequest<DeletedResourceResponse>, ICacheRemoverRequest
 {
+public string? CacheKey => "";
+public bool BypassCache => false;
+public string? CacheGroupKey => "GetResources";
+
     public Guid Id { get; set; }
     
     public class UpdateResourceCommandHandler : IRequestHandler<DeleteResourceCommand, DeletedResourceResponse>

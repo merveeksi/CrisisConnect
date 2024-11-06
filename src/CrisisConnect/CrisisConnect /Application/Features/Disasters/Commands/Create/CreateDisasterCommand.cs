@@ -1,5 +1,7 @@
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Caching;
+using Core.Application.Pipelines.Logging;
 using Core.Application.Pipelines.Transaction;
 using Domain.Entities;
 using Domain.Enums;
@@ -10,8 +12,12 @@ namespace Application.Features.Disasters.Commands.Create;
 
 //Alacağım bilgi
 
-public class CreateDisasterCommand:IRequest<CreatedDisasterResponse>, ITransactionalRequest // IRequest<TResponse>
+public class CreateDisasterCommand:IRequest<CreatedDisasterResponse>, ITransactionalRequest, ICacheRemoverRequest, ILoggableRequest
 {
+    public string? CacheKey => "";
+    public bool BypassCache => false;
+    public string? CacheGroupKey => "GetDisasters";
+
     public string Name { get; set; }
     public DisasterType Type { get; set; }
     public bool IsActive { get; set; }

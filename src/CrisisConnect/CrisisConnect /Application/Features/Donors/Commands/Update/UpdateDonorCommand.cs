@@ -1,12 +1,17 @@
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Caching;
 using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Donors.Commands.Update;
 
-public class UpdateDonorCommand : IRequest<UpdatedDonorResponse>
+public class UpdateDonorCommand : IRequest<UpdatedDonorResponse>, ICacheRemoverRequest
 {
+    public string? CacheKey => "";
+    public bool BypassCache => false;
+    public string? CacheGroupKey => "GetDonors";
+
     public Guid Id { get; set; }
     
     public string Name { get; set; }

@@ -1,13 +1,20 @@
 using Application.Features.Logistics.Commands.Create;
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Caching;
+using Core.Application.Pipelines.Logging;
+using Core.Application.Pipelines.Transaction;
 using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Shelters.Commands.Create;
 
-public class CreateShelterCommand : IRequest<CreatedShelterResponse>
+public class CreateShelterCommand : IRequest<CreatedShelterResponse>,  ITransactionalRequest, ICacheRemoverRequest, ILoggableRequest
 {
+    public string? CacheKey => "";
+    public bool BypassCache => false;
+    public string? CacheGroupKey => "GetShelters";
+
     public string Location { get; set; }
     public string ContactInfo { get; set; }
     public int Capacity { get; set; }

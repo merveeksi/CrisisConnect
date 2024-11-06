@@ -1,13 +1,20 @@
 using Application.Features.Volunteers.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Caching;
+using Core.Application.Pipelines.Logging;
+using Core.Application.Pipelines.Transaction;
 using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Volunteers.Commands.Create;
 
-public class CreateVolunteerCommand : IRequest<CreatedVolunteerResponse>
+public class CreateVolunteerCommand : IRequest<CreatedVolunteerResponse>, ITransactionalRequest, ICacheRemoverRequest, ILoggableRequest
 {
+    public string? CacheKey => "";
+    public bool BypassCache => false;
+    public string? CacheGroupKey => "GetVolunteers";
+
     public string FirstName { get; set; }
     public string Lastname { get; set; }
     public List<string> Skills { get; set; } 

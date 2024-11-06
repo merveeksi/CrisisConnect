@@ -1,12 +1,17 @@
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Caching;
 using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Shelters.Commands.Delete;
 
-public class DeleteShelterCommand: IRequest<DeletedShelterResponse>
+public class DeleteShelterCommand: IRequest<DeletedShelterResponse>, ICacheRemoverRequest
 {
+public string? CacheKey => "";
+public bool BypassCache => false;
+public string? CacheGroupKey => "GetShelters";
+
     public Guid Id { get; set; }
     
     public class DeleteShelterCommandHandler : IRequestHandler<DeleteShelterCommand, DeletedShelterResponse>

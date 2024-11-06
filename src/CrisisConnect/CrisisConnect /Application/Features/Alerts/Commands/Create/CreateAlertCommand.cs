@@ -1,5 +1,8 @@
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Caching;
+using Core.Application.Pipelines.Logging;
+using Core.Application.Pipelines.Transaction;
 using Domain.Entities;
 using Domain.Enums;
 using Domain.ValueObjects;
@@ -7,8 +10,12 @@ using MediatR;
 
 namespace Application.Features.Alerts.Commands.Create;
 
-public class CreateAlertCommand:IRequest<CreatedAlertResponse>
+public class CreateAlertCommand:IRequest<CreatedAlertResponse>, ITransactionalRequest, ICacheRemoverRequest, ILoggableRequest
 {
+    public string? CacheKey => "";
+    public bool BypassCache => false;
+    public string? CacheGroupKey => "GetAlerts";
+    
     public string Name { get; set; }
     public string Description { get; set; }
     public int Type { get; set; }

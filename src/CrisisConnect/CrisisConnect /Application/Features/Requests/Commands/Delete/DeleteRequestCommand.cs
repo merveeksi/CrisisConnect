@@ -1,12 +1,17 @@
     using Application.Services.Repositories;
     using AutoMapper;
+    using Core.Application.Pipelines.Caching;
     using Domain.Entities;
     using MediatR;
 
     namespace Application.Features.Requests.Commands.Delete;
 
-    public class DeleteRequestCommand : IRequest<DeletedRequestResponse>
+    public class DeleteRequestCommand : IRequest<DeletedRequestResponse>, ICacheRemoverRequest
     {
+        public string? CacheKey => "";
+        public bool BypassCache => false;
+        public string? CacheGroupKey => "GetRequests";
+    
     public Guid Id { get; set; }
 
     public class UpdateRequestCommandHandler : IRequestHandler<DeleteRequestCommand, DeletedRequestResponse>

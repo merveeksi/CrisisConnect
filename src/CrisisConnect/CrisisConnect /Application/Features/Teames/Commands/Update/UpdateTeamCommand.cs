@@ -1,12 +1,16 @@
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Caching;
 using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Teames.Commands.Update;
 
-public class UpdateTeamCommand : IRequest<UpdatedTeamResponse>
+public class UpdateTeamCommand : IRequest<UpdatedTeamResponse>, ICacheRemoverRequest
 {
+    public string? CacheKey => "";
+    public bool BypassCache => false;
+    public string? CacheGroupKey => "GetTeams";
     public Guid Id { get; set; }
     
     public string Name { get; set; }

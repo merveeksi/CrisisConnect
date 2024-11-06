@@ -2,13 +2,19 @@ using Application.Features.Centers.Commands.Create;
 using Application.Features.Centers.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Caching;
+using Core.Application.Pipelines.Logging;
+using Core.Application.Pipelines.Transaction;
 using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Centers.Commands.Create;
 
-public class CreateCenterCommand:IRequest<CreatedCenterResponse>
+public class CreateCenterCommand:IRequest<CreatedCenterResponse>, ITransactionalRequest, ICacheRemoverRequest, ILoggableRequest
 {
+    public string? CacheKey => "";
+    public bool BypassCache => false;
+    public string? CacheGroupKey => "GetCenters";
     public string Name { get; set; }
     public string Location { get; set; }
     public int Capacity { get; set; }

@@ -1,12 +1,17 @@
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Caching;
 using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Donors.Commands.Delete;
 
-public class DeleteDonorCommand: IRequest<DeletedDonorResponse>
+public class DeleteDonorCommand: IRequest<DeletedDonorResponse>, ICacheRemoverRequest
 {
+    public string? CacheKey => "";
+    public bool BypassCache => false;
+    public string? CacheGroupKey => "GetDonors";
+
     public Guid Id { get; set; }
     
     public class UpdateDonorCommandHandler : IRequestHandler<DeleteDonorCommand, DeletedDonorResponse>

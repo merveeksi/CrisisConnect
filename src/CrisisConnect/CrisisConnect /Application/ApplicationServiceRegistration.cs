@@ -1,7 +1,12 @@
 using System.Reflection;
+using Core.Application.Pipelines.Caching;
+using Core.Application.Pipelines.Logging;
+using Core.Application.Pipelines.Transaction;
 using Core.Application.Rules;
 using FluentValidation;
 using Core.Application.Pipelines.Validation;
+using Core.CrossCuttingConcerns.Serilog;
+using Core.CrossCuttingConcerns.Serilog.Loggers;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Application;
@@ -21,14 +26,14 @@ public static class ApplicationServiceRegistration
         {
             configuration.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
             configuration.AddOpenBehavior(typeof(RequestValidationBehavior<,>));
-            // configuration.AddOpenBehavior(typeof(TransactionScopeBehavior<,>));
-            // configuration.AddOpenBehavior(typeof(CachingBehavior<,>));
-            // configuration.AddOpenBehavior(typeof(CacheRemovingBehavior<,>));
-            // configuration.AddOpenBehavior(typeof(LoggingBehavior<,>));
+            configuration.AddOpenBehavior(typeof(TransactionScopeBehavior<,>));
+            configuration.AddOpenBehavior(typeof(CachingBehavior<,>));
+            configuration.AddOpenBehavior(typeof(CacheRemovingBehavior<,>));
+            configuration.AddOpenBehavior(typeof(LoggingBehavior<,>));
         });
         
-        // services.AddSingleton<LoggerServiceBase, MsSqlLogger>();
-        //
+        services.AddSingleton<LoggerServiceBase, NpgsqlLogger >();
+        
         return services;
     }
     

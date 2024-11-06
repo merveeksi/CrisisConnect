@@ -1,5 +1,7 @@
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Caching;
+using Core.Application.Pipelines.Logging;
 using Core.Application.Requests;
 using Core.Application.Responses;
 using Core.Persistence.Paging;
@@ -8,9 +10,14 @@ using MediatR;
 
 namespace Application.Features.Logistics.Queries.GetList;
 
-public class GetListLogisticQuery : IRequest<GetListResponse<GetListLogisticListItemDto>>
+public class GetListLogisticQuery : IRequest<GetListResponse<GetListLogisticListItemDto>>, ICachableRequest, ILoggableRequest
 {
     public PageRequest PageRequest { get; set; }
+    
+    public string CacheKey => $"GetListLogisticQuery({PageRequest.PageIndex}_{PageRequest.PageSize})";
+    public bool BypassCache { get; }
+    public string? CacheGroupKey => "GetLogistics";
+    public TimeSpan? SlidingExpiration { get; }
     
     public class GetListLogisticQueryHandler : IRequestHandler<GetListLogisticQuery, GetListResponse<GetListLogisticListItemDto>>
     {

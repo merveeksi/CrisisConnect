@@ -1,12 +1,16 @@
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Caching;
 using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Volunteers.Commands.Update;
 
-public class UpdateVolunteerCommand : IRequest<UpdatedVolunteerResponse>
+public class UpdateVolunteerCommand : IRequest<UpdatedVolunteerResponse>, ICacheRemoverRequest
 {
+    public string? CacheKey => "";
+    public bool BypassCache => false;
+    public string? CacheGroupKey => "GetVolunteers";
     public Guid Id { get; set; }
     
     public string Name { get; set; }

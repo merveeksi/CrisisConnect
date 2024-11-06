@@ -1,12 +1,16 @@
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Caching;
 using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Centers.Commands.Update;
 
-public class UpdateCenterCommand : IRequest<UpdatedCenterResponse>
+public class UpdateCenterCommand : IRequest<UpdatedCenterResponse>, ICacheRemoverRequest
 {
+    public string? CacheKey => "";
+    public bool BypassCache => false;
+    public string? CacheGroupKey => "GetCenters";
     public Guid Id { get; set; }
     
     public string Name { get; set; }

@@ -1,5 +1,7 @@
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Caching;
+using Core.Application.Pipelines.Logging;
 using Core.Application.Requests;
 using Core.Application.Responses;
 using Core.Persistence.Paging;
@@ -9,9 +11,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Centers.Queries.GetList;
 
-public class GetListCenterQuery : IRequest<GetListResponse<GetListCenterListItemDto>>
+public class GetListCenterQuery : IRequest<GetListResponse<GetListCenterListItemDto>>, ICachableRequest, ILoggableRequest
 {
     public PageRequest PageRequest { get; set; }
+    
+    public string CacheKey => $"GetListCenterQuery({PageRequest.PageIndex}_{PageRequest.PageSize})";
+    public bool BypassCache { get; }
+    public string? CacheGroupKey => "GetCenters";
+    public TimeSpan? SlidingExpiration { get; }
     
     public class GetListCenterQueryHandler : IRequestHandler<GetListCenterQuery, GetListResponse<GetListCenterListItemDto>>
     {
@@ -37,4 +44,5 @@ public class GetListCenterQuery : IRequest<GetListResponse<GetListCenterListItem
             return response;
         }
     }
+    
 }

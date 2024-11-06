@@ -11,6 +11,10 @@ builder.Services.AddControllers();
 builder.Services.AddApplicationServices();      // Application katmanındaki tüm servisleri ekler
 
 builder.Services.AddPersistenceServices(builder.Configuration);   // Persistence katmanındaki tüm servisleri ekler
+builder.Services.AddHttpContextAccessor();
+
+//builder.Services.AddDistributedMemoryCache(); // Distributed Cache için Memory Cache kullanılacak
+builder.Services.AddStackExchangeRedisCache(options => options.Configuration = "loclhost:6379"); // Redis Cache kullanılacak
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

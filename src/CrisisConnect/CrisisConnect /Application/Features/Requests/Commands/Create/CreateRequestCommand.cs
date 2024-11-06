@@ -1,14 +1,20 @@
 using Application.Features.Requests.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Caching;
+using Core.Application.Pipelines.Logging;
+using Core.Application.Pipelines.Transaction;
 using Domain.Entities;
 using Domain.Enums;
 using MediatR;
 
 namespace Application.Features.Requests.Commands.Create;
 
-public class CreateRequestCommand : IRequest<CreatedRequestResponse>
-{ 
+public class CreateRequestCommand : IRequest<CreatedRequestResponse>, ITransactionalRequest, ICacheRemoverRequest, ILoggableRequest
+{
+    public string? CacheKey => "";
+    public bool BypassCache => false;
+    public string? CacheGroupKey => "GetRequests";
     public string Name { get; set; }
     public PriorityLevel PriorityLevel { get; set; }
     public RequestStatus Status { get; set; }

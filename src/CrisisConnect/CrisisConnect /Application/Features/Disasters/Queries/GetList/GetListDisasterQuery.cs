@@ -1,5 +1,7 @@
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Caching;
+using Core.Application.Pipelines.Logging;
 using Core.Application.Requests; //  !!isimlendirme hatası var. Core.Application.Requests olmalı
 using Core.Application.Responses;
 using Core.Persistence.Paging;
@@ -9,9 +11,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Disasters.Queries.GetList;
 
-public class GetListDisasterQuery: IRequest<GetListResponse<GetListDisasterListItemDto>>
+public class GetListDisasterQuery: IRequest<GetListResponse<GetListDisasterListItemDto>>, ICachableRequest, ILoggableRequest
 {
     public PageRequest PageRequest { get; set; }  //bana bir sayfalama isteği ver
+    
+    public string CacheKey => $"GetListDisasterQuery({PageRequest.PageIndex}_{PageRequest.PageSize})";
+    public bool BypassCache { get; }
+    public string? CacheGroupKey => "GetDisasters";
+    public TimeSpan? SlidingExpiration { get; }
 
     public class GetListDisasterQueryHandler : IRequestHandler<GetListDisasterQuery, GetListResponse<GetListDisasterListItemDto>>
     {

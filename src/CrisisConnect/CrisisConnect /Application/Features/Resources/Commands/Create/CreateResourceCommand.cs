@@ -1,14 +1,20 @@
 using Application.Features.Resources.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Caching;
+using Core.Application.Pipelines.Logging;
+using Core.Application.Pipelines.Transaction;
 using Domain.Entities;
 using Domain.Enums;
 using MediatR;
 
 namespace Application.Features.Resources.Commands.Create;
 
-public class CreateResourceCommand : IRequest<CreatedResourceResponse>
+public class CreateResourceCommand : IRequest<CreatedResourceResponse>,  ITransactionalRequest, ICacheRemoverRequest, ILoggableRequest
 {
+    public string? CacheKey => "";
+    public bool BypassCache => false;
+    public string? CacheGroupKey => "GetResources";
     public Guid Id { get; set; }
     public string Name { get; set; }
     public ResourceType Type { get; set; }

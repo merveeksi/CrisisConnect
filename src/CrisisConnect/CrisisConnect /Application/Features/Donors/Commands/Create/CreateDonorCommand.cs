@@ -1,12 +1,19 @@
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Caching;
+using Core.Application.Pipelines.Logging;
+using Core.Application.Pipelines.Transaction;
 using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Donors.Commands.Create;
 
-public class CreateDonorCommand:IRequest<CreatedDonorResponse>
+public class CreateDonorCommand:IRequest<CreatedDonorResponse>,ITransactionalRequest, ICacheRemoverRequest, ILoggableRequest
 {
+    public string? CacheKey => "";
+    public bool BypassCache => false;
+    public string? CacheGroupKey => "GetDonors";
+
     public string FullName { get; set; }
     public string Email { get; set; }
     public string PhoneNumber { get; set; }

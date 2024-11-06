@@ -1,5 +1,7 @@
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Caching;
+using Core.Application.Pipelines.Logging;
 using Core.Application.Requests;
 using Core.Application.Responses;
 using Core.Persistence.Paging;
@@ -9,9 +11,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Donors.Queries.GetList;
 
-public class GetListDonorQuery :IRequest<GetListResponse<GetListDonorListItemDto>>
+public class GetListDonorQuery :IRequest<GetListResponse<GetListDonorListItemDto>>, ICachableRequest, ILoggableRequest
 {
     public PageRequest PageRequest { get; set; }
+    
+    public string CacheKey => $"GetListDonorQuery({PageRequest.PageIndex}_{PageRequest.PageSize})";
+    public bool BypassCache { get; }
+    public string? CacheGroupKey => "GetDonors";
+    public TimeSpan? SlidingExpiration { get; }
     
     public class GetListDonorQueryHandler : IRequestHandler<GetListDonorQuery, GetListResponse<GetListDonorListItemDto>>
     {

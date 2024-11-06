@@ -1,5 +1,7 @@
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Caching;
+using Core.Application.Pipelines.Logging;
 using Core.Application.Requests;
 using Core.Application.Responses;
 using Core.Persistence.Paging;
@@ -9,9 +11,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Teames.Queries.GetList;
 
-public class GetListTeamQuery : IRequest<GetListResponse<GetListTeamListItemDto>>
+public class GetListTeamQuery : IRequest<GetListResponse<GetListTeamListItemDto>>, ICachableRequest, ILoggableRequest
 {
     public PageRequest PageRequest { get; set; }
+    
+    public string CacheKey => $"GetListTeamQuery({PageRequest.PageIndex}_{PageRequest.PageSize})";
+    public bool BypassCache { get; }
+    public string? CacheGroupKey => "GetTeams";
+    public TimeSpan? SlidingExpiration { get; }
     
     public class GetListTeamQueryHandler : IRequestHandler<GetListTeamQuery, GetListResponse<GetListTeamListItemDto>>
     {
