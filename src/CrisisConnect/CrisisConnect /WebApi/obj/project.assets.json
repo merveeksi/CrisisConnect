@@ -3329,7 +3329,8 @@
           "Microsoft.EntityFrameworkCore.InMemory": "8.0.10",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.10",
           "Microsoft.Extensions.Configuration.Abstractions": "8.0.0",
-          "Npgsql.EntityFrameworkCore.PostgreSQL": "8.0.10"
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "8.0.10",
+          "NuGet.Protocol": "6.11.0"
         },
         "compile": {
           "bin/placeholder/Persistence.dll": {}

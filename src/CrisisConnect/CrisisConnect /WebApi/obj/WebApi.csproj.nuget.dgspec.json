@@ -225,6 +225,10 @@
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[8.0.10, )"
+            },
+            "NuGet.Protocol": {
+              "target": "Package",
+              "version": "[6.11.0, )"
             }
           },
           "imports": [
