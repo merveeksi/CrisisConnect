@@ -19,6 +19,9 @@
       <Folder Include="Features\Shelters\Rules\" />
       <Folder Include="Features\Teames\Constants\" />
       <Folder Include="Features\Teames\Rules\" />
+      <Folder Include="Features\Users\Commands\Delete\" />
+      <Folder Include="Features\Users\Commands\Update\" />
+      <Folder Include="Features\Users\Queries\" />
     </ItemGroup>
 
     <ItemGroup>
@@ -37,6 +40,9 @@
       </Reference>
       <Reference Include="Core.Persistence">
         <HintPath>..\..\..\corePackages\Core.Packages\Core.Persistence\bin\Debug\net8.0\Core.Persistence.dll</HintPath>
+      </Reference>
+      <Reference Include="Core.Security">
+        <HintPath>..\..\..\corePackages\Core.Packages\Core.Security\bin\Debug\net8.0\Core.Security.dll</HintPath>
       </Reference>
     </ItemGroup>
 

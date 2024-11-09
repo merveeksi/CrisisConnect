@@ -18,6 +18,7 @@ public class User : Entity<long>
     public virtual ICollection<RefreshToken> RefreshTokens { get; set; } = null!;
     public virtual ICollection<OtpAuthenticator> OtpAuthenticators { get; set; } = null!;
     public virtual ICollection<EmailAuthenticator> EmailAuthenticators { get; set; } = null!;
+    public IList<OperationClaim> OperationClaims { get; set; }
 
     public User()
     {

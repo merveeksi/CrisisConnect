@@ -17,7 +17,9 @@
           "Microsoft.EntityFrameworkCore.Tools": "8.0.10",
           "Microsoft.Extensions.Configuration.Abstractions": "8.0.0",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "8.0.10",
-          "Core.Persistence": "1.0.0.0"
+          "NuGet.Protocol": "6.11.0",
+          "Core.Persistence": "1.0.0.0",
+          "Core.Security": "1.0.0.0"
         },
         "runtime": {
           "Persistence.dll": {}
@@ -736,6 +738,14 @@
           }
         }
       },
+      "Newtonsoft.Json/13.0.3": {
+        "runtime": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "13.0.0.0",
+            "fileVersion": "13.0.3.27908"
+          }
+        }
+      },
       "Npgsql/8.0.5": {
         "dependencies": {
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2"
@@ -758,6 +768,70 @@
           "lib/net8.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll": {
             "assemblyVersion": "8.0.10.0",
             "fileVersion": "8.0.10.0"
+          }
+        }
+      },
+      "NuGet.Common/6.11.0": {
+        "dependencies": {
+          "NuGet.Frameworks": "6.11.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/NuGet.Common.dll": {
+            "assemblyVersion": "6.11.0.119",
+            "fileVersion": "6.11.0.119"
+          }
+        }
+      },
+      "NuGet.Configuration/6.11.0": {
+        "dependencies": {
+          "NuGet.Common": "6.11.0",
+          "System.Security.Cryptography.ProtectedData": "6.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/NuGet.Configuration.dll": {
+            "assemblyVersion": "6.11.0.119",
+            "fileVersion": "6.11.0.119"
+          }
+        }
+      },
+      "NuGet.Frameworks/6.11.0": {
+        "runtime": {
+          "lib/netstandard2.0/NuGet.Frameworks.dll": {
+            "assemblyVersion": "6.11.0.119",
+            "fileVersion": "6.11.0.119"
+          }
+        }
+      },
+      "NuGet.Packaging/6.11.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3",
+          "NuGet.Configuration": "6.11.0",
+          "NuGet.Versioning": "6.11.0",
+          "System.Security.Cryptography.Pkcs": "6.0.4"
+        },
+        "runtime": {
+          "lib/net5.0/NuGet.Packaging.dll": {
+            "assemblyVersion": "6.11.0.119",
+            "fileVersion": "6.11.0.119"
+          }
+        }
+      },
+      "NuGet.Protocol/6.11.0": {
+        "dependencies": {
+          "NuGet.Packaging": "6.11.0"
+        },
+        "runtime": {
+          "lib/net5.0/NuGet.Protocol.dll": {
+            "assemblyVersion": "6.11.0.119",
+            "fileVersion": "6.11.0.119"
+          }
+        }
+      },
+      "NuGet.Versioning/6.11.0": {
+        "runtime": {
+          "lib/netstandard2.0/NuGet.Versioning.dll": {
+            "assemblyVersion": "6.11.0.119",
+            "fileVersion": "6.11.0.119"
           }
         }
       },
@@ -876,7 +950,7 @@
           }
         }
       },
-      "System.Formats.Asn1/5.0.0": {},
+      "System.Formats.Asn1/6.0.0": {},
       "System.IdentityModel.Tokens.Jwt/6.35.0": {
         "dependencies": {
           "Microsoft.IdentityModel.JsonWebTokens": "6.35.0",
@@ -951,7 +1025,26 @@
       "System.Security.AccessControl/6.0.0": {},
       "System.Security.Cryptography.Cng/5.0.0": {
         "dependencies": {
-          "System.Formats.Asn1": "5.0.0"
+          "System.Formats.Asn1": "6.0.0"
+        }
+      },
+      "System.Security.Cryptography.Pkcs/6.0.4": {
+        "dependencies": {
+          "System.Formats.Asn1": "6.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/System.Security.Cryptography.Pkcs.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.1923.31806"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net6.0/System.Security.Cryptography.Pkcs.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.1923.31806"
+          }
         }
       },
       "System.Security.Cryptography.ProtectedData/6.0.0": {
@@ -1045,6 +1138,14 @@
       "Core.Persistence/1.0.0.0": {
         "runtime": {
           "Core.Persistence.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Core.Security/1.0.0.0": {
+        "runtime": {
+          "Core.Security.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -1417,6 +1518,13 @@
       "path": "mono.texttemplating/2.2.1",
       "hashPath": "mono.texttemplating.2.2.1.nupkg.sha512"
     },
+    "Newtonsoft.Json/13.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ==",
+      "path": "newtonsoft.json/13.0.3",
+      "hashPath": "newtonsoft.json.13.0.3.nupkg.sha512"
+    },
     "Npgsql/8.0.5": {
       "type": "package",
       "serviceable": true,
@@ -1430,6 +1538,48 @@
       "sha512": "sha512-gFPl9Dmxih7Yi4tZ3bITzZFzbxFMBx04gqTqcjoL2r5VEW+O2TA5UVw/wm/XW26NAJ7sg59Je0+9QrwiZt6MPQ==",
       "path": "npgsql.entityframeworkcore.postgresql/8.0.10",
       "hashPath": "npgsql.entityframeworkcore.postgresql.8.0.10.nupkg.sha512"
+    },
+    "NuGet.Common/6.11.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-T3bCiKUSx8wdYpcqr6Dbx93zAqFp689ee/oa1tH22XI/xl7EUzQ7No/WlE1FUqvEX1+Mqar3wRNAn2O/yxo94g==",
+      "path": "nuget.common/6.11.0",
+      "hashPath": "nuget.common.6.11.0.nupkg.sha512"
+    },
+    "NuGet.Configuration/6.11.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-73QprQqmumFrv3Ooi4YWpRYeBj8jZy9gNdOaOCp4pPInpt41SJJAz/aP4je+StwIJvi5HsgPPecLKekDIQEwKg==",
+      "path": "nuget.configuration/6.11.0",
+      "hashPath": "nuget.configuration.6.11.0.nupkg.sha512"
+    },
+    "NuGet.Frameworks/6.11.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Ew/mrfmLF5phsprysHbph2+tdZ10HMHAURavsr/Kx1WhybDG4vmGuoNLbbZMZOqnPRdpyCTc42OKWLoedxpYtA==",
+      "path": "nuget.frameworks/6.11.0",
+      "hashPath": "nuget.frameworks.6.11.0.nupkg.sha512"
+    },
+    "NuGet.Packaging/6.11.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VmUv2LedVuPY1tfNybORO2I9IuqOzeV7I5JBD+PwNvJq2bAqovi4FCw2cYI0g+kjOJXBN2lAJfrfnqtUOlVJdQ==",
+      "path": "nuget.packaging/6.11.0",
+      "hashPath": "nuget.packaging.6.11.0.nupkg.sha512"
+    },
+    "NuGet.Protocol/6.11.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-p5B8oNLLnGhUfMbcS16aRiegj11pD6k+LELyRBqvNFR/pE3yR1XT+g1XS33ME9wvoU+xbCGnl4Grztt1jHPinw==",
+      "path": "nuget.protocol/6.11.0",
+      "hashPath": "nuget.protocol.6.11.0.nupkg.sha512"
+    },
+    "NuGet.Versioning/6.11.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-v/GGlIj2dd7svplFmASWEueu62veKW0MrMtBaZ7QG8aJTSGv2yE+pgUGhXRcQ4nxNOEq/wLBrz1vkth/1SND7A==",
+      "path": "nuget.versioning/6.11.0",
+      "hashPath": "nuget.versioning.6.11.0.nupkg.sha512"
     },
     "System.CodeDom/4.4.0": {
       "type": "package",
@@ -1508,12 +1658,12 @@
       "path": "system.drawing.common/6.0.0",
       "hashPath": "system.drawing.common.6.0.0.nupkg.sha512"
     },
-    "System.Formats.Asn1/5.0.0": {
+    "System.Formats.Asn1/6.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-MTvUIktmemNB+El0Fgw9egyqT9AYSIk6DTJeoDSpc3GIHxHCMo8COqkWT1mptX5tZ1SlQ6HJZ0OsSvMth1c12w==",
-      "path": "system.formats.asn1/5.0.0",
-      "hashPath": "system.formats.asn1.5.0.0.nupkg.sha512"
+      "sha512": "sha512-T6fD00dQ3NTbPDy31m4eQUwKW84s03z0N2C8HpOklyeaDgaJPa/TexP4/SkORMSOwc7WhKifnA6Ya33AkzmafA==",
+      "path": "system.formats.asn1/6.0.0",
+      "hashPath": "system.formats.asn1.6.0.0.nupkg.sha512"
     },
     "System.IdentityModel.Tokens.Jwt/6.35.0": {
       "type": "package",
@@ -1599,6 +1749,13 @@
       "path": "system.security.cryptography.cng/5.0.0",
       "hashPath": "system.security.cryptography.cng.5.0.0.nupkg.sha512"
     },
+    "System.Security.Cryptography.Pkcs/6.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LGbXi1oUJ9QgCNGXRO9ndzBL/GZgANcsURpMhNR8uO+rca47SZmciS3RSQUvlQRwK3QHZSHNOXzoMUASKA+Anw==",
+      "path": "system.security.cryptography.pkcs/6.0.4",
+      "hashPath": "system.security.cryptography.pkcs.6.0.4.nupkg.sha512"
+    },
     "System.Security.Cryptography.ProtectedData/6.0.0": {
       "type": "package",
       "serviceable": true,
@@ -1680,6 +1837,11 @@
       "sha512": ""
     },
     "Core.Persistence/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Core.Security/1.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

@@ -2,7 +2,7 @@ using Core.Persistence.Repositories;
 
 namespace Core.Security.Entities;
 
-public class OtpAuthenticator: Entity<int>
+public class OtpAuthenticator: Entity<long>
 {
     public int UserId { get; set; }
     public byte[] SecretKey { get; set; }

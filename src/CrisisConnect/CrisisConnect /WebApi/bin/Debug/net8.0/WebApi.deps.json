@@ -2278,7 +2278,8 @@
           "Microsoft.EntityFrameworkCore.InMemory": "8.0.10",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.10",
           "Microsoft.Extensions.Configuration.Abstractions": "8.0.0",
-          "Npgsql.EntityFrameworkCore.PostgreSQL": "8.0.10"
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "8.0.10",
+          "NuGet.Protocol": "6.11.0"
         },
         "runtime": {
           "Persistence.dll": {}
@@ -2303,6 +2304,14 @@
       "Core.Persistence/1.0.0.0": {
         "runtime": {
           "Core.Persistence.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Core.Security/1.0.0.0": {
+        "runtime": {
+          "Core.Security.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -3707,6 +3716,11 @@
       "sha512": ""
     },
     "Core.Persistence/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Core.Security/1.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

@@ -352,6 +352,22 @@
           }
         }
       },
+      "Microsoft.Bcl.TimeProvider/8.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Microsoft.Bcl.TimeProvider.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Bcl.TimeProvider.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
       "Microsoft.CSharp/4.5.0": {
         "type": "package",
         "compile": {
@@ -802,6 +818,69 @@
           }
         }
       },
+      "Microsoft.IdentityModel.Abstractions/8.2.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Microsoft.IdentityModel.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.IdentityModel.Abstractions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.IdentityModel.JsonWebTokens/8.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Bcl.TimeProvider": "8.0.1",
+          "Microsoft.IdentityModel.Tokens": "8.2.0"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.IdentityModel.Logging/8.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.IdentityModel.Abstractions": "8.2.0"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.IdentityModel.Logging.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.IdentityModel.Logging.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.IdentityModel.Tokens/8.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Bcl.TimeProvider": "8.0.1",
+          "Microsoft.IdentityModel.Logging": "8.2.0"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.IdentityModel.Tokens.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.IdentityModel.Tokens.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.Net.Http.Headers/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -975,6 +1054,15 @@
           "lib/net5.0/Npgsql.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "Otp.NET/1.4.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Otp.NET.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/Otp.NET.dll": {}
         }
       },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
@@ -1564,6 +1652,23 @@
           "runtimes/win/lib/netstandard1.3/System.Globalization.Extensions.dll": {
             "assetType": "runtime",
             "rid": "win"
+          }
+        }
+      },
+      "System.IdentityModel.Tokens.Jwt/8.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.IdentityModel.JsonWebTokens": "8.2.0",
+          "Microsoft.IdentityModel.Tokens": "8.2.0"
+        },
+        "compile": {
+          "lib/net8.0/System.IdentityModel.Tokens.Jwt.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/System.IdentityModel.Tokens.Jwt.dll": {
+            "related": ".xml"
           }
         }
       },
@@ -2786,6 +2891,24 @@
         "runtime": {
           "bin/placeholder/Core.Persistence.dll": {}
         }
+      },
+      "Core.Security/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Core.Persistence": "1.0.0",
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0",
+          "Microsoft.Extensions.Configuration.Binder": "8.0.2",
+          "Microsoft.IdentityModel.Tokens": "8.2.0",
+          "Otp.NET": "1.4.0",
+          "System.IdentityModel.Tokens.Jwt": "8.2.0"
+        },
+        "compile": {
+          "bin/placeholder/Core.Security.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Core.Security.dll": {}
+        }
       }
     }
   },
@@ -3066,6 +3189,32 @@
         "lib/netstandard2.0/Microsoft.AspNetCore.WebUtilities.xml",
         "microsoft.aspnetcore.webutilities.2.2.0.nupkg.sha512",
         "microsoft.aspnetcore.webutilities.nuspec"
+      ]
+    },
+    "Microsoft.Bcl.TimeProvider/8.0.1": {
+      "sha512": "C7kWHJnMRY7EvJev2S8+yJHZ1y7A4ZlLbA4NE+O23BDIAN5mHeqND1m+SKv1ChRS5YlCDW7yAMUe7lttRsJaAA==",
+      "type": "package",
+      "path": "microsoft.bcl.timeprovider/8.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/Microsoft.Bcl.TimeProvider.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/Microsoft.Bcl.TimeProvider.targets",
+        "lib/net462/Microsoft.Bcl.TimeProvider.dll",
+        "lib/net462/Microsoft.Bcl.TimeProvider.xml",
+        "lib/net8.0/Microsoft.Bcl.TimeProvider.dll",
+        "lib/net8.0/Microsoft.Bcl.TimeProvider.xml",
+        "lib/netstandard2.0/Microsoft.Bcl.TimeProvider.dll",
+        "lib/netstandard2.0/Microsoft.Bcl.TimeProvider.xml",
+        "microsoft.bcl.timeprovider.8.0.1.nupkg.sha512",
+        "microsoft.bcl.timeprovider.nuspec",
+        "useSharedDesignerContext.txt"
       ]
     },
     "Microsoft.CSharp/4.5.0": {
@@ -3770,6 +3919,102 @@
         "ref/xamarinmac20/Microsoft.Identity.Client.xml"
       ]
     },
+    "Microsoft.IdentityModel.Abstractions/8.2.0": {
+      "sha512": "27ClfnelIu92kLGOaz0vjdXR1Jv7hAdLffxxNgR8T0+IMWmxeVyO3cU8oohmuTrWUFOfd2tsSGaRNewnuClIZw==",
+      "type": "package",
+      "path": "microsoft.identitymodel.abstractions/8.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net462/Microsoft.IdentityModel.Abstractions.dll",
+        "lib/net462/Microsoft.IdentityModel.Abstractions.xml",
+        "lib/net472/Microsoft.IdentityModel.Abstractions.dll",
+        "lib/net472/Microsoft.IdentityModel.Abstractions.xml",
+        "lib/net6.0/Microsoft.IdentityModel.Abstractions.dll",
+        "lib/net6.0/Microsoft.IdentityModel.Abstractions.xml",
+        "lib/net8.0/Microsoft.IdentityModel.Abstractions.dll",
+        "lib/net8.0/Microsoft.IdentityModel.Abstractions.xml",
+        "lib/net9.0/Microsoft.IdentityModel.Abstractions.dll",
+        "lib/net9.0/Microsoft.IdentityModel.Abstractions.xml",
+        "lib/netstandard2.0/Microsoft.IdentityModel.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.IdentityModel.Abstractions.xml",
+        "microsoft.identitymodel.abstractions.8.2.0.nupkg.sha512",
+        "microsoft.identitymodel.abstractions.nuspec"
+      ]
+    },
+    "Microsoft.IdentityModel.JsonWebTokens/8.2.0": {
+      "sha512": "/DAx+9HeqfkH/PccwHx7cUtQe9fYM6AxEmTla8WXUT+w+mapKLnigWmdKtF55hNvxiSnmGhSSCcG7XrvkpGKFA==",
+      "type": "package",
+      "path": "microsoft.identitymodel.jsonwebtokens/8.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net462/Microsoft.IdentityModel.JsonWebTokens.dll",
+        "lib/net462/Microsoft.IdentityModel.JsonWebTokens.xml",
+        "lib/net472/Microsoft.IdentityModel.JsonWebTokens.dll",
+        "lib/net472/Microsoft.IdentityModel.JsonWebTokens.xml",
+        "lib/net6.0/Microsoft.IdentityModel.JsonWebTokens.dll",
+        "lib/net6.0/Microsoft.IdentityModel.JsonWebTokens.xml",
+        "lib/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll",
+        "lib/net8.0/Microsoft.IdentityModel.JsonWebTokens.xml",
+        "lib/net9.0/Microsoft.IdentityModel.JsonWebTokens.dll",
+        "lib/net9.0/Microsoft.IdentityModel.JsonWebTokens.xml",
+        "lib/netstandard2.0/Microsoft.IdentityModel.JsonWebTokens.dll",
+        "lib/netstandard2.0/Microsoft.IdentityModel.JsonWebTokens.xml",
+        "microsoft.identitymodel.jsonwebtokens.8.2.0.nupkg.sha512",
+        "microsoft.identitymodel.jsonwebtokens.nuspec"
+      ]
+    },
+    "Microsoft.IdentityModel.Logging/8.2.0": {
+      "sha512": "mZsjOZlbmCZfM71y8Fyo+D5UJ1RZFvmKXkxTfE2llQ0/CrfEeWmbpoew51w++EWs+G8B/peZqR1DQtbX3bB6Fg==",
+      "type": "package",
+      "path": "microsoft.identitymodel.logging/8.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net462/Microsoft.IdentityModel.Logging.dll",
+        "lib/net462/Microsoft.IdentityModel.Logging.xml",
+        "lib/net472/Microsoft.IdentityModel.Logging.dll",
+        "lib/net472/Microsoft.IdentityModel.Logging.xml",
+        "lib/net6.0/Microsoft.IdentityModel.Logging.dll",
+        "lib/net6.0/Microsoft.IdentityModel.Logging.xml",
+        "lib/net8.0/Microsoft.IdentityModel.Logging.dll",
+        "lib/net8.0/Microsoft.IdentityModel.Logging.xml",
+        "lib/net9.0/Microsoft.IdentityModel.Logging.dll",
+        "lib/net9.0/Microsoft.IdentityModel.Logging.xml",
+        "lib/netstandard2.0/Microsoft.IdentityModel.Logging.dll",
+        "lib/netstandard2.0/Microsoft.IdentityModel.Logging.xml",
+        "microsoft.identitymodel.logging.8.2.0.nupkg.sha512",
+        "microsoft.identitymodel.logging.nuspec"
+      ]
+    },
+    "Microsoft.IdentityModel.Tokens/8.2.0": {
+      "sha512": "/I+6D3SwW8hQh5wznGzQCrS4L5y5Re/0AEKKfXXAduWzz4WKqJzY8RmjwZ6W66bIFUhPrqOy6zsLKPik4Ppnbw==",
+      "type": "package",
+      "path": "microsoft.identitymodel.tokens/8.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net462/Microsoft.IdentityModel.Tokens.dll",
+        "lib/net462/Microsoft.IdentityModel.Tokens.xml",
+        "lib/net472/Microsoft.IdentityModel.Tokens.dll",
+        "lib/net472/Microsoft.IdentityModel.Tokens.xml",
+        "lib/net6.0/Microsoft.IdentityModel.Tokens.dll",
+        "lib/net6.0/Microsoft.IdentityModel.Tokens.xml",
+        "lib/net8.0/Microsoft.IdentityModel.Tokens.dll",
+        "lib/net8.0/Microsoft.IdentityModel.Tokens.xml",
+        "lib/net9.0/Microsoft.IdentityModel.Tokens.dll",
+        "lib/net9.0/Microsoft.IdentityModel.Tokens.xml",
+        "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.dll",
+        "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.xml",
+        "microsoft.identitymodel.tokens.8.2.0.nupkg.sha512",
+        "microsoft.identitymodel.tokens.nuspec"
+      ]
+    },
     "Microsoft.Net.Http.Headers/2.2.0": {
       "sha512": "iZNkjYqlo8sIOI0bQfpsSoMTmB/kyvmV2h225ihyZT33aTp48ZpF6qYnXxzSXmHt8DpBAwBTX+1s1UFLbYfZKg==",
       "type": "package",
@@ -3951,6 +4196,26 @@
         "npgsql.5.0.5.nupkg.sha512",
         "npgsql.nuspec",
         "postgresql.png"
+      ]
+    },
+    "Otp.NET/1.4.0": {
+      "sha512": "Fk1NKc0lWmlo6LAFYpFJInRgFKt72knRNEvxndDYoQHFwYOPXav+WEUBvQA0k4lxq5xt0SymrZ+oi0F/G40bPQ==",
+      "type": "package",
+      "path": "otp.net/1.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "icon.png",
+        "lib/net461/Otp.NET.dll",
+        "lib/net5.0/Otp.NET.dll",
+        "lib/net6.0/Otp.NET.dll",
+        "lib/net7.0/Otp.NET.dll",
+        "lib/net8.0/Otp.NET.dll",
+        "lib/netstandard2.0/Otp.NET.dll",
+        "otp.net.1.4.0.nupkg.sha512",
+        "otp.net.nuspec"
       ]
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
@@ -5287,6 +5552,30 @@
         "runtimes/win/lib/netstandard1.3/System.Globalization.Extensions.dll",
         "system.globalization.extensions.4.3.0.nupkg.sha512",
         "system.globalization.extensions.nuspec"
+      ]
+    },
+    "System.IdentityModel.Tokens.Jwt/8.2.0": {
+      "sha512": "M61kEnR2ljMFL2vLHmHrodCqPO/zKsYsaRu3jdagYOP/y0ZdFoFoATyfwR0bJ5quBsWEPL5y8QU7CJiEh2kq+Q==",
+      "type": "package",
+      "path": "system.identitymodel.tokens.jwt/8.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net462/System.IdentityModel.Tokens.Jwt.dll",
+        "lib/net462/System.IdentityModel.Tokens.Jwt.xml",
+        "lib/net472/System.IdentityModel.Tokens.Jwt.dll",
+        "lib/net472/System.IdentityModel.Tokens.Jwt.xml",
+        "lib/net6.0/System.IdentityModel.Tokens.Jwt.dll",
+        "lib/net6.0/System.IdentityModel.Tokens.Jwt.xml",
+        "lib/net8.0/System.IdentityModel.Tokens.Jwt.dll",
+        "lib/net8.0/System.IdentityModel.Tokens.Jwt.xml",
+        "lib/net9.0/System.IdentityModel.Tokens.Jwt.dll",
+        "lib/net9.0/System.IdentityModel.Tokens.Jwt.xml",
+        "lib/netstandard2.0/System.IdentityModel.Tokens.Jwt.dll",
+        "lib/netstandard2.0/System.IdentityModel.Tokens.Jwt.xml",
+        "system.identitymodel.tokens.jwt.8.2.0.nupkg.sha512",
+        "system.identitymodel.tokens.jwt.nuspec"
       ]
     },
     "System.IO/4.3.0": {
@@ -8359,12 +8648,18 @@
       "type": "project",
       "path": "../Core.Persistence/Core.Persistence.csproj",
       "msbuildProject": "../Core.Persistence/Core.Persistence.csproj"
+    },
+    "Core.Security/1.0.0": {
+      "type": "project",
+      "path": "../Core.Security/Core.Security.csproj",
+      "msbuildProject": "../Core.Security/Core.Security.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
       "Core.CrossCuttingConcerns >= 1.0.0",
       "Core.Persistence >= 1.0.0",
+      "Core.Security >= 1.0.0",
       "FluentValidation >= 11.10.0",
       "MediatR >= 12.4.1",
       "Microsoft.Extensions.Configuration.Binder >= 8.0.2"
@@ -8400,6 +8695,9 @@
             },
             "/Users/pc/Desktop/DogalAfetKaynakYardim/src/corePackages/Core.Packages/Core.Persistence/Core.Persistence.csproj": {
               "projectPath": "/Users/pc/Desktop/DogalAfetKaynakYardim/src/corePackages/Core.Packages/Core.Persistence/Core.Persistence.csproj"
+            },
+            "/Users/pc/Desktop/DogalAfetKaynakYardim/src/corePackages/Core.Packages/Core.Security/Core.Security.csproj": {
+              "projectPath": "/Users/pc/Desktop/DogalAfetKaynakYardim/src/corePackages/Core.Packages/Core.Security/Core.Security.csproj"
             }
           }
         }

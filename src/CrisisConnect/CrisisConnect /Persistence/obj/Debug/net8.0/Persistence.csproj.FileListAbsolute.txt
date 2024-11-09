@@ -24,3 +24,5 @@
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Persistence/obj/Debug/net8.0/Persistence.pdb
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Persistence/obj/Debug/net8.0/Persistence.genruntimeconfig.cache
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Persistence/obj/Debug/net8.0/ref/Persistence.dll
+/Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Persistence/bin/Debug/net8.0/Core.Security.dll
+/Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Persistence/bin/Debug/net8.0/Core.Security.pdb

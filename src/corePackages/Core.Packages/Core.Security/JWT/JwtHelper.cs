@@ -25,19 +25,18 @@ public class JwtHelper : ITokenHelper
             ?? throw new NullReferenceException($"\"{configurationSection}\" section cannot found in configuration.");
     }
 
-    // public RefreshToken CreateRefreshToken(User user, string ipAddress)
-    // {
-    //     RefreshToken refreshToken =
-    //        new()
-    //        {
-    //            UserId = user.Id,
-    //            Token = RandomRefreshToken(),
-    //            Expires = DateTime.UtcNow.AddDays(7),
-    //            CreatedByIp = ipAddress
-    //        };
-    //
-    //     return refreshToken;
-    // }
+    public RefreshToken CreateRefreshToken(User user, string ipAddress)
+    {
+        RefreshToken refreshToken = 
+            new() 
+            {
+                UserId = user.Id,
+                Token = RandomRefreshToken(),
+                Expires = DateTime.UtcNow.AddDays(7),
+                CreatedByIp = ipAddress
+            };
+        return refreshToken;
+    }
 
     public AccessToken CreateToken(User user, IList<OperationClaim> operationClaims)
     {
@@ -50,10 +49,28 @@ public class JwtHelper : ITokenHelper
 
         return new AccessToken { Token = token, Expiration = _accessTokenExpiration };
     }
-
-    public RefreshToken CreateRefreshToken(User user, string ipAddress)
+    
+    public TokenResponse RefreshToken(string accessToken, string refreshToken, string ipAddress, User user)
     {
-        throw new NotImplementedException();
+        var savedRefreshToken = user.RefreshTokens.SingleOrDefault(rt => rt.Token == refreshToken);
+
+        if (savedRefreshToken == null || savedRefreshToken.IsExpired || savedRefreshToken.IsRevoked)
+            throw new SecurityTokenException("Invalid or expired refresh token.");
+
+        var newAccessToken = CreateToken(user, user.OperationClaims);
+        var newRefreshToken = CreateRefreshToken(user, ipAddress);
+
+        savedRefreshToken.Revoked = DateTime.UtcNow;
+        savedRefreshToken.RevokedByIp = ipAddress;
+        savedRefreshToken.ReplacedByToken = newRefreshToken.Token;
+
+        user.RefreshTokens.Add(newRefreshToken);
+
+        return new TokenResponse
+        {
+            AccessToken = newAccessToken.Token,
+            RefreshToken = newRefreshToken.Token
+        };
     }
 
     public JwtSecurityToken CreateJwtSecurityToken(
@@ -92,4 +109,10 @@ public class JwtHelper : ITokenHelper
         random.GetBytes(numberByte);
         return Convert.ToBase64String(numberByte);
     }
+}
+
+public class TokenResponse
+{
+    public string AccessToken { get; set; }
+    public string RefreshToken { get; set; }
 }
