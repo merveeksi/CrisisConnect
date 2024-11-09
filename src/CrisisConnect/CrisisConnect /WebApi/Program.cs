@@ -20,7 +20,24 @@ builder.Services.AddStackExchangeRedisCache(options => options.Configuration = "
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder = WebApplication.CreateBuilder(args);
+
+// CORS politikasını tanımlıyoruz
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowBlazorApp",
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:5220/")
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+        });
+});
+
 var app = builder.Build();
+
+// CORS politikasını burada uyguluyoruz
+app.UseCors("AllowBlazorApp");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

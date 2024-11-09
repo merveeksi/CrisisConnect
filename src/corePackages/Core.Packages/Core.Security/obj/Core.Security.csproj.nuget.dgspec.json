@@ -129,7 +129,7 @@
             },
             "Microsoft.IdentityModel.Tokens": {
               "target": "Package",
-              "version": "[8.2.0, )"
+              "version": "[7.7.1, )"
             },
             "Otp.NET": {
               "target": "Package",
@@ -137,7 +137,7 @@
             },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
-              "version": "[8.2.0, )"
+              "version": "[7.7.1, )"
             }
           },
           "imports": [
