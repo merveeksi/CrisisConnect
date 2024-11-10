@@ -13,6 +13,7 @@
           "FluentValidation.DependencyInjectionExtensions": "11.10.0",
           "MediatR": "12.4.1",
           "Microsoft.EntityFrameworkCore": "8.0.10",
+          "Microsoft.Extensions.Localization.Abstractions": "8.0.10",
           "Core.Application": "1.0.0.0",
           "Core.CrossCuttingConcerns": "1.0.0.0",
           "Core.Persistence": "1.0.0.0",
@@ -162,6 +163,14 @@
           }
         }
       },
+      "Microsoft.Extensions.Localization.Abstractions/8.0.10": {
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Localization.Abstractions.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.1024.46804"
+          }
+        }
+      },
       "Microsoft.Extensions.Logging/8.0.1": {
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection": "8.0.1",
@@ -227,6 +236,26 @@
           "Core.CrossCuttingConcerns.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
+          }
+        },
+        "resources": {
+          "tr-TR/Core.CrossCuttingConcerns.resources.dll": {
+            "locale": "tr-TR"
+          },
+          "de-DE/Core.CrossCuttingConcerns.resources.dll": {
+            "locale": "de-DE"
+          },
+          "es-ES/Core.CrossCuttingConcerns.resources.dll": {
+            "locale": "es-ES"
+          },
+          "ru-RU/Core.CrossCuttingConcerns.resources.dll": {
+            "locale": "ru-RU"
+          },
+          "en-GB/Core.CrossCuttingConcerns.resources.dll": {
+            "locale": "en-GB"
+          },
+          "en-US/Core.CrossCuttingConcerns.resources.dll": {
+            "locale": "en-US"
           }
         }
       },
@@ -358,6 +387,13 @@
       "sha512": "sha512-3iE7UF7MQkCv1cxzCahz+Y/guQbTqieyxyaWKhrRO91itI9cOKO76OHeQDahqG4MmW5umr3CcCvGmK92lWNlbg==",
       "path": "microsoft.extensions.dependencyinjection.abstractions/8.0.2",
       "hashPath": "microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Localization.Abstractions/8.0.10": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-OuuTRyukXTPjTgx1iYJzyaPa+hFrkj1djlWV/kqsWs2arSXczh/JpCgak617mo3M+5FMpEJ3af5nrgehC7q1YQ==",
+      "path": "microsoft.extensions.localization.abstractions/8.0.10",
+      "hashPath": "microsoft.extensions.localization.abstractions.8.0.10.nupkg.sha512"
     },
     "Microsoft.Extensions.Logging/8.0.1": {
       "type": "package",

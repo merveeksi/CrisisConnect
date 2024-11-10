@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "wvRM+xXIaN0=",
+  "dgSpecHash": "GMznC716sI4=",
   "success": true,
   "projectFilePath": "/Users/pc/Desktop/DogalAfetKaynakYardim/src/corePackages/Core.Packages/Core.CrossCuttingConcerns/Core.CrossCuttingConcerns.csproj",
   "expectedPackageFiles": [
@@ -29,6 +29,7 @@
     "/Users/pc/.nuget/packages/microsoft.extensions.dependencymodel/2.1.0/microsoft.extensions.dependencymodel.2.1.0.nupkg.sha512",
     "/Users/pc/.nuget/packages/microsoft.extensions.fileproviders.abstractions/2.2.0/microsoft.extensions.fileproviders.abstractions.2.2.0.nupkg.sha512",
     "/Users/pc/.nuget/packages/microsoft.extensions.hosting.abstractions/2.2.0/microsoft.extensions.hosting.abstractions.2.2.0.nupkg.sha512",
+    "/Users/pc/.nuget/packages/microsoft.extensions.localization.abstractions/8.0.10/microsoft.extensions.localization.abstractions.8.0.10.nupkg.sha512",
     "/Users/pc/.nuget/packages/microsoft.extensions.logging.abstractions/8.0.2/microsoft.extensions.logging.abstractions.8.0.2.nupkg.sha512",
     "/Users/pc/.nuget/packages/microsoft.extensions.objectpool/2.2.0/microsoft.extensions.objectpool.2.2.0.nupkg.sha512",
     "/Users/pc/.nuget/packages/microsoft.extensions.options/2.2.0/microsoft.extensions.options.2.2.0.nupkg.sha512",

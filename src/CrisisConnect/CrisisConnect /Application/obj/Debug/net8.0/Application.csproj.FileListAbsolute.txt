@@ -22,3 +22,9 @@
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Application/obj/Debug/net8.0/ref/Application.dll
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Application/bin/Debug/net8.0/Core.Security.dll
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Application/bin/Debug/net8.0/Core.Security.pdb
+/Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Application/bin/Debug/net8.0/tr-TR/Core.CrossCuttingConcerns.resources.dll
+/Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Application/bin/Debug/net8.0/de-DE/Core.CrossCuttingConcerns.resources.dll
+/Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Application/bin/Debug/net8.0/es-ES/Core.CrossCuttingConcerns.resources.dll
+/Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Application/bin/Debug/net8.0/ru-RU/Core.CrossCuttingConcerns.resources.dll
+/Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Application/bin/Debug/net8.0/en-GB/Core.CrossCuttingConcerns.resources.dll
+/Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Application/bin/Debug/net8.0/en-US/Core.CrossCuttingConcerns.resources.dll

@@ -29,6 +29,7 @@
       <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.10.0" />
       <PackageReference Include="MediatR" Version="12.4.1" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.10" />
+      <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="8.0.10" />
     </ItemGroup>
 
     <ItemGroup>
@@ -48,6 +49,30 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Domain\Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="Resources\Common\Localization\CommonLocalization.tr-TR.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>CommonLocalization.tr-TR.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Common\Localization\CommonLocalization.en-GB.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>CommonLocalization.en-GB.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Resources\Common\Localization\CommonLocalization.tr-TR.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>CommonLocalization.tr-TR.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Common\Localization\CommonLocalization.en-GB.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>CommonLocalization.en-GB.resx</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>

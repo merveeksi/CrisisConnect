@@ -14,6 +14,7 @@
           "FluentValidation": "11.10.0",
           "MediatR": "12.4.1",
           "Microsoft.Extensions.Configuration.Binder": "8.0.2",
+          "Microsoft.Extensions.Localization.Abstractions": "8.0.10",
           "Core.Security.Reference": "1.0.0.0"
         },
         "runtime": {
@@ -499,6 +500,14 @@
           "lib/netstandard2.0/Microsoft.Extensions.Hosting.Abstractions.dll": {
             "assemblyVersion": "2.2.0.0",
             "fileVersion": "2.2.0.18316"
+          }
+        }
+      },
+      "Microsoft.Extensions.Localization.Abstractions/8.0.10": {
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Localization.Abstractions.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.1024.46804"
           }
         }
       },
@@ -1701,6 +1710,7 @@
           "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
           "Microsoft.AspNetCore.Mvc.Core": "2.2.5",
           "Microsoft.Extensions.Configuration.Binder": "8.0.2",
+          "Microsoft.Extensions.Localization.Abstractions": "8.0.10",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
           "Serilog": "4.1.0",
           "Serilog.Sinks.File": "6.0.0",
@@ -1708,6 +1718,26 @@
         },
         "runtime": {
           "Core.CrossCuttingConcerns.dll": {}
+        },
+        "resources": {
+          "tr-TR/Core.CrossCuttingConcerns.resources.dll": {
+            "locale": "tr-TR"
+          },
+          "de-DE/Core.CrossCuttingConcerns.resources.dll": {
+            "locale": "de-DE"
+          },
+          "es-ES/Core.CrossCuttingConcerns.resources.dll": {
+            "locale": "es-ES"
+          },
+          "ru-RU/Core.CrossCuttingConcerns.resources.dll": {
+            "locale": "ru-RU"
+          },
+          "en-GB/Core.CrossCuttingConcerns.resources.dll": {
+            "locale": "en-GB"
+          },
+          "en-US/Core.CrossCuttingConcerns.resources.dll": {
+            "locale": "en-US"
+          }
         }
       },
       "Core.Persistence/1.0.0": {
@@ -2008,6 +2038,13 @@
       "sha512": "sha512-+k4AEn68HOJat5gj1TWa6X28WlirNQO9sPIIeQbia+91n03esEtMSSoekSTpMjUzjqtJWQN3McVx0GvSPFHF/Q==",
       "path": "microsoft.extensions.hosting.abstractions/2.2.0",
       "hashPath": "microsoft.extensions.hosting.abstractions.2.2.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Localization.Abstractions/8.0.10": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-OuuTRyukXTPjTgx1iYJzyaPa+hFrkj1djlWV/kqsWs2arSXczh/JpCgak617mo3M+5FMpEJ3af5nrgehC7q1YQ==",
+      "path": "microsoft.extensions.localization.abstractions/8.0.10",
+      "hashPath": "microsoft.extensions.localization.abstractions.8.0.10.nupkg.sha512"
     },
     "Microsoft.Extensions.Logging/8.0.1": {
       "type": "package",

@@ -1,6 +1,9 @@
+using Application.Features.Alerts.Commands.Create;
+using Core.Application.Common;
 using Domain.Enums;
 using Domain.ValueObjects;
 using FluentValidation;
+using Microsoft.Extensions.Localization;
 
 namespace Application.Features.Disasters.Commands.Create;
 
@@ -8,72 +11,61 @@ public class CreateDisasterCommandValidator:AbstractValidator<CreateDisasterComm
 {
      public CreateDisasterCommandValidator()
     {
-        // String alanlar için doğrulama kurallarını yapılandırıyoruz
-        ConfigureStringRules();
         
-        // Enum türündeki alanlar için doğrulama kurallarını yapılandırıyoruz
-        ConfigureEnumRules();
-        
-        // Tarih ve zaman alanları için doğrulama kurallarını yapılandırıyoruz
-        ConfigureDateRules();
-        
-        // Boolean alanlar için doğrulama kuralları
-        ConfigureBooleanRules();
     }
 
-    private void ConfigureStringRules()
+    private void ConfigureStringRules(IStringLocalizer<CreateDisasterCommandValidator> localizer)
     {
         RuleFor(c => c.Name)
-            .NotEmpty().WithMessage("Afet adı boş olamaz.")
-            .MinimumLength(2).WithMessage("Afet adı en az 2 karakter olmalı.")
-            .MaximumLength(100).WithMessage("Afet adı en fazla 100 karakter olmalı.");
+            .NotEmpty().WithMessage(x => localizer[CommonLocalizationKeys.ValidationIsRequired,nameof(x.Name)])
+            .Length(2, 1000).WithMessage(x => localizer[CommonLocalizationKeys.ValidationMustBeBetween,nameof(x.Name),2,1000]);
 
         RuleFor(c => c.Address)
-            .NotEmpty().WithMessage("Adres bilgisi boş olamaz.");
+            .NotEmpty().WithMessage(x => localizer[CommonLocalizationKeys.ValidationIsRequired,nameof(x.Address)]);
 
         RuleFor(c => c.EmergencyContactInfo)
-            .MaximumLength(100).WithMessage("Acil durum iletişim bilgisi en fazla 100 karakter olmalı.");
+            .Length(2, 1000).WithMessage(x => localizer[CommonLocalizationKeys.ValidationMustBeBetween,nameof(x.Address),2,1000]);
     }
 
-    private void ConfigureEnumRules()
+    private void ConfigureEnumRules(IStringLocalizer<CreateDisasterCommandValidator> localizer)
     {
         RuleFor(c => c.Type)
-            .NotEmpty().WithMessage("Afet türü boş olamaz.")
+            .NotEmpty().WithMessage(x => localizer[CommonLocalizationKeys.ValidationIsRequired,nameof(x.Type)])
             .Must(IsValidDisasterType)
-            .WithMessage("Geçerli bir afet türü girin (örneğin: Earthquake, Flood, Fire, Landslide, Avalanche, Other).");
+            .WithMessage(x => localizer[CommonLocalizationKeys.ValidationIsInvalid,nameof(x.Type)]);
 
         RuleFor(c => c.Status)
-            .NotEmpty().WithMessage("Afet durumu boş olamaz.")
+            .NotEmpty().WithMessage(x => localizer[CommonLocalizationKeys.ValidationIsRequired,nameof(x.Status)])
             .Must(IsValidDisasterStatus)
-            .WithMessage("Geçerli bir afet durumu girin (örneğin: Ongoing, Resolved, Inactive).");
+            .WithMessage(x => localizer[CommonLocalizationKeys.ValidationIsInvalid,nameof(x.Status)]);
 
         RuleFor(c => c.ImpactAssessment)
-            .NotEmpty().WithMessage("Etki değerlendirmesi boş olamaz.")
+            .NotEmpty().WithMessage(x => localizer[CommonLocalizationKeys.ValidationIsRequired,nameof(x.ImpactAssessment)])
             .Must(IsValidImpactAssessment)
-            .WithMessage("Geçerli bir etki değerlendirmesi girin.");
+            .WithMessage(x => localizer[CommonLocalizationKeys.ValidationIsInvalid,nameof(x.ImpactAssessment)]);
     }
 
-    private void ConfigureDateRules()
+    private void ConfigureDateRules(IStringLocalizer<CreateDisasterCommandValidator> localizer)
     {
         RuleFor(c => c.DateOccurred)
-            .NotEmpty().WithMessage("Afet gerçekleşme tarihi boş olamaz.")
-            .LessThanOrEqualTo(DateTime.Now).WithMessage("Afet tarihi gelecekte olamaz.");
+            .NotEmpty().WithMessage(x => localizer[CommonLocalizationKeys.ValidationIsRequired,nameof(x.DateOccurred)])
+            .LessThanOrEqualTo(DateTime.Now).WithMessage(x=>localizer[CommonLocalizationKeys.ValidationDatetimeNotFuture,nameof(x.DateOccurred)]);
 
         RuleFor(c => c.DateResolved)
-            .LessThanOrEqualTo(DateTime.Now).WithMessage("Afet çözüm tarihi gelecekte olamaz.");
+            .LessThanOrEqualTo(DateTime.Now).WithMessage(x=>localizer[CommonLocalizationKeys.ValidationDatetimeNotFuture,nameof(x.DateResolved)]);
 
         RuleFor(c => c.CreatedAt)
-            .NotEmpty().WithMessage("Oluşturulma tarihi boş olamaz.")
-            .LessThanOrEqualTo(DateTime.Now).WithMessage("Oluşturulma tarihi gelecekte olamaz.");
+            .NotEmpty().WithMessage(x => localizer[CommonLocalizationKeys.ValidationIsRequired,nameof(x.CreatedAt)])
+            .LessThanOrEqualTo(DateTime.Now).WithMessage(x=>localizer[CommonLocalizationKeys.ValidationDatetimeNotFuture,nameof(x.CreatedAt)]);
 
         RuleFor(c => c.LastUpdatedAt)
-            .LessThanOrEqualTo(DateTime.Now).WithMessage("Son güncelleme tarihi gelecekte olamaz.");
+            .LessThanOrEqualTo(DateTime.Now).WithMessage(x=>localizer[CommonLocalizationKeys.ValidationDatetimeNotFuture,nameof(x.LastUpdatedAt)]);
     }
 
-    private void ConfigureBooleanRules()
+    private void ConfigureBooleanRules(IStringLocalizer<CreateDisasterCommandValidator> localizer)
     {
         RuleFor(c => c.IsActive)
-            .NotNull().WithMessage("Aktiflik bilgisi boş olamaz.");
+            .NotNull().WithMessage(x => localizer[CommonLocalizationKeys.ValidationIsRequired,nameof(x.IsActive)]);
     }
 
     // Enum doğrulama yardımcıları

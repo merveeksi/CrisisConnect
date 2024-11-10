@@ -1,48 +1,44 @@
+using Core.Application.Common;
 using Domain.Enums;
 using FluentValidation;
+using Microsoft.Extensions.Localization;
 
 namespace Application.Features.Alerts.Commands.Create;
 
 public class CreateAlertCommandValidator : AbstractValidator<CreateAlertCommand>
 {
-    private const int MaxNameLength = 100;
-    private const int MaxDescriptionLength = 2000;
-    private const int MaxInstructionsLength = 2000;
-
-    public CreateAlertCommandValidator()
+    public CreateAlertCommandValidator(IStringLocalizer<CreateAlertCommandValidator> localizer)
     {
         RuleFor(x => x.Name)
-            .NotEmpty().WithMessage("Acil durum uyarı ismi boş olamaz.")
-            .MaximumLength(MaxNameLength).WithMessage($"İsim {MaxNameLength} karakterden uzun olamaz.");
+            .NotEmpty().WithMessage(x => localizer[CommonLocalizationKeys.ValidationIsRequired,nameof(x.Name)])
+            .Length(2, 1000).WithMessage(x => localizer[CommonLocalizationKeys.ValidationMustBeBetween,nameof(x.Name),2,1000]);
 
         RuleFor(x => x.Description)
-            .NotEmpty().WithMessage("Açıklama boş olamaz.")
-            .MaximumLength(MaxDescriptionLength)
-            .WithMessage($"Açıklama {MaxDescriptionLength} karakterden uzun olamaz.")
-            .Matches("^[a-zA-Z0-9 ,.]*$").WithMessage("Açıklama özel karakter içeremez.");
+            .NotEmpty().WithMessage(x => localizer[CommonLocalizationKeys.ValidationIsRequired,nameof(x.Description)])
+            .Length(2, 4000).WithMessage(x => localizer[CommonLocalizationKeys.ValidationMustBeBetween,nameof(x.Name),2,4000])
+            .Matches("^[a-zA-Z0-9 ,.]*$").WithMessage(x=>localizer[CommonLocalizationKeys.ValidationNotContainSpecialCharacters,nameof(x.Description)]);
 
         RuleFor(x => x.Address)
-            .NotEmpty().WithMessage("Adres boş olamaz.");
+            .NotEmpty().WithMessage(x => localizer[CommonLocalizationKeys.ValidationIsRequired,nameof(x.Address)]);
 
         RuleFor(x => x.Instructions)
-            .MaximumLength(MaxInstructionsLength)
-            .WithMessage($"Talimatlar {MaxInstructionsLength} karakterden uzun olamaz.")
+            .Length(2, 4000).WithMessage(x => localizer[CommonLocalizationKeys.ValidationMustBeBetween,nameof(x.Name),2,4000])
             .When(x => !string.IsNullOrEmpty(x.Instructions)) // Sadece talimatlar varsa kontrol et
             .Matches("^[a-zA-Z0-9 ,.]*$").WithMessage("Talimatlar yalnızca belirli karakterler içerebilir.");
     }
     
-    private void ConfigureEnumRules()
+    private void ConfigureEnumRules(IStringLocalizer<CreateAlertCommandValidator> localizer)
     {
         RuleFor(x => x.Type)
-            .NotEmpty().WithMessage("Uyarı tipi boş olamaz.")
-            .IsInEnum().WithMessage("Geçersiz uyarı tipi.");
+            .NotEmpty().WithMessage(x => localizer[CommonLocalizationKeys.ValidationIsRequired,nameof(x.Type)])
+            .IsInEnum().WithMessage(x => localizer[CommonLocalizationKeys.ValidationIsInvalid,nameof(x.Type)]);
 
         RuleFor(x => x.Severity)
-            .IsInEnum().WithMessage("Geçersiz önem derecesi.")
+            .IsInEnum().WithMessage(x => localizer[CommonLocalizationKeys.ValidationIsInvalid,nameof(x.Severity)])
             .WithMessage("Önem derecesi belirtilmelidir."); // Varsayılan olmayan bir değer olmalı
 
         RuleFor(x => x.Status)
-            .IsInEnum().WithMessage("Geçersiz durum.");
+            .IsInEnum().WithMessage(x => localizer[CommonLocalizationKeys.ValidationIsInvalid,nameof(x.Status)]);
     }
     
     // Enum doğrulama yardımcıları
