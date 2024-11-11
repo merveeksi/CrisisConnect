@@ -17,20 +17,13 @@ public class CreateDisasterCommand:IRequest<CreatedDisasterResponse>, ITransacti
     public string? CacheKey => "";
     public bool BypassCache => false;
     public string? CacheGroupKey => "GetDisasters";
-
-    public string Name { get; set; }
-    public DisasterType Type { get; set; }
-    public bool IsActive { get; set; }
-    public DisasterStatus Status { get; set; }
-    public Address Address { get; set; }
-    public string EmergencyContactInfo { get; set; }
-    public ImpactAssessment ImpactAssessment { get; set; }
     
-    public DateTime DateOccurred { get; set; }
-    public DateTime? DateResolved { get; set; } 
-
-    public DateTime CreatedAt { get; set; }
-    public DateTime? LastUpdatedAt { get; set; }
+    public string Name { get; set; }
+    public ContactInfo ContactInfo { get; set; }
+    public DisasterType Type { get; set; }
+    public DisasterStatus Status { get; set; }
+    public ImpactAssessment ImpactAssessment { get; set; }
+    public DateTimeInfo DateTime { get; set; }
     
     
     public class CreateDisasterCommandHandler : IRequestHandler<CreateDisasterCommand, CreatedDisasterResponse>
@@ -48,7 +41,7 @@ public class CreateDisasterCommand:IRequest<CreatedDisasterResponse>, ITransacti
         public async Task<CreatedDisasterResponse>? Handle(CreateDisasterCommand request, CancellationToken cancellationToken)
         {
             Disaster disaster = _mapper.Map<Disaster>(request);
-            disaster.Id = Guid.NewGuid();
+            disaster.Id = new DisasterId(System.DateTime.UtcNow.Ticks);
             
             await _disasterRepository.AddAsync(disaster);
             

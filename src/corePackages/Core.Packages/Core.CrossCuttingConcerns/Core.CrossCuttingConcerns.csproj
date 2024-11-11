@@ -30,10 +30,6 @@
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>CommonLocalization.ru-RU.Designer.cs</LastGenOutput>
       </EmbeddedResource>
-      <EmbeddedResource Update="Resources\Common\Localizations\CommonLocalization.en-GB.resx">
-        <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>CommonLocalization.en-GB.Designer.cs</LastGenOutput>
-      </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>
@@ -51,11 +47,6 @@
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
         <DependentUpon>CommonLocalization.ru-RU.resx</DependentUpon>
-      </Compile>
-      <Compile Update="Resources\Common\Localizations\CommonLocalization.en-GB.Designer.cs">
-        <DesignTime>True</DesignTime>
-        <AutoGen>True</AutoGen>
-        <DependentUpon>CommonLocalization.en-GB.resx</DependentUpon>
       </Compile>
     </ItemGroup>
 

@@ -39,7 +39,7 @@ public class CreateAlertCommandHandler : IRequestHandler<CreateAlertCommand, Cre
     public async Task<CreatedAlertResponse>? Handle(CreateAlertCommand request, CancellationToken cancellationToken)
     {
         Alert alert = _mapper.Map<Alert>(request);
-        alert.Id = Guid.NewGuid();
+        alert.Id = new AlertId(DateTime.UtcNow.Ticks);
         
         await _alertRepository.AddAsync(alert);
         

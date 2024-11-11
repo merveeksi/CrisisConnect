@@ -2,6 +2,7 @@ using Application.Services.Repositories;
 using AutoMapper;
 using Core.Application.Pipelines.Caching;
 using Domain.Entities;
+using Domain.ValueObjects;
 using MediatR;
 
 namespace Application.Features.Disasters.Commands.Delete;
@@ -12,7 +13,7 @@ public class DeleteDisasterCommand : IRequest<DeletedDisasterResponse>, ICacheRe
     public bool BypassCache => false;
     public string? CacheGroupKey => "GetDisasters";
 
-    public Guid Id { get; set; }
+    public DisasterId Id { get; set; }
     
     public class UpdateDisasterCommandHandler : IRequestHandler<DeleteDisasterCommand, DeletedDisasterResponse>
     {

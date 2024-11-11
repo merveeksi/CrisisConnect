@@ -1,56 +1,122 @@
 using Domain.Entities;
+using Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
+
 namespace Persistence.EntityConfigurations;
 
-public class ShelterConfiguration: IEntityTypeConfiguration<Shelter>
+
+public class ShelterConfiguration : IEntityTypeConfiguration<Shelter>
 {
-    public void Configure(EntityTypeBuilder<Shelter> builder)
-    {
-        builder.ToTable("Shelters").HasKey(s => s.Id);
-        
-        // Primary Key
-        builder.Property(s => s.Id).HasColumnName("Id").IsRequired();
-        builder.Property(a => a.RequestId).IsRequired(false);
-        builder.Property(a => a.DisasterId).IsRequired(false);
-        builder.Property(a => a.VolunteerId).IsRequired(false);
+   public void Configure(EntityTypeBuilder<Shelter> builder)
+   {
+       builder.ToTable("Shelters").HasKey(s => s.Id);
 
-        // Basic Information
-        builder.Property(s => s.Name).HasColumnName("Name").IsRequired().HasMaxLength(100);
-        builder.Property(s => s.Status).HasColumnName("Status").IsRequired();
 
-        // Location
-        builder.Property(s => s.City).HasColumnName("City").IsRequired().HasMaxLength(50);
-        builder.Property(s => s.District).HasColumnName("District").HasMaxLength(50);
-        builder.Property(s => s.Address).HasColumnName("Address").HasMaxLength(200);
-        builder.Property(s => s.Latitude).HasColumnName("Latitude").HasPrecision(9, 6);
-        builder.Property(s => s.Longitude).HasColumnName("Longitude").HasPrecision(9, 6);
+       // Primary Key
+       builder.Property(s => s.Id)
+           .ValueGeneratedOnAdd()
+           .HasConversion(shelterId => shelterId.Value, value => new ShelterId(value));
 
-        // Capacity Management
-        builder.Property(s => s.TotalCapacity).HasColumnName("TotalCapacity").IsRequired();
-        builder.Property(s => s.CurrentOccupancy).HasColumnName("CurrentOccupancy");
-        builder.Property(s => s.HasAccessibility).HasColumnName("HasAccessibility").IsRequired();
 
-        // Contact & Facilities
-        builder.Property(s => s.PhoneNumber).HasColumnName("PhoneNumber").HasMaxLength(20);
-        builder.Property(s => s.EmergencyPhone).HasColumnName("EmergencyPhone").HasMaxLength(20);
-        builder.Property(s => s.HasMedicalSupport).HasColumnName("HasMedicalSupport").IsRequired();
-        builder.Property(s => s.HasKitchen).HasColumnName("HasKitchen").IsRequired();
+       // Foreign Keys
+       builder.Property(s => s.VolunteerId).IsRequired(false);
+       builder.Property(s => s.DisasterId).IsRequired(false);
+       builder.Property(s => s.RequestId).IsRequired(false);
 
-        // Tracking
-        builder.Property(s => s.OpenedAt).HasColumnName("OpenedAt").IsRequired();
-        builder.Property(s => s.ClosedAt).HasColumnName("ClosedAt");
-        
-        // Shelter ile Volunteer arasında 1-1 ilişki
-        builder.HasOne(s => s.Volunteer)
-            .WithOne(v => v.Shelter)
-            .HasForeignKey<Shelter>(s => s.Id);
-        
-        // Shelter ile Disaster arasında Bire Çok ilişki
-        builder.HasOne(s => s.Disaster)
-            .WithMany(d => d.Shelters);
-        
-        builder.HasQueryFilter(s => !s.DeletedDate.HasValue);
-    }
+
+       // Basic Information
+       builder.Property(s => s.Name)
+           .IsRequired()
+           .HasMaxLength(200)
+           .HasColumnName("Name");
+          
+       builder.Property(s => s.PhoneNumber)
+           .IsRequired()
+           .HasMaxLength(20)
+           .HasColumnName("PhoneNumber");
+
+
+       builder.Property(s => s.Status)
+           .IsRequired()
+           .HasConversion<int>()
+           .HasColumnName("Status");
+
+
+       // Address
+       builder.OwnsOne(s => s.Address, addressBuilder =>
+       {
+           addressBuilder.Property(a => a.Street).IsRequired().HasMaxLength(100).HasColumnName("street");
+           addressBuilder.Property(a => a.City).IsRequired().HasMaxLength(100).HasColumnName("city");
+           addressBuilder.Property(a => a.Country).IsRequired().HasMaxLength(100).HasColumnName("country");
+           addressBuilder.Property(a => a.ZipCode).IsRequired().HasMaxLength(10).HasColumnName("zip_code");
+           addressBuilder.Property(a => a.State).IsRequired().HasMaxLength(100).HasColumnName("state");
+           addressBuilder.Property(a => a.Apartment).HasMaxLength(100).HasColumnName("apartment");
+       });
+
+
+       // Capacity Management
+       builder.Property(s => s.TotalCapacity)
+           .IsRequired()
+           .HasColumnName("TotalCapacity");
+
+
+       builder.Property(s => s.HasAccessibility)
+           .IsRequired()
+           .HasColumnName("HasAccessibility");
+
+
+       builder.Property(s => s.HasMedicalSupport)
+           .IsRequired()
+           .HasColumnName("HasMedicalSupport");
+
+
+       builder.Property(s => s.HasKitchen)
+           .IsRequired()
+           .HasColumnName("HasKitchen");
+
+
+       // Tracking
+       builder.Property(s => s.OpenedAt)
+           .IsRequired()
+           .HasColumnName("OpenedAt");
+
+
+       builder.Property(s => s.ClosedAt)
+           .IsRequired()
+           .HasColumnName("ClosedAt");
+
+
+       // Relationships
+       // Shelter ile Volunteer arasında 1-1 ilişki
+       builder.HasOne(s => s.Volunteer)
+           .WithOne(v => v.Shelter)
+           .HasForeignKey<Shelter>(s => s.Id); 
+       
+       // Shelter ile Disaster arasında Bire Çok ilişki
+       builder.HasOne(s => s.Disaster)
+           .WithMany(d => d.Shelters);
+       
+
+       // Indexes
+       builder.HasIndex(s => s.Id);
+       builder.HasIndex(s => s.VolunteerId);
+       builder.HasIndex(s => s.DisasterId);
+       builder.HasIndex(s => s.RequestId);
+       builder.HasIndex(s => s.Name);
+       builder.HasIndex(s => s.PhoneNumber);
+       builder.HasIndex(s => s.Status);
+       builder.HasIndex(s => s.TotalCapacity);
+       builder.HasIndex(s => s.HasAccessibility);
+       builder.HasIndex(s => s.HasMedicalSupport);
+       builder.HasIndex(s => s.HasKitchen);
+       builder.HasIndex(s => s.OpenedAt); 
+       builder.HasIndex(s => s.ClosedAt);
+            
+
+
+       // Soft Delete Filter
+       builder.HasQueryFilter(s => !s.DeletedDate.HasValue);
+   }
 }

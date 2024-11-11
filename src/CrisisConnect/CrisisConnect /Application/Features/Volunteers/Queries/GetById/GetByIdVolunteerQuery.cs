@@ -1,13 +1,14 @@
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
+using Domain.ValueObjects;
 using MediatR;
 
 namespace Application.Features.Volunteers.Queries.GetById;
 
 public class GetByIdVolunteerQuery : IRequest<GetByIdVolunteerResponse>
 {
-    public Guid Id { get; set; }
+    public VolunteerId Id { get; set; }
     
     public class GetByIdVolunteerQueryHandler : IRequestHandler<GetByIdVolunteerQuery, GetByIdVolunteerResponse>
     {

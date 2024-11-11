@@ -2,6 +2,7 @@ using Application.Services.Repositories;
 using AutoMapper;
 using Core.Application.Pipelines.Caching;
 using Domain.Entities;
+using Domain.ValueObjects;
 using MediatR;
 
 namespace Application.Features.Volunteers.Commands.Update;
@@ -11,7 +12,7 @@ public class UpdateVolunteerCommand : IRequest<UpdatedVolunteerResponse>, ICache
     public string? CacheKey => "";
     public bool BypassCache => false;
     public string? CacheGroupKey => "GetVolunteers";
-    public Guid Id { get; set; }
+    public VolunteerId Id { get; set; }
     
     public string Name { get; set; }
 

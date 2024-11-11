@@ -2,6 +2,7 @@ using Application.Services.Repositories;
 using AutoMapper;
 using Core.Application.Pipelines.Caching;
 using Domain.Entities;
+using Domain.ValueObjects;
 using MediatR;
 
 namespace Application.Features.Shelters.Commands.Delete;
@@ -12,7 +13,7 @@ public string? CacheKey => "";
 public bool BypassCache => false;
 public string? CacheGroupKey => "GetShelters";
 
-    public Guid Id { get; set; }
+    public ShelterId Id { get; set; }
     
     public class DeleteShelterCommandHandler : IRequestHandler<DeleteShelterCommand, DeletedShelterResponse>
     {

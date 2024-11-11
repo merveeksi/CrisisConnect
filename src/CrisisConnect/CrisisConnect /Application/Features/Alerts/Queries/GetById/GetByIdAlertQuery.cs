@@ -1,13 +1,14 @@
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
+using Domain.ValueObjects;
 using MediatR;
 
 namespace Application.Features.Alerts.Queries.GetById;
 
 public class GetByIdAlertQuery:IRequest<GetByIdAlertResponse>
 {
-    public Guid Id { get; set; }
+    public AlertId Id { get; set; }
     
     public class GetByIdAlertQueryHandler : IRequestHandler<GetByIdAlertQuery, GetByIdAlertResponse>
     {

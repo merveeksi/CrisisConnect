@@ -14,9 +14,10 @@ public class CreateAlertCommandValidator : AbstractValidator<CreateAlertCommand>
             .Length(2, 1000).WithMessage(x => localizer[CommonLocalizationKeys.ValidationMustBeBetween,nameof(x.Name),2,1000]);
 
         RuleFor(x => x.Description)
-            .NotEmpty().WithMessage(x => localizer[CommonLocalizationKeys.ValidationIsRequired,nameof(x.Description)])
-            .Length(2, 4000).WithMessage(x => localizer[CommonLocalizationKeys.ValidationMustBeBetween,nameof(x.Name),2,4000])
-            .Matches("^[a-zA-Z0-9 ,.]*$").WithMessage(x=>localizer[CommonLocalizationKeys.ValidationNotContainSpecialCharacters,nameof(x.Description)]);
+            .NotEmpty().WithMessage(x => localizer[CommonLocalizationKeys.ValidationIsRequired, nameof(x.Description)])
+            .Length(2, 4000).WithMessage(x =>
+                localizer[CommonLocalizationKeys.ValidationMustBeBetween, nameof(x.Name), 2, 4000]);
+           // .Matches("^[a-zA-Z0-9 ,.]*$").WithMessage(x=>localizer[CommonLocalizationKeys.ValidationNotContainSpecialCharacters,nameof(x.Description)]);
 
         RuleFor(x => x.Address)
             .NotEmpty().WithMessage(x => localizer[CommonLocalizationKeys.ValidationIsRequired,nameof(x.Address)]);
@@ -40,9 +41,4 @@ public class CreateAlertCommandValidator : AbstractValidator<CreateAlertCommand>
         RuleFor(x => x.Status)
             .IsInEnum().WithMessage(x => localizer[CommonLocalizationKeys.ValidationIsInvalid,nameof(x.Status)]);
     }
-    
-    // Enum doğrulama yardımcıları
-    private bool IsValidAlertType(AlertType type) => Enum.IsDefined(typeof(AlertType), type);
-    private bool IsValidSeverityLevel(SeverityLevel severity) => Enum.IsDefined(typeof(SeverityLevel), severity);
-    private bool IsValidAlertStatus(AlertStatus status) => Enum.IsDefined(typeof(AlertStatus), status);
 }

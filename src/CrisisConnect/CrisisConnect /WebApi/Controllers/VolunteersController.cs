@@ -6,6 +6,7 @@ using Application.Features.Volunteers.Queries.GetById;
 using Application.Features.Volunteers.Queries.GetList;
 using Core.Application.Requests;
 using Core.Application.Responses;
+using Domain.ValueObjects;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -31,7 +32,7 @@ namespace WebApi.Controllers
         }
         
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById([FromRoute] Guid id)
+        public async Task<IActionResult> GetById([FromRoute] VolunteerId id)
         {
             GetByIdVolunteerQuery getByIdVolunteerQuery = new() { Id = id };
             GetByIdVolunteerResponse response = await Mediator.Send(getByIdVolunteerQuery);
@@ -46,7 +47,7 @@ namespace WebApi.Controllers
         }
         
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete([FromRoute] Guid id)
+        public async Task<IActionResult> Delete([FromRoute] VolunteerId id)
         {
             DeletedVolunteerResponse response = await Mediator.Send(new DeleteVolunteerCommand { Id = id });
         

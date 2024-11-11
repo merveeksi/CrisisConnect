@@ -6,6 +6,7 @@ using Application.Features.Disasters.Queries.GetListByDynamic;
 using Core.Application.Requests;
 using Core.Application.Responses;
 using Core.Persistence.Dynamic;
+using Domain.ValueObjects;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers;
@@ -47,7 +48,7 @@ public class DisastersController : BaseController
     }
     
     [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete([FromRoute] Guid id)
+    public async Task<IActionResult> Delete([FromRoute] DisasterId id)
     {
         DeletedDisasterResponse response = await Mediator.Send(new DeleteDisasterCommand { Id = id });
         

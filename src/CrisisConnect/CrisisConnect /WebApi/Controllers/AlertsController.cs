@@ -5,6 +5,7 @@ using Application.Features.Alerts.Queries.GetById;
 using Application.Features.Alerts.Queries.GetList;
 using Core.Application.Requests;
 using Core.Application.Responses;
+using Domain.ValueObjects;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers;
@@ -22,7 +23,7 @@ namespace WebApi.Controllers;
         }
         
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById([FromRoute] Guid id)
+        public async Task<IActionResult> GetById([FromRoute] AlertId id)
         {
             GetByIdAlertQuery getByIdCenterQuery = new() { Id = id };
             GetByIdAlertResponse response = await Mediator.Send(getByIdCenterQuery);
@@ -45,7 +46,7 @@ namespace WebApi.Controllers;
         }
         
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete([FromRoute] Guid id)
+        public async Task<IActionResult> Delete([FromRoute] AlertId id)
         {
             DeletedAlertResponse response = await Mediator.Send(new DeleteAlertCommand { Id = id });
         

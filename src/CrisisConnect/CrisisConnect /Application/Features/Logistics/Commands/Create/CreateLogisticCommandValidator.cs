@@ -20,7 +20,7 @@ public class CreateLogisticCommandValidator:AbstractValidator<CreateLogisticComm
         RuleFor(x => x.EndLocation)
             .NotEmpty().WithMessage(x => localizer[CommonLocalizationKeys.ValidationIsRequired,nameof(x.EndLocation)]);
 
-        RuleFor(x => x.EstimatedArrivalTime)
-            .GreaterThan(DateTime.Now).WithMessage(x => localizer[CommonLocalizationKeys.ValidationDatetimeNotFuture,nameof(x.EstimatedArrivalTime)]);
+        // RuleFor(x => x.EstimatedArrivalTime)
+        //     .GreaterThan(DateTime.Now).WithMessage(x => localizer[CommonLocalizationKeys.ValidationDatetimeNotFuture,nameof(x.EstimatedArrivalTime)]);
     }
 }

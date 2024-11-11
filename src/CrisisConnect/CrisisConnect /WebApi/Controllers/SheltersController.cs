@@ -8,6 +8,7 @@ using Application.Features.Shelters.Queries.GetListByDynamic;
 using Core.Application.Requests;
 using Core.Application.Responses;
 using Core.Persistence.Dynamic;
+using Domain.ValueObjects;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
@@ -48,7 +49,7 @@ namespace WebApi.Controllers
         }
         
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete([FromRoute] Guid id)
+        public async Task<IActionResult> Delete([FromRoute] ShelterId id)
         {
             DeletedShelterResponse response = await Mediator.Send(new DeleteShelterCommand { Id = id });
         

@@ -4,7 +4,7 @@ using Domain.ValueObjects;
 
 namespace Domain.Entities;
 
-public class Alert:Entity<Guid> //acil durum uyarısı
+public class Alert : Entity<AlertId> //acil durum uyarısı
 {
     public Guid? DisasterId { get; set; }
     public string Name { get; set; }
@@ -27,8 +27,10 @@ public class Alert:Entity<Guid> //acil durum uyarısı
     {
     }
 
-    public Alert(Guid id, Guid disasterId, string name, string description, AlertType type, SeverityLevel severity, Address address, AlertStatus status, string instructions) : base(id)
+    public Alert(AlertId id, Guid disasterId, string name, string description, AlertType type, 
+        SeverityLevel severity, Address address, AlertStatus status, string instructions):this()
     {
+        Id = id;
         DisasterId = disasterId;
         Name = name;
         Description = description;

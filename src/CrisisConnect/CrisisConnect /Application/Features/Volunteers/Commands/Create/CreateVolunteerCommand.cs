@@ -5,6 +5,7 @@ using Core.Application.Pipelines.Caching;
 using Core.Application.Pipelines.Logging;
 using Core.Application.Pipelines.Transaction;
 using Domain.Entities;
+using Domain.ValueObjects;
 using MediatR;
 
 namespace Application.Features.Volunteers.Commands.Create;
@@ -15,11 +16,12 @@ public class CreateVolunteerCommand : IRequest<CreatedVolunteerResponse>, ITrans
     public bool BypassCache => false;
     public string? CacheGroupKey => "GetVolunteers";
 
-    public string FirstName { get; set; }
-    public string Lastname { get; set; }
-    public List<string> Skills { get; set; } 
-    public string Location { get; set; }
-    public decimal PhoneNumber { get; set; }
+    public FullName FullName { get; set; }
+    public int PhoneNumber { get; set; }
+    public Email? Email { get; set; }
+    public Address Address { get; set; }
+    public string Skills { get; set; }
+    public string? ImageUrl { get; set; }
     public string IdentityNumber { get; set; }
     
     
@@ -41,7 +43,7 @@ public class CreateVolunteerCommand : IRequest<CreatedVolunteerResponse>, ITrans
             await _volunteerBusinessRules.IdentityNumberMustBeUnique(request.IdentityNumber);
             
             Volunteer volunteer = _mapper.Map<Volunteer>(request);
-            volunteer.Id = Guid.NewGuid();
+            volunteer.Id = new VolunteerId(DateTime.UtcNow.Ticks);
             
             await _volunteerRepository.AddAsync(volunteer);
             

@@ -1,10 +1,11 @@
 using Core.Persistence.Repositories;
+using Domain.ValueObjects;
 
 namespace Domain.Entities;
 
 public class Donor:Entity<Guid> //bağışçı
 {
-    public string FullName { get; set; }
+    public FullName FullName { get; set; }
     public string PhoneNumber { get; set; } //bağışçının telefon numarası
     public string? Email { get; set; } //bağışçının e-posta adresi
     public string Location { get; set; } //bağışçının bulunduğu yer

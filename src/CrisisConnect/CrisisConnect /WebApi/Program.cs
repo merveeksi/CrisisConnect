@@ -48,7 +48,6 @@ builder.Services.Configure<RequestLocalizationOptions>(options =>
     {
         defaultCulture,
         new CultureInfo("en-US"),
-        new CultureInfo("en-GB"),
         new CultureInfo("de-DE"),
         new CultureInfo("es-ES"),
         new CultureInfo("ru-RU")
