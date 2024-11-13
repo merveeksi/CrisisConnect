@@ -1,4 +1,5 @@
 using Core.Application.Common;
+using Core.CrossCuttingConcerns.Localizations;
 using Domain.Enums;
 using FluentValidation;
 using Microsoft.Extensions.Localization;

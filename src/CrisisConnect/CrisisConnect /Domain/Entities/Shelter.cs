@@ -7,7 +7,7 @@ namespace Domain.Entities;
 public class Shelter:Entity<ShelterId> //barınak
 {
     public Guid? VolunteerId { get; set; }
-    public Guid? DisasterId { get; set; }
+    public DisasterId? DisasterId { get; set; }
     public Guid? RequestId { get; set; }
     
     // Basic Information
@@ -38,7 +38,7 @@ public class Shelter:Entity<ShelterId> //barınak
         Resources = new HashSet<Resource>();
     }
     
-    public Shelter(ShelterId id, Guid volunteerId, Guid disasterId, Guid requestId, string name, string phoneNumber, 
+    public Shelter(ShelterId id, Guid volunteerId, DisasterId disasterId, Guid requestId, string name, string phoneNumber, 
         Address address, ShelterStatus status, int totalCapacity, bool hasAccessibility, bool hasMedicalSupport, 
         bool hasKitchen, DateTime openedAt, DateTime closedAt):this()
     {

@@ -25,8 +25,6 @@ public class Logistic:Entity<Guid> //lojistik
     // Tracking
     public Guid? AssignedVehicleId { get; set; }
     public Guid? ResponsiblePersonId { get; set; }
-    public DateTime CreatedAt { get; set; }
-    public DateTime UpdatedAt { get; set; }
     
     public Logistic()
     {
@@ -35,7 +33,7 @@ public class Logistic:Entity<Guid> //lojistik
 
     public Logistic(Guid id, string name, string description, LogisticType type, LogisticStatus status, string sourceLocation, 
         string destinationLocation, DateTime expectedDeliveryDate, DateTime? actualDeliveryDate, string content, int quantity, string priority, 
-        Guid? assignedVehicleId, Guid? responsiblePersonId, DateTime createdAt, DateTime updatedAt):this()
+        Guid? assignedVehicleId, Guid? responsiblePersonId):this()
     {
         Id = id;
         Name = name;
@@ -51,8 +49,6 @@ public class Logistic:Entity<Guid> //lojistik
         Priority = priority;
         AssignedVehicleId = assignedVehicleId;
         ResponsiblePersonId = responsiblePersonId;
-        CreatedAt = createdAt;
-        UpdatedAt = updatedAt;
     }
   
 }

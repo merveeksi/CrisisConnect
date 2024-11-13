@@ -4,48 +4,36 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Persistence.EntityConfigurations;
 
-public class TeamConfiguration: IEntityTypeConfiguration<Team>
+public class TeamConfiguration : IEntityTypeConfiguration<Team>
 {
     public void Configure(EntityTypeBuilder<Team> builder)
     {
         builder.ToTable("Teams").HasKey(t => t.Id);
-        builder.Property(a => a.CenterId).IsRequired(false);
-        builder.Property(a => a.VolunteerId).IsRequired(false);
-        
-        // Primary Key
-        builder.Property(t => t.Id).HasColumnName("Id").IsRequired();
 
-        // Basic Information
-        builder.Property(t => t.Name).HasColumnName("Name").IsRequired().HasMaxLength(100);
-        builder.Property(t => t.Specialty).HasColumnName("Specialty").IsRequired();
+        // Basic properties
+        builder.Property(t => t.Name).IsRequired().HasMaxLength(200);
+        builder.Property(t => t.Status).IsRequired().HasConversion<int>();
+        builder.Property(t => t.Specialty).IsRequired().HasConversion<int>();
+        builder.Property(t => t.MaxCapacity).IsRequired();
+        builder.Property(t => t.CurrentMemberCount).IsRequired();
+        builder.Property(t => t.IsActive).IsRequired();
+        builder.Property(t => t.CurrentMission).HasMaxLength(500);
+        builder.Property(t => t.MissionStartTime);
+        builder.Property(t => t.ExpectedEndTime);
+        builder.Property(t => t.CurrentLocation).HasMaxLength(500);
+        builder.Property(t => t.Latitude);
+        builder.Property(t => t.Longitude);
 
-        builder.Property(t => t.Status).HasColumnName("Status").IsRequired();
-
-        // Team Details
-        builder.Property(t => t.MaxCapacity).HasColumnName("MaxCapacity").IsRequired();
-        builder.Property(t => t.CurrentMemberCount).HasColumnName("CurrentMemberCount");
-        builder.Property(t => t.IsActive).HasColumnName("IsActive").IsRequired();
-
-        // Mission Information
-        builder.Property(t => t.CurrentMission).HasColumnName("CurrentMission").HasMaxLength(200);
-        builder.Property(t => t.MissionStartTime).HasColumnName("MissionStartTime");
-        builder.Property(t => t.ExpectedEndTime).HasColumnName("ExpectedEndTime");
-
-        // Location
-        builder.Property(t => t.CurrentLocation).HasColumnName("CurrentLocation").HasMaxLength(100);
-        builder.Property(t => t.Latitude).HasColumnName("Latitude").HasPrecision(9, 6);
-        builder.Property(t => t.Longitude).HasColumnName("Longitude").HasPrecision(9, 6);
-        
-        // Team ile Volunteer arasında 1-1 ilişki
-        builder.HasOne(t => t.Volunteer)
-            .WithOne(v => v.Team)
-            .HasForeignKey<Team>(t => t.Id);
-        
-        // Team ile Center arasında Bire Çok ilişki
+        // Relationships
         builder.HasOne(t => t.Center)
-            .WithMany(c => c.Teams);
-        
-        
-        builder.HasQueryFilter(t => !t.DeletedDate.HasValue); 
+            .WithMany(c => c.Teams)
+            .HasForeignKey(t => t.CenterId);
+
+        // Many-to-many relationship with Request
+        builder.HasMany(t => t.Requests)
+            .WithMany(r => r.Teams)
+            .UsingEntity(j => j.ToTable("TeamRequests"));
+
+        builder.HasQueryFilter(t => !t.DeletedDate.HasValue);
     }
 }

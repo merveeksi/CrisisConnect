@@ -76,13 +76,6 @@ public class VolunteerConfiguration : IEntityTypeConfiguration<Volunteer>
             .WithOne(t => t.Volunteer)
             .HasForeignKey<Volunteer>(v => v.TeamId);
         
-        
-        // Indexes
-        builder.HasIndex(v => v.Id);
-        builder.HasIndex(v => v.TeamId);
-        builder.HasIndex(v => v.ShelterId);
-        builder.HasIndex(v => v.PhoneNumber);
-        builder.HasIndex(v => v.Skills);
 
         // Soft Delete Filter
         builder.HasQueryFilter(v => !v.DeletedDate.HasValue);

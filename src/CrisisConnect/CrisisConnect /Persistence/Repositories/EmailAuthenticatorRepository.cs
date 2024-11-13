@@ -11,7 +11,7 @@ public class EmailAuthenticatorRepository: EfRepositoryBase<EmailAuthenticator, 
         : base(context) { }
 }
 
-public class OperationClaimRepository : EfRepositoryBase<OperationClaim, long, BaseDbContext>, IOperationClaimRepository
+public class OperationClaimRepository : EfRepositoryBase<OperationClaim, int, BaseDbContext>, IOperationClaimRepository
 {
     public OperationClaimRepository(BaseDbContext context)
         : base(context) { }

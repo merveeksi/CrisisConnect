@@ -3,7 +3,7 @@ using Core.Security.Enums;
 
 namespace Core.Security.Entities;
 
-public class User : Entity<long>
+public class User : Entity<int>
 {
     public string FirstName { get; set; }
     public string LastName { get; set; }
@@ -39,7 +39,7 @@ public class User : Entity<long>
         Status = status;
     }
 
-    public User(long id,string firstName, string lastName, string email, byte[] passwordSalt, byte[] passwordHash, bool status):base(id)
+    public User(int id,string firstName, string lastName, string email, byte[] passwordSalt, byte[] passwordHash, bool status):base(id)
     {
         FirstName = firstName;
         LastName = lastName;

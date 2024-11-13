@@ -2,14 +2,12 @@
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/corePackages/Core.Packages/Core.CrossCuttingConcerns/bin/Debug/net8.0/Core.CrossCuttingConcerns.dll
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/corePackages/Core.Packages/Core.CrossCuttingConcerns/bin/Debug/net8.0/Core.CrossCuttingConcerns.pdb
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/corePackages/Core.Packages/Core.CrossCuttingConcerns/bin/Debug/net8.0/de-DE/Core.CrossCuttingConcerns.resources.dll
-/Users/pc/Desktop/DogalAfetKaynakYardim/src/corePackages/Core.Packages/Core.CrossCuttingConcerns/bin/Debug/net8.0/en-GB/Core.CrossCuttingConcerns.resources.dll
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/corePackages/Core.Packages/Core.CrossCuttingConcerns/bin/Debug/net8.0/en-US/Core.CrossCuttingConcerns.resources.dll
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/corePackages/Core.Packages/Core.CrossCuttingConcerns/bin/Debug/net8.0/es-ES/Core.CrossCuttingConcerns.resources.dll
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/corePackages/Core.Packages/Core.CrossCuttingConcerns/bin/Debug/net8.0/ru-RU/Core.CrossCuttingConcerns.resources.dll
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/corePackages/Core.Packages/Core.CrossCuttingConcerns/bin/Debug/net8.0/tr-TR/Core.CrossCuttingConcerns.resources.dll
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/corePackages/Core.Packages/Core.CrossCuttingConcerns/obj/Debug/net8.0/Core.CrossCuttingConcerns.csproj.AssemblyReference.cache
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/corePackages/Core.Packages/Core.CrossCuttingConcerns/obj/Debug/net8.0/Core.CrossCuttingConcerns.Resources.Common.Localizations.CommonLocalization.de-DE.resources
-/Users/pc/Desktop/DogalAfetKaynakYardim/src/corePackages/Core.Packages/Core.CrossCuttingConcerns/obj/Debug/net8.0/Core.CrossCuttingConcerns.Resources.Common.Localizations.CommonLocalization.en-GB.resources
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/corePackages/Core.Packages/Core.CrossCuttingConcerns/obj/Debug/net8.0/Core.CrossCuttingConcerns.Resources.Common.Localizations.CommonLocalization.en-US.resources
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/corePackages/Core.Packages/Core.CrossCuttingConcerns/obj/Debug/net8.0/Core.CrossCuttingConcerns.Resources.Common.Localizations.CommonLocalization.es-ES.resources
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/corePackages/Core.Packages/Core.CrossCuttingConcerns/obj/Debug/net8.0/Core.CrossCuttingConcerns.Resources.Common.Localizations.CommonLocalization.ru-RU.resources
@@ -22,8 +20,6 @@
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/corePackages/Core.Packages/Core.CrossCuttingConcerns/obj/Debug/net8.0/Core.CrossCuttingConcerns.sourcelink.json
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/corePackages/Core.Packages/Core.CrossCuttingConcerns/obj/Debug/net8.0/de-DE/Core.CrossCuttingConcerns.resources.cs
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/corePackages/Core.Packages/Core.CrossCuttingConcerns/obj/Debug/net8.0/de-DE/Core.CrossCuttingConcerns.resources.dll
-/Users/pc/Desktop/DogalAfetKaynakYardim/src/corePackages/Core.Packages/Core.CrossCuttingConcerns/obj/Debug/net8.0/en-GB/Core.CrossCuttingConcerns.resources.cs
-/Users/pc/Desktop/DogalAfetKaynakYardim/src/corePackages/Core.Packages/Core.CrossCuttingConcerns/obj/Debug/net8.0/en-GB/Core.CrossCuttingConcerns.resources.dll
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/corePackages/Core.Packages/Core.CrossCuttingConcerns/obj/Debug/net8.0/en-US/Core.CrossCuttingConcerns.resources.cs
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/corePackages/Core.Packages/Core.CrossCuttingConcerns/obj/Debug/net8.0/en-US/Core.CrossCuttingConcerns.resources.dll
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/corePackages/Core.Packages/Core.CrossCuttingConcerns/obj/Debug/net8.0/es-ES/Core.CrossCuttingConcerns.resources.cs

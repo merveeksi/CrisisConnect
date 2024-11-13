@@ -2,9 +2,9 @@ using Core.Persistence.Repositories;
 
 namespace Core.Security.Entities;
 
-public class RefreshToken :Entity<long>
+public class RefreshToken :Entity<int>
 {
-    public long UserId { get; set; }
+    public int UserId { get; set; }
     public string Token { get; set; }
     public DateTime Expires { get; set; }
     public string CreatedByIp { get; set; }
@@ -23,7 +23,7 @@ public class RefreshToken :Entity<long>
         CreatedByIp = string.Empty;
     }
 
-    public RefreshToken(long userId, string token, DateTime expires, string createdByIp)
+    public RefreshToken(int userId, string token, DateTime expires, string createdByIp)
     {
         UserId = userId;
         Token = token;
@@ -31,7 +31,7 @@ public class RefreshToken :Entity<long>
         CreatedByIp = createdByIp;
     }
 
-    public RefreshToken(long id, long userId, string token, DateTime expires, string createdByIp)
+    public RefreshToken(int id, int userId, string token, DateTime expires, string createdByIp)
         : base(id)
     {
         UserId = userId;

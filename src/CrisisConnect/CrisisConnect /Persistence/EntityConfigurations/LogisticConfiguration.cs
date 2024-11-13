@@ -29,18 +29,7 @@ public class LogisticConfiguration: IEntityTypeConfiguration<Logistic>
         builder.Property(l => l.Content).IsRequired().HasMaxLength(500);
         builder.Property(l => l.Quantity).IsRequired().HasDefaultValue(1);
         builder.Property(l => l.Priority).HasMaxLength(20);
-
-        // Tracking
-        builder.Property(l => l.CreatedAt).IsRequired().HasDefaultValueSql("GETDATE()");
-        builder.Property(l => l.UpdatedAt).IsRequired().HasDefaultValueSql("GETDATE()");
-
-        // Indexes
-        builder.HasIndex(l => l.Status);
-        builder.HasIndex(l => l.Type);
-        builder.HasIndex(l => l.ExpectedDeliveryDate);
-        builder.HasIndex(l => l.SourceLocation);
-        builder.HasIndex(l => l.DestinationLocation);
-        builder.HasIndex(l => l.Priority);
+        
     
         builder.HasQueryFilter(l => !l.DeletedDate.HasValue);
     }

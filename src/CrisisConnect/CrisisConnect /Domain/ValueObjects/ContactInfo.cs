@@ -4,10 +4,12 @@ namespace Domain.ValueObjects;
 
 public sealed record ContactInfo
 {
-    public int PhoneNumber { get; }
-    public string? Email { get; }
-    public Address Address { get; }
+    public int PhoneNumber { get; init; }
+    public string? Email { get; init; }
+    public Address Address { get; init; }
     
+    // Parameteresiz constructor EF Core için gerekli
+    private ContactInfo() { }
 
     public ContactInfo(int phoneNumber, string? email, Address address)
     {
@@ -16,7 +18,7 @@ public sealed record ContactInfo
         if (!Regex.IsMatch(phoneNumber.ToString(), @"^\d+$"))
             throw new ArgumentException("Phone number must contain only numeric characters.", nameof(phoneNumber));
         
-        if (!string.IsNullOrWhiteSpace(email) || !IsValidEmail(email))
+        if (email != null && !IsValidEmail(email))
             throw new ArgumentException("Invalid email address.", nameof(email));
         
         Address = address ?? throw new ArgumentNullException(nameof(address), "Address cannot be null.");
@@ -27,7 +29,6 @@ public sealed record ContactInfo
 
     private bool IsValidEmail(string email)
     {
-        // Basit bir email doğrulama işlemi.
         return email.Contains("@") && email.Contains(".");
     }
 

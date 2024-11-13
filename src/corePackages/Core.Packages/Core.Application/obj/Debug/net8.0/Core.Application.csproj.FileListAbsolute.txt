@@ -11,7 +11,6 @@
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/corePackages/Core.Packages/Core.Application/bin/Debug/net8.0/de-DE/Core.CrossCuttingConcerns.resources.dll
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/corePackages/Core.Packages/Core.Application/bin/Debug/net8.0/es-ES/Core.CrossCuttingConcerns.resources.dll
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/corePackages/Core.Packages/Core.Application/bin/Debug/net8.0/ru-RU/Core.CrossCuttingConcerns.resources.dll
-/Users/pc/Desktop/DogalAfetKaynakYardim/src/corePackages/Core.Packages/Core.Application/bin/Debug/net8.0/en-GB/Core.CrossCuttingConcerns.resources.dll
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/corePackages/Core.Packages/Core.Application/bin/Debug/net8.0/en-US/Core.CrossCuttingConcerns.resources.dll
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/corePackages/Core.Packages/Core.Application/obj/Debug/net8.0/Core.Application.csproj.AssemblyReference.cache
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/corePackages/Core.Packages/Core.Application/obj/Debug/net8.0/Core.Application.GeneratedMSBuildEditorConfig.editorconfig

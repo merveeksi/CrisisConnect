@@ -1,12 +1,13 @@
 using Core.Persistence.Repositories;
 using Domain.Enums;
+using Domain.ValueObjects;
 
 namespace Domain.Entities;
 
 public class Center : Entity<Guid> //yardım merkezi
 {
     // Basic Information
-    public Guid? DisasterId { get; set; }
+    public DisasterId? DisasterId { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }
     public CenterType Type { get; set; }
@@ -65,7 +66,7 @@ public class Center : Entity<Guid> //yardım merkezi
         Resources = new HashSet<Resource>();
     }
 
-    public Center(Guid id, Guid disasterId, string name, bool isActive, string description, CenterType type, CenterStatus status, double latitude, 
+    public Center(Guid id, DisasterId disasterId, string name, bool isActive, string description, CenterType type, CenterStatus status, double latitude, 
         double longitude, string address, string city, string region, string country, int totalCapacity, int currentOccupancy, int availableBeds, 
         int totalStaff, int medicalStaff, int supportStaff, int volunteers, string phoneNumber, string emergencyPhone, string email, string websiteUrl, 
         bool is24Hours, string openTime, string closeTime, bool isTemporaryClosed, string mainImageUrl, string additionalImageUrls, string availableServices, 

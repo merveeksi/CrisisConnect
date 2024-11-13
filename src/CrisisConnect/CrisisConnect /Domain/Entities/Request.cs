@@ -1,11 +1,12 @@
 using Core.Persistence.Repositories;
 using Domain.Enums;
+using Domain.ValueObjects;
 
 namespace Domain.Entities;
 
 public class Request:Entity<Guid> //yardım talebi
 {
-    public Guid? ShelterId { get; set; } 
+    public ShelterId? ShelterId { get; set; } 
   
     // Basic Request Information
     public string Name { get; set; }
@@ -61,7 +62,7 @@ public class Request:Entity<Guid> //yardım talebi
         Teams = new HashSet<Team>();
     }
 
-    public Request(Guid id, Guid shelterId, string title, string description, RequestType type, RequestStatus status, PriorityLevel priority, 
+    public Request(Guid id, ShelterId shelterId, string title, string description, RequestType type, RequestStatus status, PriorityLevel priority, 
         string city, string district, string detailedAddress, double? latitude, double? longitude, int requiredQuantity, int? fulfilledQuantity, 
         string specialRequirements, bool requiresSpecialTransport, int numberOfPeopleAffected, DateTime dateRequested, DateTime? dateNeededBy, 
         DateTime? dateAssigned, DateTime? dateFulfilled, string requestorName, string contactPhone, string alternateContactPhone, bool isUrgent, 

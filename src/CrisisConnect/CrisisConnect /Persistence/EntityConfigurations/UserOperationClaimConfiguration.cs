@@ -10,28 +10,39 @@ public class UserOperationClaimConfiguration : IEntityTypeConfiguration<UserOper
     {
         builder.ToTable("UserOperationClaims").HasKey(uoc => uoc.Id);
 
-        builder.Property(uoc => uoc.Id).HasColumnName("Id").IsRequired();
-        builder.Property(uoc => uoc.UserId).HasColumnName("UserId").IsRequired();
-        builder.Property(uoc => uoc.OperationClaimId).HasColumnName("OperationClaimId").IsRequired();
-        builder.Property(uoc => uoc.CreatedDate).HasColumnName("CreatedDate").IsRequired();
-        builder.Property(uoc => uoc.UpdatedDate).HasColumnName("UpdatedDate");
-        builder.Property(uoc => uoc.DeletedDate).HasColumnName("DeletedDate");
+        builder.Property(uoc => uoc.Id)
+            .HasColumnName("Id")
+            .IsRequired()
+            .ValueGeneratedOnAdd();
+
+        builder.Property(uoc => uoc.UserId)
+            .HasColumnName("UserId")
+            .IsRequired();
+
+        builder.Property(uoc => uoc.OperationClaimId)
+            .HasColumnName("OperationClaimId")
+            .IsRequired();
+
+        builder.Property(uoc => uoc.CreatedDate)
+            .HasColumnName("CreatedDate")
+            .IsRequired();
+
+        builder.Property(uoc => uoc.UpdatedDate)
+            .HasColumnName("UpdatedDate");
+
+        builder.Property(uoc => uoc.DeletedDate)
+            .HasColumnName("DeletedDate");
+
+        builder.HasOne(uoc => uoc.User)
+            .WithMany(u => u.UserOperationClaims)
+            .HasForeignKey(uoc => uoc.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasOne(uoc => uoc.OperationClaim)
+            .WithMany(oc => oc.UserOperationClaims)
+            .HasForeignKey(uoc => uoc.OperationClaimId)
+            .OnDelete(DeleteBehavior.Cascade);
 
         builder.HasQueryFilter(uoc => !uoc.DeletedDate.HasValue);
-
-        builder.HasOne(uoc => uoc.User);
-        builder.HasOne(uoc => uoc.OperationClaim);
-
-        builder.HasData(getSeeds());
-    }
-
-    private IEnumerable<UserOperationClaim> getSeeds()
-    {
-        List<UserOperationClaim> userOperationClaims = new();
-
-        UserOperationClaim adminUserOperationClaim = new(id: 1, userId: 1, operationClaimId: 1);
-        userOperationClaims.Add(adminUserOperationClaim);
-
-        return userOperationClaims;
     }
 }

@@ -7,7 +7,7 @@ public class Volunteer:Entity<VolunteerId> //gönüllü
 { 
     // Assignment
     public Guid? TeamId { get; set; }
-    public Guid? ShelterId { get; set; }
+    public ShelterId? ShelterId { get; set; }
     
     // Basic Information
     public FullName FullName { get; set; }
@@ -29,8 +29,10 @@ public class Volunteer:Entity<VolunteerId> //gönüllü
         Requests = new HashSet<Request>();
     }
 
-    public Volunteer(VolunteerId id, FullName fullName, int phoneNumber, Email email, Address address, string skills, string imageUrl) : this()
+    public Volunteer(VolunteerId id, ShelterId shelterId, FullName fullName, int phoneNumber, Email email, Address address, string skills, string imageUrl) : this()
     {
+        Id = id;
+        ShelterId = shelterId;
         FullName = fullName;
         PhoneNumber = phoneNumber;
         Email = email;

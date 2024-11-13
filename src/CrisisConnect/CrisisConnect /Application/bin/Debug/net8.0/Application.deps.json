@@ -251,9 +251,6 @@
           "ru-RU/Core.CrossCuttingConcerns.resources.dll": {
             "locale": "ru-RU"
           },
-          "en-GB/Core.CrossCuttingConcerns.resources.dll": {
-            "locale": "en-GB"
-          },
           "en-US/Core.CrossCuttingConcerns.resources.dll": {
             "locale": "en-US"
           }

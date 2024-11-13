@@ -26,10 +26,24 @@ public class ResourceConfiguration: IEntityTypeConfiguration<Resource>
         // Status
         builder.Property(r => r.IsAvailable).IsRequired().HasDefaultValue(true);
         builder.Property(r => r.ExpiryDate).IsRequired(false);
+        
 
-        // Tracking
-        builder.Property(r => r.CreatedAt).IsRequired().HasDefaultValueSql("GETDATE()");
-        builder.Property(r => r.UpdatedAt).IsRequired().HasDefaultValueSql("GETDATE()");
+        // Relationships
+        builder.HasMany(r => r.Centers)
+            .WithMany(c => c.Resources)
+            .UsingEntity(j => j.ToTable("CenterResources"));
+
+        builder.HasMany(r => r.Requests)
+            .WithMany(req => req.Resources)
+            .UsingEntity(j => j.ToTable("RequestResources"));
+
+        builder.HasMany(r => r.Shelters)
+            .WithMany(s => s.Resources)
+            .UsingEntity(j => j.ToTable("ShelterResources"));
+
+        builder.HasMany(r => r.Donors)
+            .WithMany(d => d.Resources)
+            .UsingEntity(j => j.ToTable("DonorResources"));
 
         // Indexes
         builder.HasIndex(r => r.Name);

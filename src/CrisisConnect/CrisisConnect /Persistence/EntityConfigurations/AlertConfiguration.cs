@@ -40,16 +40,6 @@ public class AlertConfiguration: IEntityTypeConfiguration<Alert>
         builder.Property(a => a.Status).IsRequired().HasConversion<int>();
         builder.Property(a => a.Instructions).HasMaxLength(2000);
         
-        // Indexes
-        builder.HasIndex(a => a.Id);
-        builder.HasIndex(a => a.DisasterId);
-        builder.HasIndex(a => a.Name);
-        builder.HasIndex(a => a.Description);
-        builder.HasIndex(a => a.Type);
-        builder.HasIndex(a=> a.Severity);
-        builder.HasIndex(a=> a.Address);
-        builder.HasIndex(a => a.Status);
-        builder.HasIndex(a => a.Instructions);
 
         // Alert ile Disaster Arasında Bire Çok ilişki
         builder.HasOne(a => a.Disaster)

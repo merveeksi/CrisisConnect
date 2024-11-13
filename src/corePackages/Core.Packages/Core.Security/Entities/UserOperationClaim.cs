@@ -2,7 +2,7 @@ using Core.Persistence.Repositories;
 
 namespace Core.Security.Entities;
 
-public class UserOperationClaim :Entity<long>
+public class UserOperationClaim:Entity<int>
 {
     public int UserId { get; set; }
     public int OperationClaimId { get; set; }
@@ -16,7 +16,7 @@ public class UserOperationClaim :Entity<long>
         OperationClaimId = operationClaimId;
     }
 
-    public UserOperationClaim(long id, int userId, int operationClaimId)
+    public UserOperationClaim(int id, int userId, int operationClaimId)
         : base(id)
     {
         UserId = userId;

@@ -37,5 +37,6 @@ public class BaseDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly()); //bu assembly'deki tüm entity'lerin konfigürasyonlarını uygula
+        base.OnModelCreating(modelBuilder);
     }
 }

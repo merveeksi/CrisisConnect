@@ -1,5 +1,6 @@
 using Application.Features.Alerts.Commands.Create;
 using Core.Application.Common;
+using Core.CrossCuttingConcerns.Localizations;
 using Domain.Enums;
 using Domain.ValueObjects;
 using FluentValidation;

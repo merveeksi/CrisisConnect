@@ -21,9 +21,6 @@ public class Resource:Entity<Guid> //kaynak
     public bool IsAvailable { get; set; }
     public DateTime? ExpiryDate { get; set; }
     
-    // Tracking
-    public DateTime CreatedAt { get; set; }
-    public DateTime UpdatedAt { get; set; }
     
     // Other
     public bool IsActive { get; set; }
@@ -51,8 +48,8 @@ public class Resource:Entity<Guid> //kaynak
     }
 
     public Resource(Guid id, string name, ResourceType type, int quantity, string location, string description, string unit, 
-        int minimumQuantity, bool isAvailable, DateTime expiryDate, DateTime createdAt, DateTime updatedAt, bool isActive, 
-        ResourceStatus status, bool hasTransferRestriction, bool isPerishable, DateTime expirationDate, bool requiresColdChain):this()
+        int minimumQuantity, bool isAvailable, DateTime expiryDate, bool isActive, ResourceStatus status, bool hasTransferRestriction, 
+        bool isPerishable, DateTime expirationDate, bool requiresColdChain):this()
     {
         Id = id;
         Name = name;
@@ -64,8 +61,6 @@ public class Resource:Entity<Guid> //kaynak
         MinimumQuantity = minimumQuantity;
         IsAvailable = isAvailable;
         ExpiryDate = expiryDate;
-        CreatedAt = createdAt;
-        UpdatedAt = updatedAt;
         IsActive = isActive;
         Status = status;
         HasTransferRestriction = hasTransferRestriction;

@@ -3,4 +3,4 @@ using Core.Security.Entities;
 
 namespace Application.Services.Repositories;
 
-public interface IUserRepository : IAsyncRepository<User, long>, IRepository<User, long> { }
+public interface IUserRepository : IAsyncRepository<User, int>, IRepository<User, int> { }
