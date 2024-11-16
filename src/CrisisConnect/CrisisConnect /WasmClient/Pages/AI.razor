@@ -1,0 +1,35 @@
+@page "/AI"
+@inject NavigationManager Navigation
+
+<div class="flex h-screen">
+    <div role="button" @onclick="@(() => Navigation.NavigateTo("/chatgpt"))" class="w-1/2 flex items-center justify-center transition-transform duration-300 ease-out @leftSectionClasses">
+        <h1 class="text-4xl font-bold text-white">ChatGPT 🤖</h1>
+    </div>
+    <div role="button" @onclick="@(() => Navigation.NavigateTo("/dall-e"))" class="w-1/2 flex items-center justify-center transition-transform duration-300 ease-out @rightSectionClasses"
+         @onmouseover="OnMouseOverRightSection" @onmouseout="OnMouseOutRightSection">
+        <h1 class="text-4xl font-bold text-white">Dall-E 🖼️</h1>
+    </div>
+</div>
+
+@code {
+    private string leftSectionClasses = "bg-gradient-to-b from-[#4A00E0] to-[#8E2DE2] rounded-lg";
+    private string rightSectionClasses = "bg-gradient-to-b from-[#FF4B2B] to-[#FF416C] blur-sm rounded-lg";
+
+    private void OnMouseOverRightSection()
+    {
+        leftSectionClasses += " blur";
+        rightSectionClasses = "bg-gradient-to-b from-[#FF4B2B] to-[#FF416C] scale-105";
+    }
+
+    private void OnMouseOutRightSection()
+    {
+        leftSectionClasses = "bg-gradient-to-b from-[#4A00E0] to-[#8E2DE2] rounded-lg";
+        rightSectionClasses = "bg-gradient-to-b from-[#FF4B2B] to-[#FF416C] blur-sm rounded-lg";
+    }
+}
+<style>
+    .blur {
+        filter: blur(5px);
+    }
+
+</style>

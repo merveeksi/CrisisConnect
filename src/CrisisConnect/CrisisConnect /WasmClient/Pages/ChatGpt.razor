@@ -1,0 +1,81 @@
+@page "/chatgpt"
+@using OpenAI.Interfaces
+@using OpenAI.ObjectModels
+@using OpenAI.ObjectModels.RequestModels
+@inject IOpenAIService OpenAiService
+
+<PageTitle>ChatGPT</PageTitle>
+
+<div class="container mx-auto p-4">
+    <div class="card bg-base-200 shadow-xl mb-8 transition-transform transform hover:scale-105">
+        <div class="card-body">
+            <h2 class="card-title mb-4">Enter Your Prompt</h2>
+            <textarea @bind=@prompt class="textarea textarea-bordered w-full mb-4 transition-transform transform hover:scale-105" placeholder="Type your prompt here..."></textarea>
+            <div class="card-actions justify-end">
+                <button class="btn btn-primary btn-lg transition-transform transform hover:scale-110 hover:bg-gradient-to-r from-purple-500 to-indigo-500 shadow-lg" @onclick="GenerateAsync">Generate</button>
+            </div>
+        </div>
+    </div>
+
+    @if (isLoading)
+    {
+        <div class="flex justify-center items-center h-64">
+            <span class="loading loading-spinner loading-lg"></span>
+        </div>
+    }
+    else if (!string.IsNullOrEmpty(generatedContent))
+    {
+        <div class="card bg-base-200 shadow-xl">
+            <div class="card-body">
+                <h2 class="card-title mb-4">Generated Result</h2>
+                <div class="bg-base-300 p-4 rounded-lg min-h-[100px]">
+                    <pre><code class="text-base-content">
+                            @generatedContent
+                        </code></pre>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@code
+{
+    private string prompt = string.Empty;
+    private string generatedContent = string.Empty;
+    private bool isLoading = false;
+
+    private async Task GenerateAsync()
+    {
+        isLoading = true;
+        generatedContent = string.Empty;
+
+        try
+        {
+            var completionResult = await OpenAiService.ChatCompletion.CreateCompletion(new ChatCompletionCreateRequest
+                {
+                    Messages = new List<ChatMessage>
+                {
+                    ChatMessage.FromSystem("Sen şiir ve şarkı sözü yazmakta usta bir asistansın. Görevin, kullanıcıya şiir ve şarkı sözleri yazmakta yol göstermek, yardımcı olmak ve çözüm üretmektir."),
+                    ChatMessage.FromUser(prompt),
+                },
+                    Model = OpenAI.ObjectModels.Models.Gpt_4o,
+                    MaxTokens = 4096,
+                });
+
+            if (completionResult.Successful)
+            {
+                generatedContent = completionResult.Choices.First().Message.Content;
+                Console.WriteLine(completionResult.Choices.First().Message.Content);
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.ToString());
+            throw;
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+}

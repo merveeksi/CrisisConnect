@@ -1,9 +1,3 @@
-/Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Application/obj/Debug/net8.0/Application.csproj.AssemblyReference.cache
-/Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Application/obj/Debug/net8.0/Application.GeneratedMSBuildEditorConfig.editorconfig
-/Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Application/obj/Debug/net8.0/Application.AssemblyInfoInputs.cache
-/Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Application/obj/Debug/net8.0/Application.AssemblyInfo.cs
-/Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Application/obj/Debug/net8.0/Application.csproj.CoreCompileInputs.cache
-/Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Application/obj/Debug/net8.0/Application.sourcelink.json
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Application/bin/Debug/net8.0/Application.deps.json
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Application/bin/Debug/net8.0/Application.dll
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Application/bin/Debug/net8.0/Application.pdb
@@ -22,6 +16,12 @@
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Application/bin/Debug/net8.0/es-ES/Core.CrossCuttingConcerns.resources.dll
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Application/bin/Debug/net8.0/ru-RU/Core.CrossCuttingConcerns.resources.dll
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Application/bin/Debug/net8.0/en-US/Core.CrossCuttingConcerns.resources.dll
+/Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Application/obj/Debug/net8.0/Application.csproj.AssemblyReference.cache
+/Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Application/obj/Debug/net8.0/Application.GeneratedMSBuildEditorConfig.editorconfig
+/Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Application/obj/Debug/net8.0/Application.AssemblyInfoInputs.cache
+/Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Application/obj/Debug/net8.0/Application.AssemblyInfo.cs
+/Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Application/obj/Debug/net8.0/Application.csproj.CoreCompileInputs.cache
+/Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Application/obj/Debug/net8.0/Application.sourcelink.json
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Application/obj/Debug/net8.0/Applicat.44B5EDA2.Up2Date
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Application/obj/Debug/net8.0/Application.dll
 /Users/pc/Desktop/DogalAfetKaynakYardim/src/CrisisConnect/CrisisConnect /Application/obj/Debug/net8.0/refint/Application.dll

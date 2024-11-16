@@ -10,7 +10,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{3096BEFE-7606-4657-93A7-365BF81184CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WasmClient", "WasmClient\WasmClient.csproj", "{A7FB53CC-C45D-4942-88EF-BE3E24D545EC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WasmClient", "WasmClient\WasmClient.csproj", "{AEBF147D-0AD9-47BC-90D3-A86215A32D5F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,9 +38,9 @@ Global
 		{3096BEFE-7606-4657-93A7-365BF81184CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3096BEFE-7606-4657-93A7-365BF81184CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3096BEFE-7606-4657-93A7-365BF81184CC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A7FB53CC-C45D-4942-88EF-BE3E24D545EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A7FB53CC-C45D-4942-88EF-BE3E24D545EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A7FB53CC-C45D-4942-88EF-BE3E24D545EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A7FB53CC-C45D-4942-88EF-BE3E24D545EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEBF147D-0AD9-47BC-90D3-A86215A32D5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEBF147D-0AD9-47BC-90D3-A86215A32D5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEBF147D-0AD9-47BC-90D3-A86215A32D5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEBF147D-0AD9-47BC-90D3-A86215A32D5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
